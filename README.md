@@ -1,2 +1,2 @@
 # TermProject_RPGgame
-This is devlop part
+This is develop part!
