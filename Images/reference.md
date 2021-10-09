@@ -14,4 +14,4 @@
 - enemy0~3: "파이썬으로 배우는 게임 개발 인문편". https://github.com/Jpub/PythonGame_1
 - 스모선수: "pngtree".2021/10/09 접속.https://kor.pngtree.com/freepng/ukiyo-e-style-traditional-sumo-figures_6529183.html
 - 오니:"illustAC".2021/10/08 접속.https://www.ac-illust.com/main/search_result.php?word=%E9%AC%BC 
-- 원숭이: "pngegg".2021/10/08 접속.https://www.pngegg.com/ko/png-zdedt 
+- 원숭이: "pngegg".2021/10/08 접속.https://www.pngegg.com/ko/png-zdedt
