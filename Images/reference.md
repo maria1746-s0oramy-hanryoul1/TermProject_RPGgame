@@ -8,7 +8,7 @@
 
 ## 2. maincharacter images
 - mych0~7: "파이썬으로 배우는 게임 개발 인문편". https://github.com/Jpub/PythonGame_1
-- 마네키네코: 
+- 마네키네코: "pngtree".2021/10/09 접속.https://kor.pngtree.com/freepng/cute-luck-sitting-happy-japanese-cartoon-lucky-cat_5742671.html
 
 ## 3. monster images
 - enemy0~3: "파이썬으로 배우는 게임 개발 인문편". https://github.com/Jpub/PythonGame_1
