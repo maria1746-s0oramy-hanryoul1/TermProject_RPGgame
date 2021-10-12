@@ -33,7 +33,7 @@
 
 
  - 이지수: 전반적인 코드 개발<br>
-담당 코드 ; 키와 마우스 입력 설정, 사운드 출력, 타이틀/ 클리어/ 게임 오버(엔딩) 만들기 등 
+담당 코드 ; 키와 마우스 입력 설정, 캐릭터->적 공격, 사운드 출력, 타이틀/ 클리어/ 게임 오버(엔딩) 만들기 등 
 
 
  - 한률: 디자인적 요소 설정<br>
@@ -69,7 +69,8 @@
 - 개발 tool: python, visualstudiocode
 
 
-- communication tool: kakaotalk, zoom, github(https://github.com/maria1746-s0oramy-hanryoul1/TermProject_RPGgame.git), Google 공유 드라이브
+- communication tool: <br>
+kakaotalk, zoom, github(https://github.com/maria1746-s0oramy-hanryoul1/TermProject_RPGgame.git), Google 공유 드라이브
 
 **8. 참고 서적 및 자료:**
 - 파이썬으로 배우는 게임 개발 입문편
