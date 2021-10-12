@@ -69,7 +69,8 @@
 - 개발 tool: python, visualstudiocode
 
 
-- communication tool: kakaotalk, zoom, github(https://github.com/maria1746-s0oramy-hanryoul1/TermProject_RPGgame.git), Google 공유 드라이브
+- communication tool: <br>
+kakaotalk, zoom, github(https://github.com/maria1746-s0oramy-hanryoul1/TermProject_RPGgame.git), Google 공유 드라이브
 
 **8. 참고 서적 및 자료:**
 - 파이썬으로 배우는 게임 개발 입문편
