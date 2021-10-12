@@ -8,11 +8,11 @@ def main():
     pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 2-1")
     screen = pygame.display.set_mode((640, 360))
     clock = pygame.time.Clock()
-    img_bg = pygame.image.load("TermProject_RPGgame\image/back2-1.png")
+    img_bg = pygame.image.load("image/back2-1.png")
     img_chara = [
  
-        pygame.image.load("TermProject_RPGgame\image/mychr6.png"),
-        pygame.image.load("TermProject_RPGgame\image/mychr7.png")
+        pygame.image.load("image/mychr6.png"),
+        pygame.image.load("image/mychr7.png")
     ]
     tmr = 0
 
