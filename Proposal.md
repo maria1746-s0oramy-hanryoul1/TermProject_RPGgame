@@ -66,7 +66,7 @@
 |9|최종 점검|최종 디버깅 및 데모 영상 제작|
 
 **7. 프로젝트를 위해 사용할 Tool:**
-- 개발 tool: python, visualstudiocode
+- 개발 tool: python, Visual Studio Code
 
 
 - communication tool: <br>
