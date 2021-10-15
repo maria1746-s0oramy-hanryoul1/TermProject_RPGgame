@@ -1,5 +1,5 @@
 # Term - Project: Proposal Submission 
-#### 글로벌문화기술학과 이지수 /  전수림 / 한률
+#### 글로벌문화기술 융합전공(일본문화 트랙) 2020103305 이지수 / 2020103310 전수림 / 2020103318 한률
 
 **1. 주제:** RPG Pygame 개발 
 
@@ -66,7 +66,7 @@
 |9|최종 점검|최종 디버깅 및 데모 영상 제작|
 
 **7. 프로젝트를 위해 사용할 Tool:**
-- 개발 tool: python, visualstudiocode
+- 개발 tool: Python, Visual Studio Code
 
 
 - communication tool: <br>
