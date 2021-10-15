@@ -9,12 +9,14 @@ walkLeft = [pygame.image.load('test_image/L1.png'), pygame.image.load('test_imag
 bg = pygame.image.load("real_image/back1.png")
 char = pygame.image.load('test_image/standing.png')
 
+
+
 clock = pygame.time.Clock()
 
 x = 50 
 y = 400 
 width = 64
-height = 64
+height = 64 
 vel = 5
 
 isJump = False
@@ -30,7 +32,7 @@ def game():
     if walkCount + 1 > 27:
         walkCount = 0
     
-    if left :
+    if left :   
         win.blit(walkLeft[walkCount//3], (x,y))
         walkCount += 1
     elif right:
