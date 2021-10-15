@@ -7,7 +7,7 @@
 - 오사카성: "gettyimagebank".2021/10/09 접속.https://m.gettyimagesbank.com/view/landmark-illustration/a10551891
 
 <Final image>
-- 오사카성: 
+- 오사카성: #수림아 찾아서 여기다 링크 넣어줘!!
 - 후지산: "urbanbrush".2021/10/15 접속.https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/09/urbanbrush-20180927060821306154.png 
 - 다다미방: "istockphoto" 2021/10/15 접속.https://www.istockphoto.com/jp/%E3%83%99%E3%82%AF%E3%82%BF%E3%83%BC/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0-gm155272775-21878195
 
