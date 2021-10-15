@@ -4,17 +4,17 @@ pygame.init()
 win = pygame.display.set_mode((800, 500)) 
 pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 1")
 
-walkRight = [pygame.image.load('test_image/R1.png'), pygame.image.load('test_image/R2.png'), pygame.image.load('test_image/R3.png'), pygame.image.load('test_image/R4.png'), pygame.image.load('test_image/R5.png'), pygame.image.load('test_image/R6.png'), pygame.image.load('test_image/R7.png'), pygame.image.load('test_image/R8.png'), pygame.image.load('test_image/R9.png')]
-walkLeft = [pygame.image.load('test_image/L1.png'), pygame.image.load('test_image/L2.png'), pygame.image.load('test_image/L3.png'), pygame.image.load('test_image/L4.png'), pygame.image.load('test_image/L5.png'), pygame.image.load('test_image/L6.png'), pygame.image.load('test_image/L7.png'), pygame.image.load('test_image/L8.png'), pygame.image.load('test_image/L9.png')]
+walkRight = [pygame.image.load('real_image/chr_R1.png'), pygame.image.load('real_image/chr_R2.png')]
+walkLeft = [pygame.image.load('real_image/chr_L1.png'),pygame.image.load('real_image/chr_L2.png')]
 bg = pygame.image.load("real_image/back1.png")
-char = pygame.image.load('test_image/standing.png')
+char = pygame.image.load('real_image/chr.png')
 
 clock = pygame.time.Clock()
 
 x = 50 
 y = 400 
-width = 64
-height = 64
+width = 70
+height = 80 
 vel = 5
 
 isJump = False
@@ -34,7 +34,7 @@ def game():
         win.blit(walkLeft[walkCount//3], (x,y))
         walkCount += 1
     elif right:
-        win.blit(walkRight[walkCount//3], (x,y))
+        win.blit(walkRight[walkCount//3], (x,y)) 
         walkCount += 1
     else: 
         win.blit(char, (x,y))
