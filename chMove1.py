@@ -4,10 +4,10 @@ pygame.init()
 win = pygame.display.set_mode((800, 500)) 
 pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 1")
 
-walkRight = [pygame.image.load('test_image/R1.png'), pygame.image.load('test_image/R2.png'), pygame.image.load('test_image/R3.png'), pygame.image.load('test_image/R4.png'), pygame.image.load('test_image/R5.png'), pygame.image.load('test_image/R6.png'), pygame.image.load('test_image/R7.png'), pygame.image.load('test_image/R8.png'), pygame.image.load('test_image/R9.png')]
-walkLeft = [pygame.image.load('test_image/L1.png'), pygame.image.load('test_image/L2.png'), pygame.image.load('test_image/L3.png'), pygame.image.load('test_image/L4.png'), pygame.image.load('test_image/L5.png'), pygame.image.load('test_image/L6.png'), pygame.image.load('test_image/L7.png'), pygame.image.load('test_image/L8.png'), pygame.image.load('test_image/L9.png')]
+walkRight = [pygame.image.load('real_image/R1.png'), pygame.image.load('real_image/R2.png'), pygame.image.load('real_image/R3.png'), pygame.image.load('real_image/R4.png'), pygame.image.load('real_image/R5.png'), pygame.image.load('real_image/R6.png'), pygame.image.load('real_image/R7.png'), pygame.image.load('real_image/R8.png'), pygame.image.load('real_image/R9.png')]
+walkLeft = [pygame.image.load('real_image/L1.png'), pygame.image.load('real_image/L2.png'), pygame.image.load('real_image/L3.png'), pygame.image.load('real_image/L4.png'), pygame.image.load('real_image/L5.png'), pygame.image.load('real_image/L6.png'), pygame.image.load('real_image/L7.png'), pygame.image.load('real_image/L8.png'), pygame.image.load('real_image/L9.png')]
 bg = pygame.image.load("real_image/back1.png")
-char = pygame.image.load('test_image/standing.png')
+char = pygame.image.load('real_image/standing.png')
 
 
 
