@@ -56,7 +56,7 @@ class projectile(object):
     def draw(self, win):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
 
-class enemy(object):
+class mon(object):
     walkRight = [pygame.image.load('real_image/R1E.png'), pygame.image.load('real_image/R2E.png'), pygame.image.load('real_image/R3E.png'), pygame.image.load('real_image/R4E.png'), pygame.image.load('real_image/R5E.png'), pygame.image.load('real_image/R6E.png'), pygame.image.load('real_image/R7E.png'), pygame.image.load('real_image/R8E.png'), pygame.image.load('real_image/R9E.png'), pygame.image.load('real_image/R10E.png'), pygame.image.load('real_image/R11E.png')]
     walkLeft = [pygame.image.load('real_image/L1E.png'), pygame.image.load('real_image/L2E.png'), pygame.image.load('real_image/L3E.png'), pygame.image.load('real_image/L4E.png'), pygame.image.load('real_image/L5E.png'), pygame.image.load('real_image/L6E.png'), pygame.image.load('real_image/L7E.png'), pygame.image.load('real_image/L8E.png'), pygame.image.load('real_image/L9E.png'), pygame.image.load('real_image/L10E.png'), pygame.image.load('real_image/L11E.png')]
     
@@ -108,7 +108,7 @@ def redrawGameWindow():
 
 #main loop
 man = player(50, 400, 64, 64)
-goblin = enemy(100, 410, 64, 64, 300)
+goblin = mon(100, 410, 64, 64, 300)
 bullets = []
 run = True
 while run:
