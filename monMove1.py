@@ -57,7 +57,7 @@ class projectile(object):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
 
 class enemy(object):
-    walkRight = [pygame.image.load('real_image/R1E.png'), pygame.image.load('real_image/R2E.png'), pygame.image.load('real_image/R3E.png'), pygame.image.load('real_image/R4E.png'), pygame.image.load('real_image/R5E.png'), pygame.image.load('R6E.png'), pygame.image.load('real_image/R7E.png'), pygame.image.load('real_image/R8E.png'), pygame.image.load('real_image/R9E.png'), pygame.image.load('real_image/R10E.png'), pygame.image.load('real_image/R11E.png')]
+    walkRight = [pygame.image.load('real_image/R1E.png'), pygame.image.load('real_image/R2E.png'), pygame.image.load('real_image/R3E.png'), pygame.image.load('real_image/R4E.png'), pygame.image.load('real_image/R5E.png'), pygame.image.load('real_image/R6E.png'), pygame.image.load('real_image/R7E.png'), pygame.image.load('real_image/R8E.png'), pygame.image.load('real_image/R9E.png'), pygame.image.load('real_image/R10E.png'), pygame.image.load('real_image/R11E.png')]
     walkLeft = [pygame.image.load('real_image/L1E.png'), pygame.image.load('real_image/L2E.png'), pygame.image.load('real_image/L3E.png'), pygame.image.load('real_image/L4E.png'), pygame.image.load('real_image/L5E.png'), pygame.image.load('real_image/L6E.png'), pygame.image.load('real_image/L7E.png'), pygame.image.load('real_image/L8E.png'), pygame.image.load('real_image/L9E.png'), pygame.image.load('real_image/L10E.png'), pygame.image.load('real_image/L11E.png')]
     
     def __init__(self, x, y, width, height, end):
@@ -100,6 +100,7 @@ class enemy(object):
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     man.draw(win)
+    goblin.draw(win)
     for bullet in bullets:
         bullet.draw(win) 
 
