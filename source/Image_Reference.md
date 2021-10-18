@@ -1,12 +1,5 @@
 # Images Reference
 ## 1. background images
-- 후지산 봄:"pngegg".2021/10/08 접속.https://www.pngegg.com/ko/png-btkvt/download
-- 후지산 석양:"pngegg".2021/10/08 접속.https://www.pngegg.com/ko/png-bzuvx/download
-- 후지산: "PNGWING".2021/10/08 접속. https://www.pngwing.com/ko/free-png-zgktm/download
-- 도효: "OhmyPhoto".2021/10/08 접속.http://www.ohmynews.com/NWS_Web/View/img_pg.aspx?CNTN_CD=IA000181971&memcd=00017331&gb=reporter
-- 오사카성: "gettyimagebank".2021/10/09 접속.https://m.gettyimagesbank.com/view/landmark-illustration/a10551891
-
-## 1-1. background Final image
 - 오사카성: "notefolio".2021/10/15 접속.https://notefolio.net/choco_sec/106205
 - 후지산: "urbanbrush".2021/10/15 접속.https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/09/urbanbrush-20180927060821306154.png 
 - 일본 도시의 건물 일러스트: "Pinterset". 2021/10/15 접속.https://www.pinterest.cl/pin/817333032359889028/
