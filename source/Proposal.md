@@ -1,4 +1,4 @@
-# Term - Project: Proposal Submission 
+# Term - Project: Proposal 
 #### 글로벌문화기술 융합전공(일본문화 트랙) 2020103305 이지수 / 2020103310 전수림 / 2020103318 한률
 
 **1. 주제:** RPG Pygame 개발 
