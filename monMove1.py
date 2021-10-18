@@ -108,7 +108,7 @@ def redrawGameWindow():
 
 #main loop
 man = player(50, 400, 64, 64)
-goblin = mon(100, 410, 64, 64, 300)
+goblin = mon(100, 410, 64, 64, 800)
 bullets = []
 run = True
 while run:
