@@ -71,7 +71,7 @@ class mon(object):
         self.path = [x, end]
         self.walkCount = 0
         self.vel = 3
-        self.hitbox = (self.x + 15, self.y, 55, 80)
+        self.hitbox = (self.x + 15, self.y, 55, 87)
 
     def draw(self, win):
         self.move()
@@ -84,7 +84,7 @@ class mon(object):
         else:
             win.blit(self.walkLeft[self.walkCount//3], (self.x,self.y))
             self.walkCount += 1
-        self.hitbox = (self.x + 15, self.y, 55, 80)
+        self.hitbox = (self.x + 15, self.y, 55, 87)
         pygame.draw.rect(win, (255,0,0), self.hitbox, 2)
             
     def move(self):
