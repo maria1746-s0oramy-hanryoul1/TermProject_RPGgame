@@ -19,3 +19,4 @@
 - NINJA GIRL: "Game Art 2D".2021/10/18 접속.https://www.gameart2d.com/ninja-girl---free-sprites.html
 - NINJA ADVENTURE: "Game Art 2D".2021/10/18 접속.https://www.gameart2d.comn/inja-adventure---free-sprites.html
 - Doraemon: "The Spriters Resource".2021/10/18 접속.https://www.spriters-resource.com/snes/doraemon2nobitanotoyslanddaiboukenjpn/sheet/84517/?source=genre
+-Doraemon2: "The Spriters Resource".2021/10/22 접속.https://www.spriters-resource.com/genesis_32x_scd/doraemonyd7nng/sheet/36197/
