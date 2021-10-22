@@ -116,12 +116,16 @@ class mon2(object):
             self.walkCount = 0
         
         if self.vel > 0:
-            win.blit(self.walkRight[self.walkCount//3], (self.x,self.y))
-            self.walkCount += 1
+            for i in range(8):
+                win.blit(self.walkRight[i], (self.x, self.y))
+            # win.blit(self.walkRight[self.walkCount//3], (self.x,self.y)) #오류 발생
+            # self.walkCount += 1
             
         else:
-            win.blit(self.walkLeft[self.walkCount//3], (self.x,self.y))
-            self.walkCount += 1
+            for i in range(8):
+                win.blit(self.walkLeft[i], (self.x,self.y))
+            # win.blit(self.walkLeft[self.walkCount//3], (self.x,self.y))
+            # self.walkCount += 1
             
     def move(self):
         if self.vel > 0:
