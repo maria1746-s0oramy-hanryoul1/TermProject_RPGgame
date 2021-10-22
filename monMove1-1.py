@@ -6,7 +6,7 @@ pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 
 
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
 walkLeft = [pygame.image.load('real_image/bl1.png'), pygame.image.load('real_image/bl2.png'), pygame.image.load('real_image/bl3.png'), pygame.image.load('real_image/bl4.png'), pygame.image.load('real_image/bl5.png'), pygame.image.load('real_image/bl6.png'), pygame.image.load('real_image/bl7.png'), pygame.image.load('real_image/bl8.png'), pygame.image.load('real_image/bl9.png')]
-bg = pygame.image.load("real_image/back2.png")
+bg = pygame.image.load("real_image/back1.png")
 char = pygame.image.load('real_image/br1.png')
 
 
@@ -57,8 +57,8 @@ class projectile(object):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
 
 class mon(object):
-    walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
-    walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
+    walkRight = [pygame.image.load('real_image/Dr1.png'), pygame.image.load('real_image/Dr2.png'), pygame.image.load('real_image/Dr3.png'), pygame.image.load('real_image/Dr4.png'), pygame.image.load('real_image/Dr5.png'), pygame.image.load('real_image/Dr6.png'), pygame.image.load('real_image/Dr7.png'), pygame.image.load('real_image/Dr8.png'), pygame.image.load('real_image/Dr9.png'), pygame.image.load('real_image/Dr10.png'), pygame.image.load('real_image/Dr11.png')]
+    walkLeft = [pygame.image.load('real_image/DL1.png'), pygame.image.load('real_image/DL2.png'), pygame.image.load('real_image/DL3.png'), pygame.image.load('real_image/DL4.png'), pygame.image.load('real_image/DL5.png'), pygame.image.load('real_image/DL6.png'), pygame.image.load('real_image/DL7.png'), pygame.image.load('real_image/DL8.png'), pygame.image.load('real_image/DL9.png'), pygame.image.load('real_image/DL10.png'), pygame.image.load('real_image/DL11.png')]
     
     def __init__(self, x, y, width, height, end):
         self.x = x
