@@ -2,7 +2,7 @@
 ## 1. background images
 - 오사카성: "notefolio".2021/10/15 접속.https://notefolio.net/choco_sec/106205
 - 후지산: "urbanbrush".2021/10/15 접속.https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/09/urbanbrush-20180927060821306154.png 
-- 일본 도시의 건물 일러스트: "Pinterset". 2021/10/15 접속.https://www.pinterest.cl/pin/817333032359889028/
+- 일본 관광지 종합: "Pinterset". 2021/10/15 접속.https://www.pinterest.cl/pin/817333032359889028/
 - 다다미방: "istockphoto" 2021/10/15 접속.https://www.istockphoto.com/jp/%E3%83%99%E3%82%AF%E3%82%BF%E3%83%BC/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%A0-gm155272775-21878195
 
 ## 2. maincharacter images
