@@ -141,6 +141,8 @@ class enemy(object):
     def hit(self):
         if self.health > 0:
             self.health -= 0.5
+            # 생명 감소 속도 조절
+            
         else:
             self.visible = False
         print('hit')
