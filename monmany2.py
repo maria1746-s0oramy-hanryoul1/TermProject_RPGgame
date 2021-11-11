@@ -6,15 +6,16 @@ pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 
 
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
 walkLeft = [pygame.image.load('real_image/bl1.png'), pygame.image.load('real_image/bl2.png'), pygame.image.load('real_image/bl3.png'), pygame.image.load('real_image/bl4.png'), pygame.image.load('real_image/bl5.png'), pygame.image.load('real_image/bl6.png'), pygame.image.load('real_image/bl7.png'), pygame.image.load('real_image/bl8.png'), pygame.image.load('real_image/bl9.png')]
-bg = pygame.image.load("real_image/back1.png")
-char = pygame.image.load('real_image/br1.png')
+bg = pygame.image.load("real_image/back3.png")
+char = pygame.image.load('real_image/br1.png') 
+
 
 clock = pygame.time.Clock()
 
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
 
-music = pygame.mixer.music.load('sound/backsound.wav')
+music = pygame.mixer.music.load('sound/backsound2.mp3')
 pygame.mixer.music.play(-1)
 
 score = 0
@@ -87,9 +88,9 @@ class projectile(object):
         pygame.draw.circle(win, self.color, (self.x,self.y), self.radius)
 
 
-class mon(object):
-    walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
-    walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
+class enemy(object):
+    walkRight = [pygame.image.load('real_image/nbr1.png'), pygame.image.load('real_image/nbr1.png'), pygame.image.load('real_image/nbr2.png'), pygame.image.load('real_image/nbr2.png'), pygame.image.load('real_image/nbr3.png'), pygame.image.load('real_image/nbr4.png'), pygame.image.load('real_image/nbr5.png'), pygame.image.load('real_image/nbr6.png'), pygame.image.load('real_image/nbr7.png'), pygame.image.load('real_image/nbr8.png'), pygame.image.load('real_image/nbr9.png')]
+    walkLeft = [pygame.image.load('real_image/nbl1.png'), pygame.image.load('real_image/nbl1.png'), pygame.image.load('real_image/nbl2.png'), pygame.image.load('real_image/nbl2.png'), pygame.image.load('real_image/nbl3.png'), pygame.image.load('real_image/nbL4.png'), pygame.image.load('real_image/nbl5.png'), pygame.image.load('real_image/nbl6.png'), pygame.image.load('real_image/nbl7.png'), pygame.image.load('real_image/nbl8.png'), pygame.image.load('real_image/nbl9.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -97,7 +98,7 @@ class mon(object):
         self.width = width
         self.height = height
         self.end = end
-        self.path = [self.x, self.end]
+        self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
@@ -150,7 +151,9 @@ def redrawGameWindow():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     win.blit(text, (650, 20))
     man.draw(win)
-    goblin.draw(win)
+    goblin1.draw(win)
+    goblin2.draw(win)
+    goblin3.draw(win)
     for bullet in bullets:
         bullet.draw(win)
     
@@ -160,18 +163,38 @@ def redrawGameWindow():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-goblin = mon(100, 410, 64, 64, 700)
+goblin1 = enemy(100, 410, 64, 64, 700)
+goblin2 = enemy(300, 410, 64, 64, 700)
+goblin3 = enemy(600, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
 while run:
     clock.tick(27)
 
-    if goblin.visible == True:
-        if man.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > goblin.hitbox[0] and man.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
+    # goblin1 
+    if goblin1.visible == True:
+        if man.hitbox[1] < goblin1.hitbox[1] + goblin1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin1.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > goblin1.hitbox[0] and man.hitbox[0] < goblin1.hitbox[0] + goblin1.hitbox[2]:
                 man.hit()
                 score -= 5
+                goblin1 = enemy(600, 410, 64, 64, 700)
+
+    # goblin2
+    if goblin2.visible == True:
+        if man.hitbox[1] < goblin2.hitbox[1] + goblin2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin2.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > goblin2.hitbox[0] and man.hitbox[0] < goblin2.hitbox[0] + goblin2.hitbox[2]:
+                man.hit()
+                score -= 5
+                goblin2 = enemy(600, 410, 64, 64, 700)
+
+    # goblin3
+    if goblin3.visible == True:
+        if man.hitbox[1] < goblin3.hitbox[1] + goblin3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin3.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > goblin3.hitbox[0] and man.hitbox[0] < goblin3.hitbox[0] + goblin3.hitbox[2]:
+                man.hit()
+                score -= 5
+                goblin3 = enemy(600, 410, 64, 64, 700)
 
     if shootLoop > 0:
         shootLoop += 1
@@ -181,12 +204,12 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        
+    # goblin1    
     for bullet in bullets:
-        if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
-            if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
+        if bullet.y - bullet.radius < goblin1.hitbox[1] + goblin1.hitbox[3] and bullet.y + bullet.radius > goblin1.hitbox[1]:
+            if bullet.x + bullet.radius > goblin1.hitbox[0] and bullet.x - bullet.radius < goblin1.hitbox[0] + goblin1.hitbox[2]:
                 hitSound.play()
-                goblin.hit()
+                goblin1.hit()
                 score += 1
                 bullets.pop(bullets.index(bullet))
                 
@@ -195,6 +218,35 @@ while run:
         else:
             bullets.pop(bullets.index(bullet))
 
+    # goblin2
+    for bullet in bullets:
+        if bullet.y - bullet.radius < goblin2.hitbox[1] + goblin2.hitbox[3] and bullet.y + bullet.radius > goblin2.hitbox[1]:
+            if bullet.x + bullet.radius > goblin2.hitbox[0] and bullet.x - bullet.radius < goblin2.hitbox[0] + goblin2.hitbox[2]:
+                hitSound.play()
+                goblin2.hit()
+                score += 1
+                bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    # goblin3
+    for bullet in bullets:
+        if bullet.y - bullet.radius < goblin3.hitbox[1] + goblin3.hitbox[3] and bullet.y + bullet.radius > goblin3.hitbox[1]:
+            if bullet.x + bullet.radius > goblin3.hitbox[0] and bullet.x - bullet.radius < goblin3.hitbox[0] + goblin3.hitbox[2]:
+                hitSound.play()
+                goblin3.hit()
+                score += 1
+                bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    # 캐릭터 이동 
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_SPACE] and shootLoop == 0:
