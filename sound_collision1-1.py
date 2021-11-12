@@ -145,7 +145,7 @@ class mon(object):
 
         
 
-def redrawGamescreendow():
+def redrawGamescreen():
     screen.blit(bg, (0,0))
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (650, 20))
@@ -240,6 +240,6 @@ while run:
             man.isJump = False
             man.jumpCount = 10
             
-    redrawGamescreendow()
+    redrawGamescreen()
 
 pygame.quit()
