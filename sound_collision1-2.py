@@ -75,7 +75,7 @@ class player(object):
                 
 
 
-class projectile(object):
+class attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
         self.y = y
@@ -149,7 +149,7 @@ class mon(object):
 
         
 
-def redrawGamescreendow():
+def redrawGamescreen():
     screen.blit(bg, (0,0))
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (650, 20))
@@ -209,7 +209,7 @@ while run:
             facing = 1
             
         if len(bullets) < 5:
-            bullets.append(projectile(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
+            bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
         shootLoop = 1
 
@@ -244,6 +244,6 @@ while run:
             man.isJump = False
             man.jumpCount = 10
             
-    redrawGamescreendow()
+    redrawGamescreen()
 
 pygame.quit()
