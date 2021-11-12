@@ -1,7 +1,7 @@
 import pygame
 
 pygame.init()
-win = pygame.display.set_mode((800, 500)) 
+screen = pygame.display.set_mode((800, 500)) 
 pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 1")
 
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
@@ -26,23 +26,23 @@ class player(object):
         self.walkCount = 0 
         self.standing = True
 
-    def draw(self, win):
+    def draw(self, screen):
         
         if self.walkCount + 1 > 27:
             self.walkCount = 0
 
         if not(self.standing):
             if self.left :   
-                win.blit(walkLeft[self.walkCount//3], (self.x,self.y))
+                screen.blit(walkLeft[self.walkCount//3], (self.x,self.y))
                 self.walkCount += 1
             elif self.right:
-                win.blit(walkRight[self.walkCount//3], (self.x,self.y))
+                screen.blit(walkRight[self.walkCount//3], (self.x,self.y))
                 self.walkCount += 1 
         else: 
             if self.right:
-                win.blit(walkRight[0], (self.x, self.y))
+                screen.blit(walkRight[0], (self.x, self.y))
             else:
-                win.blit(walkLeft[0], (self.x, self.y))
+                screen.blit(walkLeft[0], (self.x, self.y))
 
 class projectile(object):
     def __init__(self, x, y, radius, color, facing):
@@ -53,16 +53,16 @@ class projectile(object):
         self.facing = facing
         self.vel = 8 * facing 
 
-    def draw(self, win):
-        pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+    def draw(self, screen):
+        pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
 
 
 
-def redrawGameWindow():
-    win.blit(bg, (0, 0))
-    man.draw(win)
+def redrawGamescreendow():
+    screen.blit(bg, (0, 0))
+    man.draw(screen)
     for bullet in bullets:
-        bullet.draw(win) 
+        bullet.draw(screen) 
 
     pygame.display.update()
 
@@ -125,6 +125,6 @@ while run:
             man.isJump = False
             man.jumpCount = 10
 
-    redrawGameWindow() 
+    redrawGamescreendow() 
 
 pygame.quit() 

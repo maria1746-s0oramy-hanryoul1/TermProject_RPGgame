@@ -1,7 +1,7 @@
 import pygame
 
 pygame.init()
-win = pygame.display.set_mode((800, 500)) 
+screen = pygame.display.set_mode((800, 500)) 
 pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 1")
 
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
@@ -27,19 +27,19 @@ walkCount = 0
 
 def game():
     global walkCount 
-    win.blit(bg, (0, 0))
+    screen.blit(bg, (0, 0))
 
     if walkCount + 1 > 27:
         walkCount = 0
     
     if left :   
-        win.blit(walkLeft[walkCount//3], (x,y))
+        screen.blit(walkLeft[walkCount//3], (x,y))
         walkCount += 1
     elif right:
-        win.blit(walkRight[walkCount//3], (x,y))
+        screen.blit(walkRight[walkCount//3], (x,y))
         walkCount += 1
     else: 
-        win.blit(char, (x,y))
+        screen.blit(char, (x,y))
     pygame.display.update()
 
 #main loop
