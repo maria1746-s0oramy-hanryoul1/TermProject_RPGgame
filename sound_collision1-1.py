@@ -87,7 +87,7 @@ class attack(object):
         pygame.draw.circle(screen, self.color, (self.x,self.y), self.radius)
 
 
-class mon(object):
+class monster(object):
     walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
     walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
 
@@ -160,7 +160,7 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-ninja = mon(100, 410, 64, 64, 700)
+ninja = monster(100, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
