@@ -152,7 +152,7 @@ class monster(object):
 def redrawGamescreen():
     screen.blit(bg, (0,0))
     text = font.render('Score: ' + str(score), 1, (0,0,0))
-    screen.blit(text, (650, 20))
+    screen.blit(text, (620, 20))
     man.draw(screen)
     ninja.draw(screen)
     for bullet in bullets:
