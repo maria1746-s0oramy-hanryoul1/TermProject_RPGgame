@@ -151,7 +151,7 @@ def redrawGamescreen():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (650, 20))
     man.draw(screen)
-    goblin.draw(screen)
+    ninja.draw(screen)
     for bullet in bullets:
         bullet.draw(screen)
     
@@ -161,16 +161,16 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-goblin = mon(100, 410, 64, 64, 700)
+ninja = mon(100, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
 while run:
     clock.tick(27)
 
-    if goblin.visible == True:
-        if man.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > goblin.hitbox[0] and man.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
+    if ninja.visible == True:
+        if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                 man.hit()
                 score -= 5
 
@@ -184,10 +184,10 @@ while run:
             run = False
         
     for bullet in bullets:
-        if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
-            if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
+        if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius >ninja.hitbox[1]:
+            if bullet.x + bullet.radius >ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
                 hitSound.play()
-                goblin.hit()
+                ninja.hit()
                 score += 1
                 bullets.pop(bullets.index(bullet))
                 
