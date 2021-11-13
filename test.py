@@ -173,6 +173,7 @@ while run:
             if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                 man.hit()
                 score -= 5
+                man = player(50, 410, 64, 64) 
 
     if ninja.visible == True:
         for bullet in bullets:
@@ -223,7 +224,7 @@ while run:
             
         if len(bullets) < 5 and ninja.visible == True:
             bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
-            
+
         shootLoop = 1
 
     if keys[pygame.K_LEFT] and man.x > man.vel:
