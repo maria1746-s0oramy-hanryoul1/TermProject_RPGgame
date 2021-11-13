@@ -192,8 +192,8 @@ def death_screen(player):  # Pass in player object for access to final score
                     sys.exit()
 
         screen.blit(background, (0, 0))
-        screen.blit(death_label, (30, 50))
-        screen.blit(death_option, (100, 200))
+        screen.blit(death_label, (140, 50))
+        screen.blit(death_option, (210, 200))
         #screen.blit(score_label, (225, 75))
         pygame.display.update()
 
@@ -206,8 +206,8 @@ def start_menu():
     title_font = pygame.font.SysFont('comicsans', 60)  # Create font object
     while True:
         screen.blit(background, (0, 0))  # move Background To screen
-        menu_label = title_font.render('Press Enter To Begin', True, (0, 0, 0))  # Create Text Label
-        screen.blit(menu_label, (105, 50))  # move Label To screen
+        menu_label = title_font.render('Press Enter To Begin', True, (0, 0, 0))  # move Label To screen
+        screen.blit(menu_label, (190, 90))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
