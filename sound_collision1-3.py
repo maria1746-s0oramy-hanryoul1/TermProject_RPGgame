@@ -98,9 +98,10 @@ class monster(object):
         self.width = width
         self.height = height
         self.end = end
-        self.path = [self.x, self.end]
+        self.path = [50, self.end]
+        # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 9
+        self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
@@ -139,7 +140,7 @@ class monster(object):
 
     def hit(self):
         if self.health > 0:
-            self.health -= 0.25
+            self.health -= 1
         else:
             self.visible = False
         print('hit')
@@ -151,7 +152,9 @@ def redrawGamescreen():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (620, 20))
     man.draw(screen)
-    ninja.draw(screen)
+    ninja1.draw(screen)
+    ninja2.draw(screen)
+    ninja3.draw(screen)
     for bullet in bullets:
         bullet.draw(screen)
     
@@ -161,7 +164,9 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-ninja = monster(100, 410, 64, 64, 700)
+ninja1 = monster(100, 410, 64, 64, 700)
+ninja2 = monster(300, 410, 64, 64, 700)
+ninja3 = monster(600, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
@@ -169,25 +174,68 @@ while run:
     clock.tick(35)
     # clock 속도 27 -> 35
 
-    if ninja.visible == True:
-        if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
+    # ninja1 
+    if ninja1.visible == True:
+        if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
                 man.hit()
                 score -= 5
-
-    if ninja.visible == True:
-        for bullet in bullets:
-            if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
-                if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
-                    hitSound.play()
-                    ninja.hit()
-                    score += 1
-                    bullets.pop(bullets.index(bullet))
+                ninja1 = monster(600, 410, 64, 64, 700)
+    
+    for bullet in bullets:
+        if bullet.y - bullet.radius < ninja1.hitbox[1] + ninja1.hitbox[3] and bullet.y + bullet.radius > ninja1.hitbox[1]:
+            if bullet.x + bullet.radius > ninja1.hitbox[0] and bullet.x - bullet.radius < ninja1.hitbox[0] + ninja1.hitbox[2]:
+                hitSound.play()
+                ninja1.hit()
+                score += 1
+                bullets.pop(bullets.index(bullet))
                 
-            if bullet.x < 800 and bullet.x > 0:
-                bullet.x += bullet.vel
-            else:
-                bullets.pop(bullets.index(bullet))        
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+     # ninja2
+    if ninja2.visible == True:
+        if man.hitbox[1] < ninja2.hitbox[1] + ninja2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
+                man.hit()
+                score -= 5
+                ninja2 = monster(600, 410, 64, 64, 700)
+
+    for bullet in bullets:
+        if bullet.y - bullet.radius < ninja2.hitbox[1] + ninja2.hitbox[3] and bullet.y + bullet.radius > ninja2.hitbox[1]:
+            if bullet.x + bullet.radius > ninja2.hitbox[0] and bullet.x - bullet.radius < ninja2.hitbox[0] + ninja2.hitbox[2]:
+                hitSound.play()
+                ninja2.hit()
+                score += 1
+                bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    # ninja3
+    if ninja3.visible == True:
+        if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
+                man.hit()
+                score -= 5
+                ninja3 = monster(600, 410, 64, 64, 700)
+
+    for bullet in bullets:
+        if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
+            if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
+                hitSound.play()
+                ninja3.hit()
+                score += 1
+                bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
 
     if shootLoop > 0:
         shootLoop += 1
@@ -197,6 +245,8 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+    
 
     """    
     for bullet in bullets:
@@ -222,9 +272,9 @@ while run:
         else:
             facing = 1
             
-        if len(bullets) < 5 and ninja.visible == True:
+        if len(bullets) < 5:
             bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
-
+             # (ninja1.visible == True or ninja2.visible == True or ninja3.visible == True): 이런 식으로 수정 가능
         shootLoop = 1
 
     if keys[pygame.K_LEFT] and man.x > man.vel:

@@ -49,7 +49,7 @@ class player(object):
         self.hitbox = (self.x + 20, self.y, 43, 80)
         pygame.draw.rect(screen, (255,0,0), self.hitbox, 2)
 
-class projectile(object):
+class attack(object):
     def __init__(self, x, y, radius, color, facing):
         self.x = x
         self.y = y
@@ -169,7 +169,7 @@ while run:
             facing = 1
 
         if len(bullets) < 5:
-            bullets.append(projectile(round(man.x + man.width // 2), round(man.y + man.height //2), 6, (0,0,0), facing)) 
+            bullets.append(attack(round(man.x + man.width // 2), round(man.y + man.height //2), 6, (0,0,0), facing)) 
         
         shootLoop = 1
 

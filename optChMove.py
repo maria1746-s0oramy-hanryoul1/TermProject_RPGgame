@@ -44,7 +44,7 @@ class player(object):
             else:
                 screen.blit(walkLeft[0], (self.x, self.y))
 
-class projectile(object):
+class attack(object):
     def __init__(self, x, y, radius, color, facing):
         self.x = x
         self.y = y
@@ -92,7 +92,7 @@ while run:
             facing = 1
 
         if len(bullets) < 5:
-            bullets.append(projectile(round(man.x + man.width // 2), round(man.y + man.height //2), 6, (0,0,0), facing)) 
+            bullets.append(attack(round(man.x + man.width // 2), round(man.y + man.height //2), 6, (0,0,0), facing)) 
 
     if keys[pygame.K_LEFT] and man.x > man.vel:
        man.x -= man.vel 

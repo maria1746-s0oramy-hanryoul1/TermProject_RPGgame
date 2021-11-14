@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 
 screen = pygame.display.set_mode((800, 500))
-pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 1")
+pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 3")
 
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
 walkLeft = [pygame.image.load('real_image/bl1.png'), pygame.image.load('real_image/bl2.png'), pygame.image.load('real_image/bl3.png'), pygame.image.load('real_image/bl4.png'), pygame.image.load('real_image/bl5.png'), pygame.image.load('real_image/bl6.png'), pygame.image.load('real_image/bl7.png'), pygame.image.load('real_image/bl8.png'), pygame.image.load('real_image/bl9.png')]
@@ -75,7 +75,7 @@ class player(object):
                 
 
 
-class projectile(object):
+class attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
         self.y = y
@@ -88,7 +88,7 @@ class projectile(object):
         pygame.draw.circle(screen, self.color, (self.x,self.y), self.radius)
 
 
-class enemy(object):
+class monster(object):
     walkRight = [pygame.image.load('real_image/nbr1.png'), pygame.image.load('real_image/nbr1.png'), pygame.image.load('real_image/nbr2.png'), pygame.image.load('real_image/nbr2.png'), pygame.image.load('real_image/nbr3.png'), pygame.image.load('real_image/nbr4.png'), pygame.image.load('real_image/nbr5.png'), pygame.image.load('real_image/nbr6.png'), pygame.image.load('real_image/nbr7.png'), pygame.image.load('real_image/nbr8.png'), pygame.image.load('real_image/nbr9.png')]
     walkLeft = [pygame.image.load('real_image/nbl1.png'), pygame.image.load('real_image/nbl1.png'), pygame.image.load('real_image/nbl2.png'), pygame.image.load('real_image/nbl2.png'), pygame.image.load('real_image/nbl3.png'), pygame.image.load('real_image/nbL4.png'), pygame.image.load('real_image/nbl5.png'), pygame.image.load('real_image/nbl6.png'), pygame.image.load('real_image/nbl7.png'), pygame.image.load('real_image/nbl8.png'), pygame.image.load('real_image/nbl9.png')]
 
@@ -151,9 +151,9 @@ def redrawGamescreendow():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (650, 20))
     man.draw(screen)
-    goblin1.draw(screen)
-    goblin2.draw(screen)
-    goblin3.draw(screen)
+    ninja1.draw(screen)
+    ninja2.draw(screen)
+    ninja3.draw(screen)
     for bullet in bullets:
         bullet.draw(screen)
     
@@ -163,38 +163,38 @@ def redrawGamescreendow():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-goblin1 = enemy(100, 410, 64, 64, 700)
-goblin2 = enemy(300, 410, 64, 64, 700)
-goblin3 = enemy(600, 410, 64, 64, 700)
+ninja1 = monster(100, 410, 64, 64, 700)
+ninja2 = monster(300, 410, 64, 64, 700)
+ninja3 = monster(600, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
 while run:
     clock.tick(27)
 
-    # goblin1 
-    if goblin1.visible == True:
-        if man.hitbox[1] < goblin1.hitbox[1] + goblin1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin1.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > goblin1.hitbox[0] and man.hitbox[0] < goblin1.hitbox[0] + goblin1.hitbox[2]:
+    # ninja1 
+    if ninja1.visible == True:
+        if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
                 man.hit()
                 score -= 5
-                goblin1 = enemy(600, 410, 64, 64, 700)
+                ninja1 = monster(600, 410, 64, 64, 700)
 
-    # goblin2
-    if goblin2.visible == True:
-        if man.hitbox[1] < goblin2.hitbox[1] + goblin2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin2.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > goblin2.hitbox[0] and man.hitbox[0] < goblin2.hitbox[0] + goblin2.hitbox[2]:
+    # ninja2
+    if ninja2.visible == True:
+        if man.hitbox[1] < ninja2.hitbox[1] + ninja2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
                 man.hit()
                 score -= 5
-                goblin2 = enemy(600, 410, 64, 64, 700)
+                ninja2 = monster(600, 410, 64, 64, 700)
 
-    # goblin3
-    if goblin3.visible == True:
-        if man.hitbox[1] < goblin3.hitbox[1] + goblin3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > goblin3.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > goblin3.hitbox[0] and man.hitbox[0] < goblin3.hitbox[0] + goblin3.hitbox[2]:
+    # ninja3
+    if ninja3.visible == True:
+        if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
+            if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                 man.hit()
                 score -= 5
-                goblin3 = enemy(600, 410, 64, 64, 700)
+                ninja3 = monster(600, 410, 64, 64, 700)
 
     if shootLoop > 0:
         shootLoop += 1
@@ -204,12 +204,12 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-    # goblin1    
+    # ninja1    
     for bullet in bullets:
-        if bullet.y - bullet.radius < goblin1.hitbox[1] + goblin1.hitbox[3] and bullet.y + bullet.radius > goblin1.hitbox[1]:
-            if bullet.x + bullet.radius > goblin1.hitbox[0] and bullet.x - bullet.radius < goblin1.hitbox[0] + goblin1.hitbox[2]:
+        if bullet.y - bullet.radius < ninja1.hitbox[1] + ninja1.hitbox[3] and bullet.y + bullet.radius > ninja1.hitbox[1]:
+            if bullet.x + bullet.radius > ninja1.hitbox[0] and bullet.x - bullet.radius < ninja1.hitbox[0] + ninja1.hitbox[2]:
                 hitSound.play()
-                goblin1.hit()
+                ninja1.hit()
                 score += 1
                 bullets.pop(bullets.index(bullet))
                 
@@ -218,12 +218,12 @@ while run:
         else:
             bullets.pop(bullets.index(bullet))
 
-    # goblin2
+    # ninja2
     for bullet in bullets:
-        if bullet.y - bullet.radius < goblin2.hitbox[1] + goblin2.hitbox[3] and bullet.y + bullet.radius > goblin2.hitbox[1]:
-            if bullet.x + bullet.radius > goblin2.hitbox[0] and bullet.x - bullet.radius < goblin2.hitbox[0] + goblin2.hitbox[2]:
+        if bullet.y - bullet.radius < ninja2.hitbox[1] + ninja2.hitbox[3] and bullet.y + bullet.radius > ninja2.hitbox[1]:
+            if bullet.x + bullet.radius > ninja2.hitbox[0] and bullet.x - bullet.radius < ninja2.hitbox[0] + ninja2.hitbox[2]:
                 hitSound.play()
-                goblin2.hit()
+                ninja2.hit()
                 score += 1
                 bullets.pop(bullets.index(bullet))
                 
@@ -232,12 +232,12 @@ while run:
         else:
             bullets.pop(bullets.index(bullet))
 
-    # goblin3
+    # ninja3
     for bullet in bullets:
-        if bullet.y - bullet.radius < goblin3.hitbox[1] + goblin3.hitbox[3] and bullet.y + bullet.radius > goblin3.hitbox[1]:
-            if bullet.x + bullet.radius > goblin3.hitbox[0] and bullet.x - bullet.radius < goblin3.hitbox[0] + goblin3.hitbox[2]:
+        if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
+            if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
                 hitSound.play()
-                goblin3.hit()
+                ninja3.hit()
                 score += 1
                 bullets.pop(bullets.index(bullet))
                 
@@ -257,8 +257,8 @@ while run:
             facing = 1
             
         if len(bullets) < 5:
-            bullets.append(projectile(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
-
+            bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
+        
         shootLoop = 1
 
     if keys[pygame.K_LEFT] and man.x > man.vel:
