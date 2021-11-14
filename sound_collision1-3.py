@@ -100,7 +100,7 @@ class monster(object):
         self.end = end
         self.path = [self.x, self.end]
         self.walkCount = 0
-        self.vel = 3
+        self.vel = 9
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
@@ -139,7 +139,7 @@ class monster(object):
 
     def hit(self):
         if self.health > 0:
-            self.health -= 1
+            self.health -= 0.25
         else:
             self.visible = False
         print('hit')

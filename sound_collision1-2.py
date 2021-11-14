@@ -100,7 +100,7 @@ class monster(object):
         self.end = end
         self.path = [self.x, self.end]
         self.walkCount = 0
-        self.vel = 10
+        self.vel = 6
         # 속도 조절로 난이도 상승
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
