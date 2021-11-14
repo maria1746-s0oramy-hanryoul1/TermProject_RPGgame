@@ -176,6 +176,20 @@ while run:
             if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                 man.hit()
                 score -= 5
+    
+    if ninja.visible == True:
+        for bullet in bullets:
+            if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
+                if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
+                    hitSound.play()
+                    ninja.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
+                
+            if bullet.x < 800 and bullet.x > 0:
+                bullet.x += bullet.vel
+            else:
+                bullets.pop(bullets.index(bullet))  
 
     if shootLoop > 0:
         shootLoop += 1
@@ -185,7 +199,8 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        
+
+    """
     for bullet in bullets:
         if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
             if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
@@ -198,6 +213,7 @@ while run:
             bullet.x += bullet.vel
         else:
             bullets.pop(bullets.index(bullet))
+    """
 
     keys = pygame.key.get_pressed()
 
@@ -208,7 +224,7 @@ while run:
         else:
             facing = 1
             
-        if len(bullets) < 5:
+        if len(bullets) < 5 and ninja.visible == True:
             bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
         shootLoop = 1
