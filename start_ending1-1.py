@@ -228,11 +228,26 @@ def main_loop() :
     while True:
         clock.tick(80)
 
-        if ninja.visible == True:      # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
+        if ninja.visible == True: # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
             if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                     man.hit()
                     score -= 5
+                    # man = player(50, 410, 64, 64) 
+
+        if ninja.visible == True:
+            for bullet in bullets:
+                if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
+                        hitSound.play()
+                        ninja.hit()
+                        score += 1
+                        bullets.pop(bullets.index(bullet))
+                    
+                if bullet.x < 800 and bullet.x > 0:
+                    bullet.x += bullet.vel
+                else:
+                    bullets.pop(bullets.index(bullet))
 
         if score <= -10:
             death_screen(player)
@@ -245,7 +260,8 @@ def main_loop() :
         # for event in pygame.event.get():
         #     if event.type == pygame.QUIT:
         #         run = False
-            
+
+        """    
         for bullet in bullets:      # 플레이어의 공격이 몬스터에 맞았을 경우 점수 +1
             if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
                 if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
@@ -258,6 +274,7 @@ def main_loop() :
                 bullet.x += bullet.vel
             else:
                 bullets.pop(bullets.index(bullet))
+        """
 
         # 키 입력 대기
         keys = pygame.key.get_pressed()
@@ -269,7 +286,7 @@ def main_loop() :
             else:
                 facing = 1
                 
-            if len(bullets) < 5:
+            if len(bullets) < 5 and ninja.visible == True:
                 bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
             shootLoop = 1
