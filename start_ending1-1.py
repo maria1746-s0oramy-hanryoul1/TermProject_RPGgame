@@ -248,7 +248,7 @@ def main_loop() :
                 else:
                     bullets.pop(bullets.index(bullet))
 
-        if score <= -10:
+        if score <= -5:
             death_screen(player)
 
         if shootLoop > 0:
