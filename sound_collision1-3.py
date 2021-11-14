@@ -54,7 +54,7 @@ class player(object):
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
         #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
-    def hit(self):
+    def hit(self):      # 몬스터 한테 맞았을 경우
         self.isJump = False
         self.JumpCount = 10
         self.x = 60
@@ -142,7 +142,8 @@ class monster(object):
         if self.health > 0:
             self.health -= 1
         else:
-            self.visible = False
+            self.visible = False 
+        
         print('hit')
 
         
@@ -176,19 +177,24 @@ while run:
 
     # ninja1 
     if ninja1.visible == True:
-        if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
-                man.hit()
-                score -= 5
-                ninja1 = monster(600, 410, 64, 64, 700)
+        if ninja1.health > 0 :
+            if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    ninja1 = monster(600, 410, 64, 64, 700)
+    if ninja1.health == 0 : 
+        ninja1.visible = False
+    
     
     for bullet in bullets:
-        if bullet.y - bullet.radius < ninja1.hitbox[1] + ninja1.hitbox[3] and bullet.y + bullet.radius > ninja1.hitbox[1]:
-            if bullet.x + bullet.radius > ninja1.hitbox[0] and bullet.x - bullet.radius < ninja1.hitbox[0] + ninja1.hitbox[2]:
-                hitSound.play()
-                ninja1.hit()
-                score += 1
-                bullets.pop(bullets.index(bullet))
+        if ninja1.health > 0 :
+            if bullet.y - bullet.radius < ninja1.hitbox[1] + ninja1.hitbox[3] and bullet.y + bullet.radius > ninja1.hitbox[1]:
+                if bullet.x + bullet.radius > ninja1.hitbox[0] and bullet.x - bullet.radius < ninja1.hitbox[0] + ninja1.hitbox[2]:
+                    hitSound.play()
+                    ninja1.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
                 
         if bullet.x < 800 and bullet.x > 0:
             bullet.x += bullet.vel
@@ -197,19 +203,24 @@ while run:
 
      # ninja2
     if ninja2.visible == True:
-        if man.hitbox[1] < ninja2.hitbox[1] + ninja2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
-                man.hit()
-                score -= 5
-                ninja2 = monster(600, 410, 64, 64, 700)
+        if ninja1.health > 0 :
+            if man.hitbox[1] < ninja2.hitbox[1] + ninja2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    ninja2 = monster(600, 410, 64, 64, 700)
+    if ninja2.health == 0 : 
+        ninja2.visible = False
+        
 
     for bullet in bullets:
-        if bullet.y - bullet.radius < ninja2.hitbox[1] + ninja2.hitbox[3] and bullet.y + bullet.radius > ninja2.hitbox[1]:
-            if bullet.x + bullet.radius > ninja2.hitbox[0] and bullet.x - bullet.radius < ninja2.hitbox[0] + ninja2.hitbox[2]:
-                hitSound.play()
-                ninja2.hit()
-                score += 1
-                bullets.pop(bullets.index(bullet))
+        if ninja2.health > 0 :
+            if bullet.y - bullet.radius < ninja2.hitbox[1] + ninja2.hitbox[3] and bullet.y + bullet.radius > ninja2.hitbox[1]:
+                if bullet.x + bullet.radius > ninja2.hitbox[0] and bullet.x - bullet.radius < ninja2.hitbox[0] + ninja2.hitbox[2]:
+                    hitSound.play()
+                    ninja2.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
                 
         if bullet.x < 800 and bullet.x > 0:
             bullet.x += bullet.vel
@@ -218,19 +229,24 @@ while run:
 
     # ninja3
     if ninja3.visible == True:
-        if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
-                man.hit()
-                score -= 5
-                ninja3 = monster(600, 410, 64, 64, 700)
+        if ninja1.health > 0 :
+            if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    ninja3 = monster(600, 410, 64, 64, 700)
+        if ninja3.health == 0 : 
+            ninja3.visible = False
+            
 
     for bullet in bullets:
-        if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
-            if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
-                hitSound.play()
-                ninja3.hit()
-                score += 1
-                bullets.pop(bullets.index(bullet))
+        if ninja3.health > 0 :
+            if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
+                if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
+                    hitSound.play()
+                    ninja3.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
                 
         if bullet.x < 800 and bullet.x > 0:
             bullet.x += bullet.vel

@@ -205,8 +205,8 @@ def start_menu():
     title_font = pygame.font.SysFont('Maplestory Bold.ttf', 60)  # Create font object
     while True:
         screen.blit(background, (0, 0))  # move Background To screen
-        menu_label = title_font.render('Press Enter To Begin', True, (0, 0, 0))  # move Label To screen
-        screen.blit(menu_label, (190, 90))
+        menu_label = title_font.render('<Press Enter To Begin>', True, (0, 0, 0))  # move Label To screen
+        screen.blit(menu_label, (170, 90))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
