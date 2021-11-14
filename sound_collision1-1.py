@@ -165,7 +165,7 @@ shootLoop = 0
 bullets = []
 run = True
 while run:
-    clock.tick(27)
+    clock.tick(35)
 
     if ninja.visible == True:
         if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
