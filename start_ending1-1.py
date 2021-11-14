@@ -76,7 +76,6 @@ class player(object):
                     pygame.quit()
                 
 
-
 class attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
@@ -149,7 +148,7 @@ class monster(object):
 
 
 man = player(60, 410, 64, 64)
-ninja = monster(100, 410, 64, 64, 700)
+ninja_g = monster(100, 410, 64, 64, 700)
 bullets = []
 score = 0        
 
@@ -158,7 +157,7 @@ def redrawGamescreen():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (620, 20))
     man.draw(screen)
-    ninja.draw(screen)
+    ninja_g.draw(screen)
     for bullet in bullets:
         bullet.draw(screen)
     
@@ -228,19 +227,19 @@ def main_loop() :
     while True:
         clock.tick(27)
 
-        if ninja.visible == True: # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
-            if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
-                if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
+        if ninja_g.visible == True: # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
+            if man.hitbox[1] < ninja_g.hitbox[1] + ninja_g.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja_g.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja_g.hitbox[0] and man.hitbox[0] < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
                     man.hit()
                     score -= 5
                     # man = player(50, 410, 64, 64) 
 
-        if ninja.visible == True:
+        if ninja_g.visible == True:
             for bullet in bullets:
-                if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
-                    if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
+                if bullet.y - bullet.radius < ninja_g.hitbox[1] + ninja_g.hitbox[3] and bullet.y + bullet.radius > ninja_g.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja_g.hitbox[0] and bullet.x - bullet.radius < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
                         hitSound.play()
-                        ninja.hit()
+                        ninja_g.hit()
                         score += 1
                         bullets.pop(bullets.index(bullet))
                     
@@ -263,10 +262,10 @@ def main_loop() :
 
         """    
         for bullet in bullets:      # 플레이어의 공격이 몬스터에 맞았을 경우 점수 +1
-            if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
-                if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
+            if bullet.y - bullet.radius < ninja_g.hitbox[1] + ninja_g.hitbox[3] and bullet.y + bullet.radius > ninja_g.hitbox[1]:
+                if bullet.x + bullet.radius > ninja_g.hitbox[0] and bullet.x - bullet.radius < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
                     hitSound.play()
-                    ninja.hit()
+                    ninja_g.hit()
                     score += 1
                     bullets.pop(bullets.index(bullet))
                     
@@ -286,7 +285,7 @@ def main_loop() :
             else:
                 facing = 1
                 
-            if len(bullets) < 5 and ninja.visible == True:
+            if len(bullets) < 5 and ninja_g.visible == True:
                 bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
             shootLoop = 1
