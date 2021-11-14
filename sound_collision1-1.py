@@ -172,6 +172,7 @@ while run:
             if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                 man.hit()
                 score -= 5
+                man = player(50, 410, 64, 64) #임시방편 
 
     if ninja.visible == True:
         for bullet in bullets:
