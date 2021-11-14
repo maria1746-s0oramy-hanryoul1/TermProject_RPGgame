@@ -198,7 +198,7 @@ def death_screen(player):  # Pass in player object for access to final score
         pygame.display.update()
 
 
-# Start Menu Loop
+# 게임 시작 Loop
 def start_menu():
     pygame.mixer.music.play(-1)  
     pygame.mixer.music.set_volume(.2)
