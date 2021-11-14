@@ -173,8 +173,8 @@ def death_screen(player):  # Pass in player object for access to final score
     pygame.mixer.music.set_volume(.2)
 
     # Fonts initialized
-    death_font = pygame.font.SysFont('comicsans', 180)
-    death_option_font = pygame.font.SysFont('comicsans', 65)
+    death_font = pygame.font.SysFont('Maplestory Bold.ttf', 180)
+    death_option_font = pygame.font.SysFont('Maplestory Bold.ttf', 65)
     death_label = death_font.render('You Died', True, (255, 0, 0))
     death_option = death_option_font.render('Press Space To Quit', True, (0, 0, 0))
     #score_label = death_option_font.render(f'Final Score: {player.score}', True, (0, 0, 0))
@@ -203,7 +203,7 @@ def start_menu():
     pygame.mixer.music.play(-1)  
     pygame.mixer.music.set_volume(.2)
     # running = True
-    title_font = pygame.font.SysFont('comicsans', 60)  # Create font object
+    title_font = pygame.font.SysFont('Maplestory Bold.ttf', 60)  # Create font object
     while True:
         screen.blit(background, (0, 0))  # move Background To screen
         menu_label = title_font.render('Press Enter To Begin', True, (0, 0, 0))  # move Label To screen
