@@ -76,7 +76,6 @@ class player(object):
                     pygame.quit()
                 
 
-
 class attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
