@@ -226,7 +226,7 @@ def main_loop() :
     
     # run = True
     while True:
-        clock.tick(80)
+        clock.tick(27)
 
         if ninja.visible == True: # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
             if man.hitbox[1] < ninja.hitbox[1] + ninja.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja.hitbox[1]:
