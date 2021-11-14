@@ -165,6 +165,7 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
+
 ninja1 = monster(100, 410, 64, 64, 700)
 ninja2 = monster(300, 410, 64, 64, 700)
 ninja3 = monster(600, 410, 64, 64, 700)
@@ -178,11 +179,11 @@ while run:
     # ninja1 
     if ninja1.visible == True:
         if ninja1.health > 0 :
-            if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1]:
+            if man.hitbox[1] < ninja1.hitbox[1] + ninja1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1.hitbox[1] :
                 if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja1 = monster(600, 410, 64, 64, 700)
+                    #ninja1 = monster(600, 410, 64, 64, 700)
     if ninja1.health == 0 : 
         ninja1.visible = False
     
@@ -203,12 +204,12 @@ while run:
 
      # ninja2
     if ninja2.visible == True:
-        if ninja1.health > 0 :
+        if ninja2.health > 0 :
             if man.hitbox[1] < ninja2.hitbox[1] + ninja2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja2 = monster(600, 410, 64, 64, 700)
+                    #ninja2 = monster(600, 410, 64, 64, 700)
     if ninja2.health == 0 : 
         ninja2.visible = False
         
@@ -229,14 +230,14 @@ while run:
 
     # ninja3
     if ninja3.visible == True:
-        if ninja1.health > 0 :
+        if ninja3.health > 0 :
             if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja3 = monster(600, 410, 64, 64, 700)
-        if ninja3.health == 0 : 
-            ninja3.visible = False
+                    #ninja3 = monster(600, 410, 64, 64, 700)
+    if ninja3.health == 0 : 
+        ninja3.visible = False
             
 
     for bullet in bullets:
