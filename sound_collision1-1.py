@@ -160,7 +160,7 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-ninja = monster(100, 410, 64, 64, 700)
+ninja = monster(100, 390, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
