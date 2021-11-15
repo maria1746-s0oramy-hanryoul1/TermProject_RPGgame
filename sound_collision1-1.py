@@ -173,8 +173,25 @@ while run:
             if man.hitbox[0] + man.hitbox[2] > ninja.hitbox[0] and man.hitbox[0] < ninja.hitbox[0] + ninja.hitbox[2]:
                 man.hit()
                 score -= 5
-                man = player(50, 410, 64, 64) #임시방편 
+                man = player(50, 410, 64, 64) #임시방편
+    if ninja.health == 0 : 
+        ninja.visible = False 
 
+    for bullet in bullets:
+        if ninja.health > 0 :
+            if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
+                if bullet.x + bullet.radius > ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
+                    hitSound.play()
+                    ninja.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    """
     if ninja.visible == True:
         for bullet in bullets:
             if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius > ninja.hitbox[1]:
@@ -188,6 +205,7 @@ while run:
                 bullet.x += bullet.vel
             else:
                 bullets.pop(bullets.index(bullet)) 
+    """
 
     if shootLoop > 0:
         shootLoop += 1
