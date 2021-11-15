@@ -101,8 +101,8 @@ class monster(object):
         self.end = end
         self.path = [self.x, self.end]
         self.walkCount = 0
-        self.vel = 6
-        # 속도 조절로 난이도 상승
+        self.vel = 5
+        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
@@ -175,7 +175,8 @@ shootLoop = 0
 bullets = []
 run = True
 while run:
-    clock.tick(35)
+    clock.tick(37)
+    # clock 35 -> 37
 
     # ninja_g1 
     if ninja_g1.visible == True:

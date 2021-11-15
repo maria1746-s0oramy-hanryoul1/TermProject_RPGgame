@@ -101,7 +101,8 @@ class monster(object):
         self.path = [50, self.end]
         # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 3
+        self.vel = 4
+        # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.health = 10
         self.visible = True
@@ -173,8 +174,8 @@ shootLoop = 0
 bullets = []
 run = True
 while run:
-    clock.tick(35)
-    # clock 속도 27 -> 35
+    clock.tick(37)
+    # clock 속도 27 -> 37
 
     # ninja1 
     if ninja1.visible == True:
