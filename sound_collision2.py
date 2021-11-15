@@ -89,7 +89,7 @@ class attack(object):
         pygame.draw.circle(screen, self.color, (self.x,self.y), self.radius)
 
 
-class monster(object):
+class monster1(object):
     walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
     walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
 
@@ -148,7 +148,64 @@ class monster(object):
             self.visible = False
         print('hit')
 
-        
+class monster2(object):
+    walkRight = [pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR1.png'), pygame.image.load('real_image/attackR2.png'), pygame.image.load('real_image/attackR3.png'), pygame.image.load('real_image/attackR4.png'), pygame.image.load('real_image/attackR5.png'), pygame.image.load('real_image/attackR6.png'), pygame.image.load('real_image/attackR7.png'), pygame.image.load('real_image/attackR8.png'), pygame.image.load('real_image/attackR9.png')]
+    walkLeft = [pygame.image.load('real_image/attackL0.png'), pygame.image.load('real_image/attackL0.png'), pygame.image.load('real_image/attackL1.png'), pygame.image.load('real_image/attackL2.png'), pygame.image.load('real_image/attackL3.png'), pygame.image.load('real_image/attackL4.png'), pygame.image.load('real_image/attackL5.png'), pygame.image.load('real_image/attackL6.png'), pygame.image.load('real_image/attackL7.png'), pygame.image.load('real_image/attackL8.png'), pygame.image.load('real_image/attackL9.png')]
+
+    def __init__(self, x, y, width, height, end):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.end = end
+        self.path = [50, self.end]
+        self.walkCount = 0
+        self.vel = 5
+        # self.vel 3 -> 5
+        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        self.health = 10
+        self.visible = True
+
+    def draw(self,screen):
+        self.move()
+        if self.visible:
+            if self.walkCount + 1 >= 33:
+                self.walkCount = 0
+
+            if self.vel > 0:
+                screen.blit(self.walkRight[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+            else:
+                screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+
+            pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
+
+    def move(self):
+        if self.vel > 0:
+            if self.x + self.vel < self.path[1]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+        else:
+            if self.x - self.vel > self.path[0]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+    def hit(self):
+        if self.health > 0:
+            self.health -= 0.5
+            # 생명 감소 속도 조절
+            
+        else:
+            self.visible = False
+        print('hit')        
 
 def redrawGamescreen():
     screen.blit(bg, (0,0))
@@ -168,9 +225,9 @@ def redrawGamescreen():
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
 
-ninja_g1 = monster(100, 410, 64, 64, 700)
-ninja_g2 = monster(300, 410, 64, 64, 700)
-ninja_g3 = monster(600, 410, 64, 64, 700)
+ninja_g1 = monster1(100, 410, 64, 64, 700)
+ninja_g2 = monster2(300, 410, 64, 64, 700)
+ninja_g3 = monster1(600, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
