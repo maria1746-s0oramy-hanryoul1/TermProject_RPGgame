@@ -17,6 +17,8 @@ hitSound = pygame.mixer.Sound('sound/hit.mp3')
 
 music = pygame.mixer.music.load('sound/backsound2.mp3')
 pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(.2)
+
 
 score = 0
 
