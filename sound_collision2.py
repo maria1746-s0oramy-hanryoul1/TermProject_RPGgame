@@ -155,7 +155,9 @@ def redrawGamescreen():
     text = font.render('Score: ' + str(score), 1, (0,0,0))
     screen.blit(text, (620, 20))
     man.draw(screen)
-    ninja_g.draw(screen)
+    ninja_g1.draw(screen)
+    ninja_g2.draw(screen)
+    ninja_g3.draw(screen)
     for bullet in bullets:
         bullet.draw(screen)
     
@@ -165,33 +167,88 @@ def redrawGamescreen():
 #mainloop
 font = pygame.font.SysFont('comicsans', 30, True)
 man = player(50, 410, 64, 64)
-ninja_g = monster(100, 410, 64, 64, 700)
+
+ninja_g1 = monster(100, 410, 64, 64, 700)
+ninja_g2 = monster(300, 410, 64, 64, 700)
+ninja_g3 = monster(600, 410, 64, 64, 700)
 shootLoop = 0
 bullets = []
 run = True
 while run:
     clock.tick(35)
 
-    if ninja_g.visible == True:
-        if man.hitbox[1] < ninja_g.hitbox[1] + ninja_g.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja_g.hitbox[1]:
-            if man.hitbox[0] + man.hitbox[2] > ninja_g.hitbox[0] and man.hitbox[0] < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
-                man.hit()
-                score -= 5
-                man = player(50, 410, 64, 64) #임시방편 
+    # ninja_g1 
+    if ninja_g1.visible == True:
+        if ninja_g1.health > 0 :
+            if man.hitbox[1] < ninja_g1.hitbox[1] + ninja_g1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja_g1.hitbox[1] :
+                if man.hitbox[0] + man.hitbox[2] > ninja_g1.hitbox[0] and man.hitbox[0] < ninja_g1.hitbox[0] + ninja_g1.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    #ninja_g1 = monster(600, 410, 64, 64, 700)
+    if ninja_g1.health == 0 : 
+        ninja_g1.visible = False
     
-    if ninja_g.visible == True:
-        for bullet in bullets:
-            if bullet.y - bullet.radius < ninja_g.hitbox[1] + ninja_g.hitbox[3] and bullet.y + bullet.radius > ninja_g.hitbox[1]:
-                if bullet.x + bullet.radius > ninja_g.hitbox[0] and bullet.x - bullet.radius < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
+    
+    for bullet in bullets:
+        if ninja_g1.health > 0 :
+            if bullet.y - bullet.radius < ninja_g1.hitbox[1] + ninja_g1.hitbox[3] and bullet.y + bullet.radius > ninja_g1.hitbox[1]:
+                if bullet.x + bullet.radius > ninja_g1.hitbox[0] and bullet.x - bullet.radius < ninja_g1.hitbox[0] + ninja_g1.hitbox[2]:
                     hitSound.play()
-                    ninja_g.hit()
+                    ninja_g1.hit()
                     score += 1
                     bullets.pop(bullets.index(bullet))
                 
-            if bullet.x < 800 and bullet.x > 0:
-                bullet.x += bullet.vel
-            else:
-                bullets.pop(bullets.index(bullet))  
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    # ninja_g2
+    if ninja_g2.visible == True:
+        if ninja_g2.health > 0 :
+            if man.hitbox[1] < ninja_g2.hitbox[1] + ninja_g2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja_g2.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja_g2.hitbox[0] and man.hitbox[0] < ninja_g2.hitbox[0] + ninja_g2.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    #ninja_g2 = monster(600, 410, 64, 64, 700)
+    if ninja_g2.health == 0 : 
+        ninja_g2.visible = False
+        
+
+    for bullet in bullets:
+        if ninja_g2.health > 0 :
+            if bullet.y - bullet.radius < ninja_g2.hitbox[1] + ninja_g2.hitbox[3] and bullet.y + bullet.radius > ninja_g2.hitbox[1]:
+                if bullet.x + bullet.radius > ninja_g2.hitbox[0] and bullet.x - bullet.radius < ninja_g2.hitbox[0] + ninja_g2.hitbox[2]:
+                    hitSound.play()
+                    ninja_g2.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
+                
+        if bullet.x < 800 and bullet.x > 0:
+            bullet.x += bullet.vel
+        else:
+            bullets.pop(bullets.index(bullet))
+
+    # ninja_g3
+    if ninja_g3.visible == True:
+        if ninja_g3.health > 0 :
+            if man.hitbox[1] < ninja_g3.hitbox[1] + ninja_g3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja_g3.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja_g3.hitbox[0] and man.hitbox[0] < ninja_g3.hitbox[0] + ninja_g3.hitbox[2]:
+                    man.hit()
+                    score -= 5
+                    #ninja_g3 = monster(600, 410, 64, 64, 700)
+    if ninja_g3.health == 0 : 
+        ninja_g3.visible = False
+            
+
+    for bullet in bullets:
+        if ninja_g3.health > 0 :
+            if bullet.y - bullet.radius < ninja_g3.hitbox[1] + ninja_g3.hitbox[3] and bullet.y + bullet.radius > ninja_g3.hitbox[1]:
+                if bullet.x + bullet.radius > ninja_g3.hitbox[0] and bullet.x - bullet.radius < ninja_g3.hitbox[0] + ninja_g3.hitbox[2]:
+                    hitSound.play()
+                    ninja_g3.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
 
     if shootLoop > 0:
         shootLoop += 1
@@ -226,7 +283,7 @@ while run:
         else:
             facing = 1
             
-        if len(bullets) < 5 and ninja_g.visible == True:
+        if len(bullets) < 5:
             bullets.append(attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
         shootLoop = 1
