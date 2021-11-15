@@ -88,8 +88,8 @@ class attack(object):
 
 
 class monster(object):
-    walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
-    walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
+    walkRight = [pygame.image.load('real_image/nnr.png'), pygame.image.load('real_image/nnr0.png'), pygame.image.load('real_image/nnr0.png'), pygame.image.load('real_image/nnr1.png'), pygame.image.load('real_image/nnr2.png'), pygame.image.load('real_image/nnr3.png'), pygame.image.load('real_image/nnr4.png'), pygame.image.load('real_image/nnr5.png'), pygame.image.load('real_image/nnr6.png')]
+    walkLeft = [pygame.image.load('real_image/nnl.png'), pygame.image.load('real_image/nnl0.png'), pygame.image.load('real_image/nnl0.png'), pygame.image.load('real_image/nnl1.png'), pygame.image.load('real_image/nnl2.png'), pygame.image.load('real_image/nnl3.png'), pygame.image.load('real_image/nnl4.png'), pygame.image.load('real_image/nnl5.png'), pygame.image.load('real_image/nnl6.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -107,7 +107,7 @@ class monster(object):
     def draw(self,screen):
         self.move()
         if self.visible:
-            if self.walkCount + 1 >= 33:
+            if self.walkCount + 1 >= 27:
                 self.walkCount = 0
 
             if self.vel > 0:
