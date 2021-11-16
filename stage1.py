@@ -21,6 +21,7 @@ def stage1(score) :
     ninja1_1 = Monster1(100, 410, 64, 64, 700)
     ninja1_2 = Monster1(300, 410, 64, 64, 700)
     ninja1_3 = Monster1(600, 410, 64, 64, 700)
+    man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
@@ -35,6 +36,8 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_1.hitbox[0] and man.hitbox[0] < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         man.hit()
                         score -= 5
+                        ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
+                        man = Player(50, 410, 64, 64)
                         
 
         if ninja1_1.health == 0 : 
@@ -62,7 +65,9 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_2.hitbox[0] and man.hitbox[0] < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         man.hit()
                         score -= 5
-                        #ninja1_2 = monster(600, 410, 64, 64, 700)
+                        ninja1_2 = Monster1(600, 410, 64, 64, 700)
+                        man = Player(50, 410, 64, 64)
+
         if ninja1_2.health == 0 : 
             ninja1_2.visible = False
             
@@ -88,7 +93,9 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_3.hitbox[0] and man.hitbox[0] < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         man.hit()
                         score -= 5
-                        #ninja1_3 = monster(600, 410, 64, 64, 700)
+                        ninja1_3 = Monster1(600, 410, 64, 64, 700)
+                        man = Player(50, 410, 64, 64) 
+
         if ninja1_3.health == 0 : 
             ninja1_3.visible = False
                 
