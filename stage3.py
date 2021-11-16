@@ -19,6 +19,7 @@ font = pygame.font.SysFont('comicsans', 30, True)
 def stage3(score) : 
     global man
     ninja3 = Monster3(200, 390, 64, 64, 700)
+    man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
@@ -30,6 +31,8 @@ def stage3(score) :
                 if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                     man.hit()
                     score -= 5
+                    ninja3 = Monster3(600, 410, 64, 64, 700)
+                    man = Player(50, 410, 64, 64)
                     
         if ninja3.health == 0 : 
             ninja3.visible = False 
