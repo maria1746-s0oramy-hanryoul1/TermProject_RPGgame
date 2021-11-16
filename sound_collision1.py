@@ -186,7 +186,7 @@ while run:
                 if man.hitbox[0] + man.hitbox[2] > ninja1.hitbox[0] and man.hitbox[0] < ninja1.hitbox[0] + ninja1.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja1 = monster(600, 410, 64, 64, 700)
+                    ninja1 = monster(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
     if ninja1.health == 0 : 
         ninja1.visible = False
     
@@ -212,7 +212,7 @@ while run:
                 if man.hitbox[0] + man.hitbox[2] > ninja2.hitbox[0] and man.hitbox[0] < ninja2.hitbox[0] + ninja2.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja2 = monster(600, 410, 64, 64, 700)
+                    ninja2 = monster(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
     if ninja2.health == 0 : 
         ninja2.visible = False
         
@@ -238,7 +238,7 @@ while run:
                 if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja3 = monster(600, 410, 64, 64, 700)
+                    ninja3 = monster(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
     if ninja3.health == 0 : 
         ninja3.visible = False
             
