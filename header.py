@@ -208,7 +208,7 @@ class Monster3(object):
         self.width = width
         self.height = height
         self.end = end
-        self.path = [self.x, self.end]
+        self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
