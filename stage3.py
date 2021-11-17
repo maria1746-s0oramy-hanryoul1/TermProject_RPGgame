@@ -31,7 +31,7 @@ def stage3(score) :
                 if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                     man.hit()
                     score -= 5
-                    ninja3 = Monster3(600, 410, 64, 64, 700)
+                    # ninja3 = Monster3(600, 410, 64, 64, 700)
                     man = Player(50, 410, 64, 64)
                     
         if ninja3.health == 0 : 
