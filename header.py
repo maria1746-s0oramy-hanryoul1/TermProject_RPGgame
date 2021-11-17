@@ -369,6 +369,4 @@ class Monster3(object):
             self.visible = False
         print('hit')
 
-
-
 man = Player(50, 410, 64, 64)
