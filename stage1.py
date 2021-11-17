@@ -36,7 +36,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_1.hitbox[0] and man.hitbox[0] < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         man.hit()
                         score -= 5
-                        ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
+                        # ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치 -> 닌자의 목숨이 회복됨
                         man = Player(50, 410, 64, 64)
                         
 
@@ -65,7 +65,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_2.hitbox[0] and man.hitbox[0] < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         man.hit()
                         score -= 5
-                        ninja1_2 = Monster1(600, 410, 64, 64, 700)
+                        # ninja1_2 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨
                         man = Player(50, 410, 64, 64)
 
         if ninja1_2.health == 0 : 
@@ -93,7 +93,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_3.hitbox[0] and man.hitbox[0] < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         man.hit()
                         score -= 5
-                        ninja1_3 = Monster1(600, 410, 64, 64, 700)
+                        # ninja1_3 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨 
                         man = Player(50, 410, 64, 64) 
 
         if ninja1_3.health == 0 : 
