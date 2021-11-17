@@ -139,6 +139,64 @@ class Monster1(object):
 
 #여자 닌자 2_1, 2_2, 2_3 으로 클래스 추가 
 class Monster2_1(object):
+    walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
+    walkLeft = [pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL.png'), pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
+
+    def __init__(self, x, y, width, height, end):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.end = end
+        self.path = [50, self.end]
+        self.walkCount = 0
+        self.vel = 5
+        # self.vel 3 -> 5
+        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        self.health = 10  # 적의 수명 
+        self.visible = True
+
+    def draw(self,screen):
+        self.move()
+        if self.visible:
+            if self.walkCount + 1 >= 33:
+                self.walkCount = 0
+
+            if self.vel > 0:
+                screen.blit(self.walkRight[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+            else:
+                screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+
+            pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
+
+    def move(self):
+        if self.vel > 0:
+            if self.x + self.vel < self.path[1]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+        else:
+            if self.x - self.vel > self.path[0]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+    def hit(self):
+        if self.health > 0:
+            self.health -= 1
+            
+        else:
+            self.visible = False
+        print('hit')  
+
+class Monster2_2(object):
     walkRight = [pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR1.png'), pygame.image.load('real_image/attackR2.png'), pygame.image.load('real_image/attackR3.png'), pygame.image.load('real_image/attackR4.png'), pygame.image.load('real_image/attackR5.png'), pygame.image.load('real_image/attackR6.png'), pygame.image.load('real_image/attackR7.png'), pygame.image.load('real_image/attackR8.png'), pygame.image.load('real_image/attackR9.png')]
     walkLeft = [pygame.image.load('real_image/attackL0.png'), pygame.image.load('real_image/attackL0.png'), pygame.image.load('real_image/attackL1.png'), pygame.image.load('real_image/attackL2.png'), pygame.image.load('real_image/attackL3.png'), pygame.image.load('real_image/attackL4.png'), pygame.image.load('real_image/attackL5.png'), pygame.image.load('real_image/attackL6.png'), pygame.image.load('real_image/attackL7.png'), pygame.image.load('real_image/attackL8.png'), pygame.image.load('real_image/attackL9.png')]
 
@@ -196,67 +254,9 @@ class Monster2_1(object):
             self.visible = False
         print('hit')  
 
-class Monster2_2(object):
-    walkRight = [pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR1.png'), pygame.image.load('real_image/attackR2.png'), pygame.image.load('real_image/attackR3.png'), pygame.image.load('real_image/attackR4.png'), pygame.image.load('real_image/attackR5.png'), pygame.image.load('real_image/attackR6.png'), pygame.image.load('real_image/jattackR7.png'), pygame.image.load('real_image/jattackR8.png'), pygame.image.load('real_image/jattackR9.png')]
-    walkLeft = [pygame.image.load('real_image/jattackL0.png'), pygame.image.load('real_image/jattackL1.png'), pygame.image.load('real_image/attackL1.png'), pygame.image.load('real_image/jattackL2.png'), pygame.image.load('real_image/jattackL3.png'), pygame.image.load('real_image/jattackL4.png'), pygame.image.load('real_image/jattackL5.png'), pygame.image.load('real_image/jattackL6.png'), pygame.image.load('real_image/jattackL7.png'), pygame.image.load('real_image/jattackL8.png'), pygame.image.load('real_image/jattackL9.png')]
-
-    def __init__(self, x, y, width, height, end):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.end = end
-        self.path = [50, self.end]
-        self.walkCount = 0
-        self.vel = 5
-        # self.vel 3 -> 5
-        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10  # 적의 수명 
-        self.visible = True
-
-    def draw(self,screen):
-        self.move()
-        if self.visible:
-            if self.walkCount + 1 >= 33:
-                self.walkCount = 0
-
-            if self.vel > 0:
-                screen.blit(self.walkRight[self.walkCount //3], (self.x, self.y))
-                self.walkCount += 1
-            else:
-                screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
-                self.walkCount += 1
-
-            pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
-            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
-
-    def move(self):
-        if self.vel > 0:
-            if self.x + self.vel < self.path[1]:
-                self.x += self.vel
-            else:
-                self.vel = self.vel * -1
-                self.walkCount = 0
-        else:
-            if self.x - self.vel > self.path[0]:
-                self.x += self.vel
-            else:
-                self.vel = self.vel * -1
-                self.walkCount = 0
-
-    def hit(self):
-        if self.health > 0:
-            self.health -= 1
-            
-        else:
-            self.visible = False
-        print('hit')  
-
 class Monster2_3(object):
-    walkRight = [pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
-    walkLeft = [pygame.image.load('real_image/NL1.png'), pygame.image.load('real_image/NL2.png'), pygame.image.load('real_image/NL3.png'), pygame.image.load('real_image/NL4.png'), pygame.image.load('real_image/NL5.png'), pygame.image.load('real_image/NL6.png'), pygame.image.load('real_image/NL7.png'), pygame.image.load('real_image/NL8.png'), pygame.image.load('real_image/NL9.png')]
+    walkRight = [pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR1.png'), pygame.image.load('real_image/jattackR2.png'), pygame.image.load('real_image/jattackR3.png'), pygame.image.load('real_image/jattackR4.png'), pygame.image.load('real_image/jattackR5.png'), pygame.image.load('real_image/jattackR6.png'), pygame.image.load('real_image/jattackR7.png'), pygame.image.load('real_image/jattackR8.png'), pygame.image.load('real_image/jattackR9.png')]
+    walkLeft = [pygame.image.load('real_image/jattackL0.png'), pygame.image.load('real_image/jattackL0.png'), pygame.image.load('real_image/jattackL1.png'), pygame.image.load('real_image/jattackL2.png'), pygame.image.load('real_image/jattackL3.png'), pygame.image.load('real_image/jattackL4.png'), pygame.image.load('real_image/jattackL5.png'), pygame.image.load('real_image/jattackL6.png'), pygame.image.load('real_image/jattackL7.png'), pygame.image.load('real_image/jattackL8.png'), pygame.image.load('real_image/jattackL9.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
