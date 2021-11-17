@@ -12,6 +12,7 @@ pygame.mixer.music.set_volume(.2)
 
 bg = pygame.image.load("real_image/back1.png")
 char = pygame.image.load('real_image/br1.png')
+char_life = pygame.image.load('real_image/heart.png') #캐릭터 목숨 
 
 font = pygame.font.SysFont('comicsans', 30, True)
 
@@ -24,6 +25,7 @@ def stage1(score) :
     man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
+    character_life = 3
     run = True
     while run:
         clock.tick(37)
@@ -36,6 +38,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_1.hitbox[0] and man.hitbox[0] < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         man.hit()
                         score -= 5
+                        character_life -= 1
                         # ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치 -> 닌자의 목숨이 회복됨
                         man = Player(50, 410, 64, 64)
                         
@@ -65,6 +68,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_2.hitbox[0] and man.hitbox[0] < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         man.hit()
                         score -= 5
+                        character_life -= 1
                         # ninja1_2 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨
                         man = Player(50, 410, 64, 64)
 
@@ -93,6 +97,7 @@ def stage1(score) :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_3.hitbox[0] and man.hitbox[0] < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         man.hit()
                         score -= 5
+                        character_life -= 1 
                         # ninja1_3 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨 
                         man = Player(50, 410, 64, 64) 
 
@@ -184,8 +189,11 @@ def stage1(score) :
                 man.jumpCount = 10
                 
         screen.blit(bg, (0,0))
+        screen.blit(char_life, (30, 20)) 
         text = font.render('Score: ' + str(score), 1, (0,0,0))
         screen.blit(text, (620, 20))
+        life = font.render('X ' + str(character_life), 1, (0,0,0))
+        screen.blit(life, (65, 30))
         man.draw(screen)
         ninja1_1.draw(screen)
         ninja1_2.draw(screen)
