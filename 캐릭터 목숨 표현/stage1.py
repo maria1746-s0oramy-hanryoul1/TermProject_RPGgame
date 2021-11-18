@@ -18,39 +18,41 @@ char_life = pygame.image.load('real_image/heart.png') #캐릭터 목숨
 font = pygame.font.SysFont('comicsans', 30, True)
 
 
-def stage1(character_life) :
+def stage1() :
     global man
-    # global character_life
-    character_life = 3
     ninja1_1 = Monster1(100, 410, 64, 64, 700)
     ninja1_2 = Monster1(300, 410, 64, 64, 700)
     ninja1_3 = Monster1(600, 410, 64, 64, 700)
-    man = Player(50, 410, 64, 64)
+    #man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
     while run:
         clock.tick(37)
         # clock 속도 27 -> 37
+        if man.health == 0 :
+            return man.health
+
+        if (ninja1_1.mon_health == 0) and (ninja1_2.mon_health == 0) and (ninja1_3.mon_health == 0) :
+            return man.health
 
         # ninja1_1 
         if ninja1_1.visible == True:   # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
-            if ninja1_1.health > 0 :
+            if ninja1_1.mon_health > 0 :
                 if man.hitbox[1] < ninja1_1.hitbox[1] + ninja1_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_1.hitbox[1] :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_1.hitbox[0] and man.hitbox[0] < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         man.hit()
                         # score -= 5
-                        character_life -= 1
                         # ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치 -> 닌자의 목숨이 회복됨
-                        man = Player(50, 410, 64, 64)
+                        #man = Player(50, 410, 64, 64)
                         
 
-        if ninja1_1.health == 0 : 
+        if ninja1_1.mon_health == 0 : 
             ninja1_1.visible = False
         
         
         for bullet in bullets:
-            if ninja1_1.health > 0 :
+            if ninja1_1.mon_health > 0 :
                 if bullet.y - bullet.radius < ninja1_1.hitbox[1] + ninja1_1.hitbox[3] and bullet.y + bullet.radius > ninja1_1.hitbox[1]:
                     if bullet.x + bullet.radius > ninja1_1.hitbox[0] and bullet.x - bullet.radius < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         hitSound.play()
@@ -65,21 +67,20 @@ def stage1(character_life) :
 
         # ninja1_2
         if ninja1_2.visible == True:
-            if ninja1_2.health > 0 :
+            if ninja1_2.mon_health > 0 :
                 if man.hitbox[1] < ninja1_2.hitbox[1] + ninja1_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_2.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja1_2.hitbox[0] and man.hitbox[0] < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         man.hit()
                         # score -= 5
-                        character_life -= 1
                         # ninja1_2 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨
-                        man = Player(50, 410, 64, 64)
+                        #man = Player(50, 410, 64, 64)
 
-        if ninja1_2.health == 0 : 
+        if ninja1_2.mon_health == 0 : 
             ninja1_2.visible = False
             
 
         for bullet in bullets:
-            if ninja1_2.health > 0 :
+            if ninja1_2.mon_health > 0 :
                 if bullet.y - bullet.radius < ninja1_2.hitbox[1] + ninja1_2.hitbox[3] and bullet.y + bullet.radius > ninja1_2.hitbox[1]:
                     if bullet.x + bullet.radius > ninja1_2.hitbox[0] and bullet.x - bullet.radius < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         hitSound.play()
@@ -94,21 +95,21 @@ def stage1(character_life) :
 
         # ninja1_3
         if ninja1_3.visible == True:
-            if ninja1_3.health > 0 :
+            if ninja1_3.mon_health > 0 :
                 if man.hitbox[1] < ninja1_3.hitbox[1] + ninja1_3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_3.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja1_3.hitbox[0] and man.hitbox[0] < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         man.hit()
                         # score -= 5
-                        character_life -= 1 
                         # ninja1_3 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨 
-                        man = Player(50, 410, 64, 64) 
+                        #man = Player(50, 410, 64, 64) 
 
-        if ninja1_3.health == 0 : 
+
+        if ninja1_3.mon_health == 0 : 
             ninja1_3.visible = False
                 
 
         for bullet in bullets:
-            if ninja1_3.health > 0 :
+            if ninja1_3.mon_health > 0 :
                 if bullet.y - bullet.radius < ninja1_3.hitbox[1] + ninja1_3.hitbox[3] and bullet.y + bullet.radius > ninja1_3.hitbox[1]:
                     if bullet.x + bullet.radius > ninja1_3.hitbox[0] and bullet.x - bullet.radius < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         hitSound.play()
@@ -173,18 +174,18 @@ def stage1(character_life) :
             man.standing = True
             man.walkCount = 0
             
-        if not(man.isJump):
+        if not(man.isJump):     # 점프 아닐때 (항상 이쪽이 돈다)
             if keys[pygame.K_UP]:
                 man.isJump = True
                 man.right = False
                 man.left = False
                 man.walkCount = 0
-        else:
+        else:                   # 점프 중일 때 10~-10~10  
             if man.jumpCount >= -10:
-                neg = 1
+                man.neg = 1
                 if man.jumpCount < 0:
-                    neg = -1
-                man.y -= (man.jumpCount ** 2) * 0.5 * neg
+                    man.neg = -1
+                man.y -= (man.jumpCount ** 2) * 0.5 * man.neg
                 man.jumpCount -= 1
             else:
                 man.isJump = False
@@ -194,23 +195,19 @@ def stage1(character_life) :
         screen.blit(char_life, (30, 20)) 
         # text = font.render('Score: ' + str(score), 1, (0,0,0))
         # screen.blit(text, (620, 20))
-        life = font.render('X ' + str(character_life), 1, (0,0,0))
+        life = font.render('X ' + str(man.health), 1, (0,0,0))
         screen.blit(life, (65, 30))
         man.draw(screen)
         ninja1_1.draw(screen)
         ninja1_2.draw(screen)
         ninja1_3.draw(screen)
+
         for bullet in bullets:
             bullet.draw(screen)
         
         pygame.display.update()
 
-        if man.health == 0 :
-            return man.health, character_life
-
-        if (ninja1_1.health == 0) and (ninja1_2.health == 0) and (ninja1_3.health == 0) :
-            return man.health, character_life 
-
+        
 
         """"
         if man.health == 0 :

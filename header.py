@@ -52,6 +52,7 @@ class Player(object):
         self.y = 410
         self.walkCount = 0
         self.health -= 1
+        print(self.health)
         font1 = pygame.font.SysFont('comicsans', 100)
         text = font1.render('-5', 1, (255,0,0))
         screen.blit(text, (400 - (text.get_width()/2),200))

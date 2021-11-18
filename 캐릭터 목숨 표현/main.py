@@ -3,11 +3,9 @@ from header import *
 from stage1 import *
 from stage2 import *
 from stage3 import *
-
-# score = 0
+   
 health = 0
-character_life = 3
-
+          
 # start game 
 def start_menu():
     # running = True
@@ -18,7 +16,7 @@ def start_menu():
         menu_label = title_font.render('<Press Enter To Begin>', True, (0, 0, 0))  
         screen.blit(menu_label, (170, 90))
         pygame.display.update()
-        for event in pygame.event.get():
+        for event in pygame.event.get():                          
             if event.type == pygame.QUIT:
                 return False
             elif event.type == pygame.KEYDOWN:
@@ -58,32 +56,15 @@ def death_screen():
 
 def main_loop() :   
     global health
-    global character_life
-    health, character_life = stage1(character_life)
-    if character_life == 0 : death_screen()
-    health, character_life = stage2(character_life)
-    if character_life == 0 : death_screen()
-    health,character_life = stage3(character_life)
-    if character_life == 0 : death_screen()
-    if character_life > 0 : 
-        print("MISSION COMPLETE")   # 임시방편 / mission complete도 death와 start 처럼 함수로  만들어야 함 
-    print(character_life)
-    pygame.quit()
-
-
-    """
-    global score     
-    global health
-    health, score = stage1(score)
+    health = stage1()    
+    if health == 0 : death_screen()        
+    health = stage2()              
     if health == 0 : death_screen()
-    health, score = stage2(score)
-    if health == 0 : death_screen()
-    health, score = stage3(score)
+    health = stage3()
     if health == 0 : death_screen()
     if health > 0 : 
         print("MISSION COMPLETE")   # 임시방편 / mission complete도 death와 start 처럼 함수로  만들어야 함 
-    print(score)
-    pygame.quit()
-    """
+        print("left health is ", health)
+        sys.exit()    
 
 start_menu() 

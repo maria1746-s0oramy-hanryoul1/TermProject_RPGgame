@@ -18,12 +18,13 @@ class Player(object):
         self.vel = 5
         self.isJump = False
         self.left = False
-        self.right = False
+        self.right = True
         self.walkCount = 0
         self.jumpCount = 10
         self.standing = True
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
         self.health = 5
+        self.neg = 1 # 점프할때 씀
 
     def draw(self, screen):
         if self.walkCount + 1 >= 27:
@@ -46,12 +47,19 @@ class Player(object):
 
      # 몬스터 한테 맞았을 경우
     def hit(self):     
-        self.isJump = False
-        self.JumpCount = 10
-        self.x = 60
+        self.x = 50
         self.y = 410
+        self.width = 64
+        self.height = 64
+        self.vel = 5
+        self.isJump = False
+        self.left = False
+        self.right = True
         self.walkCount = 0
+        self.jumpCount = 10
+        self.standing = True
         self.health -= 1
+        self.neg = 1 
         #font1 = pygame.font.SysFont('comicsans', 100)
         #text = font1.render('-5', 1, (255,0,0))
         #screen.blit(text, (400 - (text.get_width()/2),200))
@@ -67,6 +75,7 @@ class Player(object):
                     i = 201
                     pygame.quit()
 
+
 class Attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
@@ -74,7 +83,7 @@ class Attack(object):
         self.radius = radius
         self.color = color
         self.facing = facing
-        self.vel = 8 * facing
+        self.vel = 8 * self.facing
 
     def draw(self,screen):
         pygame.draw.circle(screen, self.color, (self.x,self.y), self.radius)
@@ -96,7 +105,7 @@ class Monster1(object):
         self.vel = 3
         # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10
+        self.mon_health = 10
         self.visible = True
 
     def draw(self,screen):
@@ -113,7 +122,7 @@ class Monster1(object):
                 self.walkCount += 1
 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
@@ -132,13 +141,11 @@ class Monster1(object):
                 self.walkCount = 0
 
     def hit(self):
-        if self.health > 0:
-            self.health -= 1
+        if self.mon_health > 0:
+            self.mon_health -= 1
         else:
             self.visible = False 
         
-        print('hit')
-
 #여자 닌자 2_1, 2_2, 2_3 으로 클래스 추가 
 class Monster2_1(object):
     walkRight = [pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR.png'), pygame.image.load('real_image/NR1.png'), pygame.image.load('real_image/NR2.png'), pygame.image.load('real_image/NR3.png'), pygame.image.load('real_image/NR4.png'), pygame.image.load('real_image/NR5.png'), pygame.image.load('real_image/NR6.png'), pygame.image.load('real_image/NR7.png'), pygame.image.load('real_image/NR8.png'), pygame.image.load('real_image/NR9.png')]
@@ -155,7 +162,7 @@ class Monster2_1(object):
         self.vel = 5
         # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10  # 적의 수명 
+        self.mon_health = 10  # 적의 수명 
         self.visible = True
 
     def draw(self,screen):
@@ -172,7 +179,7 @@ class Monster2_1(object):
                 self.walkCount += 1
 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
@@ -191,12 +198,11 @@ class Monster2_1(object):
                 self.walkCount = 0
 
     def hit(self):
-        if self.health > 0:
-            self.health -= 1
+        if self.mon_health > 0:
+            self.mon_health -= 1
             
         else:
             self.visible = False
-        print('hit')  
 
 class Monster2_2(object):
     walkRight = [pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR0.png'), pygame.image.load('real_image/attackR1.png'), pygame.image.load('real_image/attackR2.png'), pygame.image.load('real_image/attackR3.png'), pygame.image.load('real_image/attackR4.png'), pygame.image.load('real_image/attackR5.png'), pygame.image.load('real_image/attackR6.png'), pygame.image.load('real_image/attackR7.png'), pygame.image.load('real_image/attackR8.png'), pygame.image.load('real_image/attackR9.png')]
@@ -213,7 +219,7 @@ class Monster2_2(object):
         self.vel = 5
         # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10  # 적의 수명 
+        self.mon_health = 10  # 적의 수명 
         self.visible = True
 
     def draw(self,screen):
@@ -230,7 +236,7 @@ class Monster2_2(object):
                 self.walkCount += 1
 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
@@ -249,12 +255,11 @@ class Monster2_2(object):
                 self.walkCount = 0
 
     def hit(self):
-        if self.health > 0:
-            self.health -= 1
+        if self.mon_health > 0:
+            self.mon_health -= 1
             
         else:
             self.visible = False
-        print('hit')  
 
 class Monster2_3(object):
     walkRight = [pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR0.png'), pygame.image.load('real_image/jattackR1.png'), pygame.image.load('real_image/jattackR2.png'), pygame.image.load('real_image/jattackR3.png'), pygame.image.load('real_image/jattackR4.png'), pygame.image.load('real_image/jattackR5.png'), pygame.image.load('real_image/jattackR6.png'), pygame.image.load('real_image/jattackR7.png'), pygame.image.load('real_image/jattackR8.png'), pygame.image.load('real_image/jattackR9.png')]
@@ -271,7 +276,7 @@ class Monster2_3(object):
         self.vel = 5
         # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10  # 적의 수명 
+        self.mon_health = 10  # 적의 수명 
         self.visible = True
 
     def draw(self,screen):
@@ -288,7 +293,7 @@ class Monster2_3(object):
                 self.walkCount += 1
 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
@@ -307,12 +312,11 @@ class Monster2_3(object):
                 self.walkCount = 0
 
     def hit(self):
-        if self.health > 0:
-            self.health -= 1
+        if self.mon_health > 0:
+            self.mon_health -= 1
             
         else:
             self.visible = False
-        print('hit')    
 
 
 class Monster3(object):
@@ -329,7 +333,7 @@ class Monster3(object):
         self.walkCount = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.health = 10
+        self.mon_health = 10
         self.visible = True
 
     def draw(self,screen):
@@ -346,7 +350,7 @@ class Monster3(object):
                 self.walkCount += 1
 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
@@ -365,10 +369,9 @@ class Monster3(object):
                 self.walkCount = 0
 
     def hit(self):
-        if self.health > 0:
-            self.health -= 1
+        if self.mon_health > 0:
+            self.mon_health -= 1
         else:
             self.visible = False
-        print('hit')
 
-man = Player(50, 410, 64, 64)
+man = Player(50, 410, 64, 64) # 시작 X축, y축, 가로 이동범위, 높이 이동범위
