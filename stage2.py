@@ -1,3 +1,4 @@
+# satge 2
 from header import *
 import pygame
 

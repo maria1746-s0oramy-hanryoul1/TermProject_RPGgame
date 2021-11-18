@@ -1,3 +1,4 @@
+# stage 3
 from header import *
 import pygame
 
@@ -11,7 +12,7 @@ pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(.2) 
 
 bg = pygame.image.load("real_image/back3.png")
-char = pygame.image.load('real_image/br1.png')
+char = pygame.image.load('real_image/bl1.png')
 
 font = pygame.font.SysFont('comicsans', 30, True)
 

@@ -6,7 +6,6 @@ from stage3 import *
 
 score = 0
 health = 0
-# character_life = 3 
 
 # start game 
 def start_menu():

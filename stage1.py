@@ -1,3 +1,4 @@
+# stage 1
 from header import *
 import pygame
 pygame.init()
