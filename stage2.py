@@ -35,7 +35,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_1.hitbox[1] + ninja2_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_1.hitbox[1] :
                     if man.hitbox[0] + man.hitbox[2] > ninja2_1.hitbox[0] and man.hitbox[0] < ninja2_1.hitbox[0] + ninja2_1.hitbox[2]:
                         man.hit()
-                        # score -= 5
                         # ninja2_1 = Monster2_1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
                         
         if ninja2_1.mon_health == 0 : 
@@ -48,7 +47,6 @@ def stage2() :
                     if bullet.x + bullet.radius > ninja2_1.hitbox[0] and bullet.x - bullet.radius < ninja2_1.hitbox[0] + ninja2_1.hitbox[2]:
                         hitSound.play()
                         ninja2_1.hit()
-                        # score += 1
                         bullets.pop(bullets.index(bullet))
                     
             if bullet.x < 800 and bullet.x > 0:
@@ -62,7 +60,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_2.hitbox[1] + ninja2_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_2.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja2_2.hitbox[0] and man.hitbox[0] < ninja2_2.hitbox[0] + ninja2_2.hitbox[2]:
                         man.hit()
-                        # score -= 5
                         # ninja2_2 = Monster2_2(600, 410, 64, 64, 700)
 
         if ninja2_2.mon_health == 0 : 
@@ -75,7 +72,6 @@ def stage2() :
                     if bullet.x + bullet.radius > ninja2_2.hitbox[0] and bullet.x - bullet.radius < ninja2_2.hitbox[0] + ninja2_2.hitbox[2]:
                         hitSound.play()
                         ninja2_2.hit()
-                        # score += 1
                         bullets.pop(bullets.index(bullet))
                     
             if bullet.x < 800 and bullet.x > 0:
@@ -89,7 +85,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_3.hitbox[1] + ninja2_3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_3.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja2_3.hitbox[0] and man.hitbox[0] < ninja2_3.hitbox[0] + ninja2_3.hitbox[2]:
                         man.hit()
-                        # score -= 5
                         # ninja2_3 = Monster2_3(600, 410, 64, 64, 700)
 
         if ninja2_3.mon_health == 0 : 
@@ -102,7 +97,6 @@ def stage2() :
                     if bullet.x + bullet.radius > ninja2_3.hitbox[0] and bullet.x - bullet.radius < ninja2_3.hitbox[0] + ninja2_3.hitbox[2]:
                         hitSound.play()
                         ninja2_3.hit()
-                        # score += 1
                         bullets.pop(bullets.index(bullet))
 
             if bullet.x < 800 and bullet.x > 0:
@@ -181,10 +175,10 @@ def stage2() :
                 
         screen.blit(bg, (0,0))
         screen.blit(char_life, (30, 20)) 
-        # text = font.render('Score: ' + str(score), 1, (0,0,0))
-        # screen.blit(text, (620, 20))
         life = font.render('X ' + str(man.health), 1, (0,0,0))
         screen.blit(life, (65, 30))
+        text = font.render('Stage: 2/3', 1, (0,0,0))
+        screen.blit(text, (620, 20))
         man.draw(screen)
         ninja2_1.draw(screen)
         ninja2_2.draw(screen)
