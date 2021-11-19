@@ -9,14 +9,24 @@ health = 0
 # start game 
 def start_menu():
     # running = True
-    title_font = pygame.font.SysFont('Maplestory Bold.ttf', 60)  
+    text_background_color = (255, 255, 255)
+    title_font = pygame.font.SysFont('bahnschrift', 45)
+    menu_font = pygame.font.SysFont('bahnschrift', 35)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
-        menu_label = title_font.render('<Press Enter To Begin>', True, (0, 0, 0))  
-        screen.blit(menu_label, (170, 90))
+        title_label = title_font.render('< Welcome to \'Rescue Manekineko\' >', True, (0, 0, 0))
+        start_label = menu_font.render('Press ENTER To Start', True, (0, 0, 0), text_background_color)  
+        way_label = menu_font.render('How to Play', True, (0, 0, 0), text_background_color)
+        senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
+
+        screen.blit(title_label, (50, 65))
+        screen.blit(start_label, (230, 190))
+        screen.blit(way_label,(300,250))
+        screen.blit(senario_label,(270, 310))
+        
         pygame.display.update()
-        for event in pygame.event.get():                          
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
             elif event.type == pygame.KEYDOWN:
@@ -30,8 +40,8 @@ def death_screen():
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.2)
 
-    death_font = pygame.font.SysFont('Maplestory Bold.ttf', 180)
-    death_option_font = pygame.font.SysFont('Maplestory Bold.ttf', 65)
+    death_font = pygame.font.SysFont('bahnschrift', 170)
+    death_option_font = pygame.font.SysFont('bahnschrift', 50)
     death_label = death_font.render('You Died', True, (255, 0, 0))
     death_option = death_option_font.render('Press Space To Quit', True, (0, 0, 0))
     #score_label = death_option_font.render(f'Final Score: {player.score}', True, (0, 0, 0))
@@ -49,8 +59,8 @@ def death_screen():
                     sys.exit()
 
         screen.blit(background, (0, 0))
-        screen.blit(death_label, (140, 50))
-        screen.blit(death_option, (210, 200))
+        screen.blit(death_label, (70, 50))
+        screen.blit(death_option, (190, 200))
         #screen.blit(score_label, (225, 75))
         pygame.display.update()
 
