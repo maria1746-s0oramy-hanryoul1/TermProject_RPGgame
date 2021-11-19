@@ -28,8 +28,7 @@ def stage2() :
     bullets = []
     run = True
     while run:
-        clock.tick(37)
-        # clock 35 -> 37
+        clock.tick(33)
         # ninja2_1 
         if ninja2_1.visible == True:
             if ninja2_1.mon_health > 0 :

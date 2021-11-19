@@ -29,8 +29,7 @@ def stage1() :
     bullets = []
     run = True
     while run:
-        clock.tick(33)
-        # clock 속도 27 -> 33
+        clock.tick(30)
         if man.health == 0 :
             return man.health
 
