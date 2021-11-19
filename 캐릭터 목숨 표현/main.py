@@ -21,7 +21,7 @@ def start_menu():
         senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
         screen.blit(title_label, (40, 50))
-        screen.blit(start_label, (295, 200))
+        screen.blit(start_label, (300, 200))
         screen.blit(way_label,(310,260))
         screen.blit(senario_label,(290, 320))
         
