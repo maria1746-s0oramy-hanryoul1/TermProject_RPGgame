@@ -53,7 +53,7 @@ def death_screen():
     death_font = pygame.font.SysFont('bahnschrift', 100)
     death_option_font = pygame.font.SysFont('bahnschrift', 40)
     death_label = death_font.render('You Died', True, (255, 0, 0))
-    death_option = death_option_font.render('Press Space To Quit', True, (0, 0, 0))
+    death_option = death_option_font.render('Press ENTER To Quit', True, (0, 0, 0))
     #score_label = death_option_font.render(f'Final Score: {player.score}', True, (0, 0, 0))
 
     # Death screen Loop
@@ -65,7 +65,7 @@ def death_screen():
                 pygame.quit()
                 sys.exit()              
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_RETURN:
                     sys.exit()
 
         screen.blit(background, (0, 0))
