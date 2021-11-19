@@ -4,10 +4,10 @@ pygame.init()
 screen = pygame.display.set_mode((800, 500))
 pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 3")
 
-walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
-walkLeft = [pygame.image.load('real_image/bl1.png'), pygame.image.load('real_image/bl2.png'), pygame.image.load('real_image/bl3.png'), pygame.image.load('real_image/bl4.png'), pygame.image.load('real_image/bl5.png'), pygame.image.load('real_image/bl6.png'), pygame.image.load('real_image/bl7.png'), pygame.image.load('real_image/bl8.png'), pygame.image.load('real_image/bl9.png')]
-bg = pygame.image.load("real_image/back3.png")
-char = pygame.image.load('real_image/br1.png')
+walkRight = [pygame.image.load('image/br1.png'), pygame.image.load('image/br2.png'), pygame.image.load('image/br3.png'), pygame.image.load('image/br4.png'), pygame.image.load('image/br5.png'), pygame.image.load('image/br6.png'), pygame.image.load('image/br7.png'), pygame.image.load('image/br8.png'), pygame.image.load('image/br9.png')]
+walkLeft = [pygame.image.load('image/bl1.png'), pygame.image.load('image/bl2.png'), pygame.image.load('image/bl3.png'), pygame.image.load('image/bl4.png'), pygame.image.load('image/bl5.png'), pygame.image.load('image/bl6.png'), pygame.image.load('image/bl7.png'), pygame.image.load('image/bl8.png'), pygame.image.load('image/bl9.png')]
+bg = pygame.image.load("image/back3.png")
+char = pygame.image.load('image/br1.png')
 
 clock = pygame.time.Clock()
 
@@ -89,8 +89,8 @@ class attack(object):
 
 
 class monster(object):
-    walkRight = [pygame.image.load('real_image/nnr.png'), pygame.image.load('real_image/nnr0.png'), pygame.image.load('real_image/nnr0.png'), pygame.image.load('real_image/nnr1.png'), pygame.image.load('real_image/nnr2.png'), pygame.image.load('real_image/nnr3.png'), pygame.image.load('real_image/nnr4.png'), pygame.image.load('real_image/nnr5.png'), pygame.image.load('real_image/nnr6.png')]
-    walkLeft = [pygame.image.load('real_image/nnl.png'), pygame.image.load('real_image/nnl0.png'), pygame.image.load('real_image/nnl0.png'), pygame.image.load('real_image/nnl1.png'), pygame.image.load('real_image/nnl2.png'), pygame.image.load('real_image/nnl3.png'), pygame.image.load('real_image/nnl4.png'), pygame.image.load('real_image/nnl5.png'), pygame.image.load('real_image/nnl6.png')]
+    walkRight = [pygame.image.load('image/nnr.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png')]
+    walkLeft = [pygame.image.load('image/nnl.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x

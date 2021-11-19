@@ -8,7 +8,7 @@ health = 0
 
 # how to play
 def game_rule():
-    rule_background = pygame.image.load('real_image/rule.JPG')
+    rule_background = pygame.image.load('image/rule.JPG')
     next_font = pygame.font.SysFont('Arial', 25)
     next_label = next_font.render('Click to Play', True, (0, 0, 0))
     while True:
@@ -99,7 +99,7 @@ def success_screen():
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.2)
 
-    success_background = pygame.image.load('real_image/mission_clear.png')
+    success_background = pygame.image.load('image/mission_clear.png')
 
     clear_font = pygame.font.SysFont('bahnschrift', 50)
     clear_label = clear_font.render('You got Manekineko!', True, (0, 0, 0))

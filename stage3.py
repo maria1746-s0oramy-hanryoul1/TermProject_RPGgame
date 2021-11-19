@@ -11,9 +11,9 @@ music = pygame.mixer.music.load('sound/backsound.wav')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(.2) 
 
-bg = pygame.image.load("real_image/back3.png")
-char = pygame.image.load('real_image/bl1.png')
-char_life = pygame.image.load('real_image/heart.png') #캐릭터 목숨 
+bg = pygame.image.load("image/back3.png")
+char = pygame.image.load('image/bl1.png')
+char_life = pygame.image.load('image/heart.png') #캐릭터 목숨 
 
 font = pygame.font.SysFont('comicsans', 30, True)
 
