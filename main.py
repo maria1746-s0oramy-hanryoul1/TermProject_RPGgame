@@ -5,13 +5,32 @@ from stage2 import *
 from stage3 import *
    
 health = 0
-          
+
+
+def game_rule():
+    rule_background = pygame.image.load('real_image/rule.JPG')
+    next_font = pygame.font.SysFont('Arial', 25)
+    next_label = next_font.render('Click to Play', True, (0, 0, 0))
+    while True:
+        clock.tick(27)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()              
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                main_loop()
+
+        screen.blit(rule_background, (0, 0))
+        screen.blit(next_label, (10, 410))
+        pygame.display.update()
+
+      
 # start game 
 def start_menu():
     # running = True
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 44)
-    menu_font = pygame.font.SysFont('bahnschrift', 30)  
+    menu_font = pygame.font.SysFont('bahnschrift', 25)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
@@ -19,7 +38,7 @@ def start_menu():
         title2_label = title_font.render('to', True, (0, 0, 0))
         title3_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
         start_label = menu_font.render('Click To Start', True, (0, 0, 0), text_background_color)  
-        way_label = menu_font.render('How to Play', True, (0, 0, 0), text_background_color)
+        way_label = menu_font.render('Press ENTER to see \'How to Play\'', True, (0, 0, 0), text_background_color)
         senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
         screen.blit(title_label, (135, 25))
@@ -35,12 +54,13 @@ def start_menu():
                 return False
             elif event.type == pygame.MOUSEBUTTONDOWN :
                 main_loop()
-            #elif event.type == pygame.KEYDOWN:
-                #if event.key == pygame.K_RETURN: 
-                    # 게임 방법 설명 화면
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN: 
+                    game_rule()
             #elif event.type == pygame.KEYDOWN:
                 #if event.key == pygame.K_RETURN: 
                     # 시나리오 설명 장면 
+           
                     
         # running = False  # After main_loop (player loses), the game quits
 
@@ -81,7 +101,7 @@ def success_screen():
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.2)
 
-    background = pygame.image.load('real_image/mission_clear.png')
+    success_background = pygame.image.load('real_image/mission_clear.png')
 
     clear_font = pygame.font.SysFont('bahnschrift', 50)
     clear_label = clear_font.render('You got Manekineko!', True, (0, 0, 0))
@@ -98,7 +118,7 @@ def success_screen():
                 if event.key == pygame.K_SPACE:
                     sys.exit()
 
-        screen.blit(background, (0, 0))
+        screen.blit(success_background, (0, 0))
         screen.blit(clear_label, (170, 50))
         pygame.display.update()
       

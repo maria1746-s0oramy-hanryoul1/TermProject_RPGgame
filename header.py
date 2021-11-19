@@ -23,7 +23,7 @@ class Player(object):
         self.jumpCount = 10
         self.standing = True
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
-        self.health = 5
+        self.health = 3
         self.neg = 1 # 점프할때 씀
 
     def draw(self, screen):
