@@ -84,7 +84,7 @@ def success_screen():
     background = pygame.image.load('real_image/mission_clear.png')
 
     clear_font = pygame.font.SysFont('bahnschrift', 50)
-    clear_label = clear_font.render('You got Makekineko!', True, (0, 0, 0))
+    clear_label = clear_font.render('You got Manekineko!', True, (0, 0, 0))
 
     # Success screen Loop
     #running = True
@@ -99,7 +99,7 @@ def success_screen():
                     sys.exit()
 
         screen.blit(background, (0, 0))
-        screen.blit(clear_label, (100, 50))
+        screen.blit(clear_label, (170, 50))
         pygame.display.update()
       
 
