@@ -11,28 +11,34 @@ def start_menu():
     # running = True
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 45)
-    menu_font = pygame.font.SysFont('bahnschrift', 35)  
+    menu_font = pygame.font.SysFont('bahnschrift', 30)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
         title_label = title_font.render('< Welcome to \'Rescue Manekineko\' >', True, (0, 0, 0))
-        start_label = menu_font.render('Press ENTER To Start', True, (0, 0, 0), text_background_color)  
+        start_label = menu_font.render('Click To Start', True, (0, 0, 0), text_background_color)  
         way_label = menu_font.render('How to Play', True, (0, 0, 0), text_background_color)
         senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
-        screen.blit(title_label, (50, 65))
-        screen.blit(start_label, (230, 190))
-        screen.blit(way_label,(300,250))
-        screen.blit(senario_label,(270, 310))
+        screen.blit(title_label, (40, 50))
+        screen.blit(start_label, (295, 200))
+        screen.blit(way_label,(310,260))
+        screen.blit(senario_label,(290, 320))
         
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:  
-                    main_loop()
-                    # running = False  # After main_loop (player loses), the game quits
+            elif event.type == pygame.MOUSEBUTTONDOWN :
+                main_loop()
+            #elif event.type == pygame.KEYDOWN:
+                #if event.key == pygame.K_RETURN: 
+                    # 게임 방법 설명 화면
+            #elif event.type == pygame.KEYDOWN:
+                #if event.key == pygame.K_RETURN: 
+                    # 시나리오 설명 장면 
+                    
+        # running = False  # After main_loop (player loses), the game quits
 
 # player's death
 def death_screen():  
