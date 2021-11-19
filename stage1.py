@@ -21,15 +21,16 @@ font = pygame.font.SysFont('comicsans', 30, True)
 def stage1() :
     global man
     ninja1_1 = Monster1_1(100, 410, 64, 64, 700)
-    ninja1_2 = Monster1_2(300, 410, 64, 64, 700)
-    ninja1_3 = Monster1_1(600, 410, 64, 64, 700)
+    ninja1_2 = Monster1_2(300, 400, 64, 64, 700)
+    ninja1_3 = Monster1_3(600, 400, 64, 64, 700)
+    ninja1_4 = Monster1_4(700, 420, 64, 64, 700)
     #man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
     while run:
-        clock.tick(37)
-        # clock 속도 27 -> 37
+        clock.tick(33)
+        # clock 속도 27 -> 33
         if man.health == 0 :
             return man.health
 
@@ -116,6 +117,31 @@ def stage1() :
             else:
                 bullets.pop(bullets.index(bullet))
 
+        # ninja1_4
+        if ninja1_4.visible == True:
+            if ninja1_4.mon_health > 0 :
+                if man.hitbox[1] < ninja1_4.hitbox[1] + ninja1_4.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_4.hitbox[1]:
+                    if man.hitbox[0] + man.hitbox[2] > ninja1_4.hitbox[0] and man.hitbox[0] < ninja1_4.hitbox[0] + ninja1_4.hitbox[2]:
+                        man.hit()
+
+        if ninja1_4.mon_health == 0 :
+            ninja1_4.visible = False
+            
+
+        for bullet in bullets:
+            if ninja1_4.mon_health > 0 :
+                if bullet.y - bullet.radius < ninja1_4.hitbox[1] + ninja1_4.hitbox[3] and bullet.y + bullet.radius > ninja1_4.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja1_4.hitbox[0] and bullet.x - bullet.radius < ninja1_4.hitbox[0] + ninja1_4.hitbox[2]:
+                        hitSound.play()
+                        ninja1_4.hit()
+                        bullets.pop(bullets.index(bullet))
+                    
+            if bullet.x < 800 and bullet.x > 0:
+                bullet.x += bullet.vel
+            else:
+                bullets.pop(bullets.index(bullet))
+
+
         if shootLoop > 0:
             shootLoop += 1
         if shootLoop > 3:
@@ -195,6 +221,7 @@ def stage1() :
         ninja1_1.draw(screen)
         ninja1_2.draw(screen)
         ninja1_3.draw(screen)
+        ninja1_4.draw(screen)
 
         for bullet in bullets:
             bullet.draw(screen)
