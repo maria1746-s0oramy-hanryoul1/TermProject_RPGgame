@@ -22,7 +22,7 @@ def stage2() :
     global man
     ninja2_1 = Monster2_1(100, 410, 64, 64, 700)
     ninja2_2 = Monster2_2(300, 410, 64, 64, 700)
-    ninja2_3 = Monster2_3(600, 410, 64, 64, 700)
+    ninja2_3 = Monster2_3(600, 250, 64, 64, 700)
     shootLoop = 0
     bullets = []
     run = True

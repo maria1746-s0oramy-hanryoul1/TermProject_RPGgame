@@ -20,9 +20,9 @@ font = pygame.font.SysFont('comicsans', 30, True)
 
 def stage1() :
     global man
-    ninja1_1 = Monster1(100, 410, 64, 64, 700)
-    ninja1_2 = Monster1(300, 410, 64, 64, 700)
-    ninja1_3 = Monster1(600, 410, 64, 64, 700)
+    ninja1_1 = Monster1_1(100, 410, 64, 64, 700)
+    ninja1_2 = Monster1_2(300, 410, 64, 64, 700)
+    ninja1_3 = Monster1_1(600, 410, 64, 64, 700)
     #man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
