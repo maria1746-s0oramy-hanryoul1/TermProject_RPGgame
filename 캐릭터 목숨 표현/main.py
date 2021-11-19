@@ -10,20 +10,24 @@ health = 0
 def start_menu():
     # running = True
     text_background_color = (255, 255, 255)
-    title_font = pygame.font.SysFont('bahnschrift', 45)
+    title_font = pygame.font.SysFont('bahnschrift', 44)
     menu_font = pygame.font.SysFont('bahnschrift', 30)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
-        title_label = title_font.render('< Welcome to \'Rescue Manekineko\' >', True, (0, 0, 0))
+        title_label = title_font.render('Welcome', True, (0, 0, 0))
+        title2_label = title_font.render('to', True, (0, 0, 0))
+        title3_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
         start_label = menu_font.render('Click To Start', True, (0, 0, 0), text_background_color)  
         way_label = menu_font.render('How to Play', True, (0, 0, 0), text_background_color)
         senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
-        screen.blit(title_label, (40, 50))
-        screen.blit(start_label, (300, 200))
-        screen.blit(way_label,(310,260))
-        screen.blit(senario_label,(290, 320))
+        screen.blit(title_label, (135, 25))
+        screen.blit(title2_label, (200, 85))
+        screen.blit(title3_label, (20, 140))
+        screen.blit(start_label, (10, 290))
+        screen.blit(way_label,(10,340))
+        screen.blit(senario_label,(10, 390))
         
         pygame.display.update()
         for event in pygame.event.get():
@@ -46,8 +50,8 @@ def death_screen():
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.2)
 
-    death_font = pygame.font.SysFont('bahnschrift', 170)
-    death_option_font = pygame.font.SysFont('bahnschrift', 50)
+    death_font = pygame.font.SysFont('bahnschrift', 100)
+    death_option_font = pygame.font.SysFont('bahnschrift', 40)
     death_label = death_font.render('You Died', True, (255, 0, 0))
     death_option = death_option_font.render('Press Space To Quit', True, (0, 0, 0))
     #score_label = death_option_font.render(f'Final Score: {player.score}', True, (0, 0, 0))
@@ -65,8 +69,8 @@ def death_screen():
                     sys.exit()
 
         screen.blit(background, (0, 0))
-        screen.blit(death_label, (70, 50))
-        screen.blit(death_option, (190, 200))
+        screen.blit(death_label, (30, 40))
+        screen.blit(death_option, (50, 165))
         #screen.blit(score_label, (225, 75))
         pygame.display.update()
       

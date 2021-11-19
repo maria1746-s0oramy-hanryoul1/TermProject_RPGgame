@@ -3,7 +3,7 @@ import sys
 
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((800, 500))
-background = pygame.image.load("real_image/back1.png")
+background = pygame.image.load("real_image/back.jpg")
 
 # player right & left run image upload
 walkRight = [pygame.image.load('real_image/br1.png'), pygame.image.load('real_image/br2.png'), pygame.image.load('real_image/br3.png'), pygame.image.load('real_image/br4.png'), pygame.image.load('real_image/br5.png'), pygame.image.load('real_image/br6.png'), pygame.image.load('real_image/br7.png'), pygame.image.load('real_image/br8.png'), pygame.image.load('real_image/br9.png')]
