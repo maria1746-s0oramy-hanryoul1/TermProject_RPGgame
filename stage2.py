@@ -23,6 +23,7 @@ def stage2() :
     ninja2_1 = Monster2_1(100, 410, 64, 64, 700)
     ninja2_2 = Monster2_2(300, 410, 64, 64, 700)
     ninja2_3 = Monster2_3(600, 250, 64, 64, 700)
+    ninja2_4 = Monster2_4(400, 250, 64, 64, 700)
     shootLoop = 0
     bullets = []
     run = True
@@ -64,7 +65,7 @@ def stage2() :
 
         if ninja2_2.mon_health == 0 : 
             ninja2_2.visible = False
-            
+
 
         for bullet in bullets:
             if ninja2_2.mon_health > 0 :
@@ -104,10 +105,36 @@ def stage2() :
             else:
                 bullets.pop(bullets.index(bullet))
 
+
+        # ninja2_4
+        if ninja2_4.visible == True:
+            if ninja2_4.mon_health > 0 :
+                if man.hitbox[1] < ninja2_4.hitbox[1] + ninja2_4.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_4.hitbox[1]:
+                    if man.hitbox[0] + man.hitbox[2] > ninja2_4.hitbox[0] and man.hitbox[0] < ninja2_4.hitbox[0] + ninja2_4.hitbox[2]:
+                        man.hit()
+                    
+
+        if ninja2_4.mon_health == 0 : 
+            ninja2_4.visible = False
+                
+
+        for bullet in bullets:
+            if ninja2_4.mon_health > 0 :
+                if bullet.y - bullet.radius < ninja2_4.hitbox[1] + ninja2_4.hitbox[3] and bullet.y + bullet.radius > ninja2_4.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja2_4.hitbox[0] and bullet.x - bullet.radius < ninja2_4.hitbox[0] + ninja2_4.hitbox[2]:
+                        hitSound.play()
+                        ninja2_4.hit()
+                        bullets.pop(bullets.index(bullet))
+
+            if bullet.x < 800 and bullet.x > 0:
+                bullet.x += bullet.vel
+            else:
+                bullets.pop(bullets.index(bullet))
+
         if shootLoop > 0:
             shootLoop += 1
-            if shootLoop == 4:
-                shootLoop = 0
+        if shootLoop > 3:
+            shootLoop = 0
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -183,6 +210,7 @@ def stage2() :
         ninja2_1.draw(screen)
         ninja2_2.draw(screen)
         ninja2_3.draw(screen)
+        ninja2_4.draw(screen)
         for bullet in bullets:
             bullet.draw(screen)
     
@@ -191,7 +219,7 @@ def stage2() :
         if man.health == 0 :
             return man.health
 
-        if (ninja2_1.mon_health == 0) and (ninja2_2.mon_health == 0) and (ninja2_3.mon_health == 0) :
+        if (ninja2_1.mon_health == 0) and (ninja2_2.mon_health == 0) and (ninja2_3.mon_health == 0) and (ninja2_4.mon_health == 0) :
             return man.health
         """
         if man.health == 0 :

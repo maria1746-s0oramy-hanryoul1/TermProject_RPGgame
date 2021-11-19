@@ -34,7 +34,7 @@ def stage1() :
         if man.health == 0 :
             return man.health
 
-        if (ninja1_1.mon_health == 0) and (ninja1_2.mon_health == 0) and (ninja1_3.mon_health == 0) :
+        if (ninja1_1.mon_health == 0) and (ninja1_2.mon_health == 0) and (ninja1_3.mon_health == 0) and (ninja1_4.mon_health == 0):
             return man.health
 
         # ninja1_1 
@@ -126,7 +126,7 @@ def stage1() :
 
         if ninja1_4.mon_health == 0 :
             ninja1_4.visible = False
-            
+
 
         for bullet in bullets:
             if ninja1_4.mon_health > 0 :
