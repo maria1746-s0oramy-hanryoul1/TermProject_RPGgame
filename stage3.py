@@ -13,38 +13,36 @@ pygame.mixer.music.set_volume(.2)
 
 bg = pygame.image.load("real_image/back3.png")
 char = pygame.image.load('real_image/bl1.png')
+char_life = pygame.image.load('real_image/heart.png') #캐릭터 목숨 
 
 font = pygame.font.SysFont('comicsans', 30, True)
 
 
-def stage3(score) : 
+def stage3() : 
     global man
     ninja3 = Monster3(200, 390, 64, 64, 700)
-    man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
     while run:
         clock.tick(37)
-
         if ninja3.visible == True:
             if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
                     man.hit()
-                    score -= 5
+                    # score -= 5
                     # ninja3 = Monster3(600, 410, 64, 64, 700)
-                    man = Player(50, 410, 64, 64)
                     
-        if ninja3.health == 0 : 
+        if ninja3.mon_health == 0 : 
             ninja3.visible = False 
 
         for bullet in bullets:
-            if ninja3.health > 0 :
+            if ninja3.mon_health > 0 :
                 if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
                     if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
                         hitSound.play()
                         ninja3.hit()
-                        score += 1
+                        # score += 1
                         bullets.pop(bullets.index(bullet))
                     
             if bullet.x < 800 and bullet.x > 0:
@@ -122,8 +120,11 @@ def stage3(score) :
                 man.jumpCount = 10
                 
         screen.blit(bg, (0,0))
-        text = font.render('Score: ' + str(score), 1, (0,0,0))
-        screen.blit(text, (620, 20))
+        screen.blit(char_life, (30, 20)) 
+        # text = font.render('Score: ' + str(score), 1, (0,0,0))
+        # screen.blit(text, (620, 20))
+        life = font.render('X ' + str(man.health), 1, (0,0,0))
+        screen.blit(life, (65, 30))
         man.draw(screen)
         ninja3.draw(screen)
         for bullet in bullets:
@@ -132,7 +133,16 @@ def stage3(score) :
         pygame.display.update()
 
         if man.health == 0 :
+            return man.health
+
+        if ninja3.mon_health == 0 :
+            return man.health
+
+
+        """
+        if man.health == 0 :
             return man.health, score
 
         if ninja3.health == 0 :
             return man.health, score
+        """
