@@ -6,7 +6,7 @@ from stage3 import *
    
 health = 0
 
-
+# how to play
 def game_rule():
     rule_background = pygame.image.load('real_image/rule.JPG')
     next_font = pygame.font.SysFont('Arial', 25)
@@ -24,13 +24,12 @@ def game_rule():
         screen.blit(next_label, (10, 410))
         pygame.display.update()
 
-      
 # start game 
 def start_menu():
     # running = True
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 44)
-    menu_font = pygame.font.SysFont('bahnschrift', 25)  
+    menu_font = pygame.font.SysFont('bahnschrift', 23)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
@@ -61,7 +60,6 @@ def start_menu():
                 #if event.key == pygame.K_RETURN: 
                     # 시나리오 설명 장면 
            
-                    
         # running = False  # After main_loop (player loses), the game quits
 
 # player's death
