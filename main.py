@@ -111,9 +111,6 @@ def main_loop() :
     if health == 0 : death_screen()
     health = stage3()
     if health == 0 : death_screen()
-    if health > 0 : success_screen()
-        # print("MISSION COMPLETE")   # 임시방편 / mission complete도 death와 start 처럼 함수로  만들어야 함 
-        # print("left health is ", health)
-        # sys.exit()    
+    if health > 0 : success_screen()  
 
 start_menu() 

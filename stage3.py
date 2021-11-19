@@ -3,7 +3,7 @@ from header import *
 import pygame
 
 
-pygame.display.set_caption("야마다상의 마네키네코 탈환 작전 Level 3")
+pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")
 clock = pygame.time.Clock()
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
