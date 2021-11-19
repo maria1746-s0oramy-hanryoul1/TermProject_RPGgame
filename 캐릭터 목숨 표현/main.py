@@ -69,6 +69,35 @@ def death_screen():
         screen.blit(death_option, (190, 200))
         #screen.blit(score_label, (225, 75))
         pygame.display.update()
+      
+  
+# mission clear
+def success_screen():  
+    pygame.mixer.music.load('sound/gameclear_2.wav')  
+    pygame.mixer.music.play(-1) 
+    pygame.mixer.music.set_volume(.2)
+
+    background = pygame.image.load('real_image/mission_clear.png')
+
+    clear_font = pygame.font.SysFont('bahnschrift', 50)
+    clear_label = clear_font.render('You got Makekineko!', True, (0, 0, 0))
+
+    # Success screen Loop
+    #running = True
+    while True:
+        clock.tick(27)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()              
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    sys.exit()
+
+        screen.blit(background, (0, 0))
+        screen.blit(clear_label, (100, 50))
+        pygame.display.update()
+      
 
 def main_loop() :   
     global health
