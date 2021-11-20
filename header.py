@@ -272,8 +272,8 @@ class Monster1_4(object):
         self.path = [50, self.end]
         # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 4
-        # self.vel 3 -> 4
+        self.vel = 5
+        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -548,8 +548,8 @@ class Monster2_4(object):
 
 
 class Monster3_1(object):
-    walkRight = [pygame.image.load('image/nnr.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png')]
-    walkLeft = [pygame.image.load('image/nnl.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png')]
+    walkRight = [pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png'), pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png')]
+    walkLeft = [pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png'), pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -561,13 +561,13 @@ class Monster3_1(object):
         self.walkCount = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10
+        self.mon_health = 20
         self.visible = True
 
     def draw(self,screen):
         self.move()
         if self.visible:
-            if self.walkCount + 1 >= 27:
+            if self.walkCount + 1 >= 36:
                 self.walkCount = 0
 
             if self.vel > 0:
@@ -598,7 +598,7 @@ class Monster3_1(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 1
+            self.mon_health -= 0.4
         else:
             self.visible = False
 
@@ -614,7 +614,7 @@ class Monster3_2(object):
         self.end = end
         self.path = [50, self.end]
         self.walkCount = 0
-        self.vel = 3
+        self.vel = 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
