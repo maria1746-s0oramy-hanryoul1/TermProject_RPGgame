@@ -114,7 +114,7 @@ def success_screen():
                 pygame.quit()
                 sys.exit()              
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_RETURN:
                     sys.exit()
 
         screen.blit(success_background, (0, 0))
