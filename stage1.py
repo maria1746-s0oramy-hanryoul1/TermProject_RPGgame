@@ -196,8 +196,8 @@ def stage1() :
         if not(man.isJump):     # 점프 아닐때 (항상 이쪽이 돈다)
             if keys[pygame.K_UP]:
                 man.isJump = True
-                man.right = False
-                man.left = False
+                #man.right = False
+                #man.left = False
                 man.walkCount = 0
         else:                   # 점프 중일 때 10~-10~10  
             if man.jumpCount >= -10:
