@@ -38,7 +38,6 @@ def stage2() :
                         # ninja2_1 = Monster2_1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
                         
         if ninja2_1.mon_health <= 0 : 
-            print("1")
             ninja2_1.visible = False
         
         
@@ -64,7 +63,6 @@ def stage2() :
                         # ninja2_2 = Monster2_2(600, 410, 64, 64, 700)
 
         if ninja2_2.mon_health <= 0 : 
-            print("2")
             ninja2_2.visible = False
 
 
@@ -90,7 +88,6 @@ def stage2() :
                         # ninja2_3 = Monster2_3(600, 410, 64, 64, 700)
 
         if ninja2_3.mon_health <= 0 : 
-            print("3")
             ninja2_3.visible = False
                 
 
@@ -117,7 +114,6 @@ def stage2() :
                     
 
         if ninja2_4.mon_health <= 0 : 
-            print("4")
             ninja2_4.visible = False
                 
 
