@@ -426,7 +426,7 @@ class Monster2_2(object):
     def hit(self):
         if self.mon_health > 0:
             self.mon_health -= 0.8
-             #생명 감소 속도 1 -> 0.8
+            # 생명 감소 속도 1 -> 0.8
             
         else:
             self.visible = False

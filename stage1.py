@@ -46,7 +46,7 @@ def stage1() :
                         #man = Player(50, 410, 64, 64)
                         
 
-        if ninja1_1.mon_health == 0 : 
+        if ninja1_1.mon_health <= 0 : 
             ninja1_1.visible = False
         
         
@@ -72,7 +72,7 @@ def stage1() :
                         # ninja1_2 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨
                         #man = Player(50, 410, 64, 64)
 
-        if ninja1_2.mon_health == 0 : 
+        if ninja1_2.mon_health <= 0 : 
             ninja1_2.visible = False
             
 
@@ -99,7 +99,7 @@ def stage1() :
                         #man = Player(50, 410, 64, 64) 
 
 
-        if ninja1_3.mon_health == 0 : 
+        if ninja1_3.mon_health <= 0 : 
             ninja1_3.visible = False
                 
 
@@ -123,7 +123,7 @@ def stage1() :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_4.hitbox[0] and man.hitbox[0] < ninja1_4.hitbox[0] + ninja1_4.hitbox[2]:
                         man.hit()
 
-        if ninja1_4.mon_health == 0 :
+        if ninja1_4.mon_health <= 0 :
             ninja1_4.visible = False
 
 
@@ -230,7 +230,7 @@ def stage1() :
         if man.health == 0 :
             return man.health
 
-        if (ninja1_1.mon_health == 0) and (ninja1_2.mon_health == 0) and (ninja1_3.mon_health == 0) and (ninja1_4.mon_health == 0) :
+        if (ninja1_1.mon_health <= 0) and (ninja1_2.mon_health <= 0) and (ninja1_3.mon_health <= 0) and (ninja1_4.mon_health <= 0) :
             return man.health
         
 

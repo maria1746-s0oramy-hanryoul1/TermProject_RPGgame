@@ -125,11 +125,12 @@ def success_screen():
 def main_loop() :   
     global health
     health = stage1()    
-    if health == 0 : death_screen()        
+    if health <= 0 : death_screen()        
     health = stage2()              
-    if health == 0 : death_screen()
+    if health <= 0 : death_screen()
     health = stage3()
-    if health == 0 : death_screen()
+    if health <= 0 : death_screen()
+    
     if health > 0 : success_screen()  
 
 start_menu() 

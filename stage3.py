@@ -37,7 +37,7 @@ def stage3() :
                     man.hit()
                     # ninja3_1 = Monster3(600, 410, 64, 64, 700)
                     
-        if ninja3_1.mon_health == 0 : 
+        if ninja3_1.mon_health <= 0 : 
             ninja3_1.visible = False 
 
         for bullet in bullets:
@@ -60,7 +60,7 @@ def stage3() :
                     man.hit()
                     # ninja3_2 = Monster3(600, 410, 64, 64, 700)
                     
-        if ninja3_2.mon_health == 0 : 
+        if ninja3_2.mon_health <= 0 : 
             ninja3_2.visible = False 
 
         for bullet in bullets:
@@ -83,7 +83,7 @@ def stage3() :
                     man.hit()
                     # ninja3_3 = Monster3(600, 410, 64, 64, 700)
                     
-        if ninja3_3.mon_health == 0 : 
+        if ninja3_3.mon_health <= 0 : 
             ninja3_3.visible = False 
 
         for bullet in bullets:
@@ -106,7 +106,7 @@ def stage3() :
                     man.hit()
                     # ninja3_4 = Monster3(600, 410, 64, 64, 700)
                     
-        if ninja3_4.mon_health == 0 : 
+        if ninja3_4.mon_health <= 0 : 
             ninja3_4.visible = False 
 
         for bullet in bullets:
@@ -211,7 +211,7 @@ def stage3() :
         if man.health == 0 :
             return man.health
 
-        if (ninja3_1.mon_health == 0) and (ninja3_2.mon_health) and (ninja3_3.mon_health == 0) and (ninja3_4.mon_health == 0) :
+        if (ninja3_1.mon_health <= 0) and (ninja3_2.mon_health <= 0) and (ninja3_3.mon_health <= 0) and (ninja3_4.mon_health <= 0) :
             return man.health
 
 
