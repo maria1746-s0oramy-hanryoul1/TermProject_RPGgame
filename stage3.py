@@ -129,8 +129,8 @@ def stage3() :
         if not(man.isJump):
             if keys[pygame.K_UP]:
                 man.isJump = True
-                man.right = False
-                man.left = False
+                #man.right = False
+                #man.left = False
                 man.walkCount = 0
         else:
             if man.jumpCount >= -10:
