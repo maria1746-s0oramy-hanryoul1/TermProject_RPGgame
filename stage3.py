@@ -20,27 +20,53 @@ font = pygame.font.SysFont('comicsans', 30, True)
 
 def stage3() : 
     global man
-    ninja3 = Monster3(200, 390, 64, 64, 700)
+    ninja3_1 = Monster3_1(200, 390, 64, 64, 700)
+    ninja3_2 = Monster3_2(400, 390, 64, 64, 700) 
     shootLoop = 0
     bullets = []
     run = True
     while run:
         clock.tick(37)
-        if ninja3.visible == True:
-            if man.hitbox[1] < ninja3.hitbox[1] + ninja3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3.hitbox[1]:
-                if man.hitbox[0] + man.hitbox[2] > ninja3.hitbox[0] and man.hitbox[0] < ninja3.hitbox[0] + ninja3.hitbox[2]:
+
+        #ninja3_1
+        if ninja3_1.visible == True:
+            if man.hitbox[1] < ninja3_1.hitbox[1] + ninja3_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_1.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja3_1.hitbox[0] and man.hitbox[0] < ninja3_1.hitbox[0] + ninja3_1.hitbox[2]:
                     man.hit()
-                    # ninja3 = Monster3(600, 410, 64, 64, 700)
+                    # ninja3_1 = Monster3(600, 410, 64, 64, 700)
                     
-        if ninja3.mon_health == 0 : 
-            ninja3.visible = False 
+        if ninja3_1.mon_health == 0 : 
+            ninja3_1.visible = False 
 
         for bullet in bullets:
-            if ninja3.mon_health > 0 :
-                if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
-                    if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
+            if ninja3_1.mon_health > 0 :
+                if bullet.y - bullet.radius < ninja3_1.hitbox[1] + ninja3_1.hitbox[3] and bullet.y + bullet.radius > ninja3_1.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja3_1.hitbox[0] and bullet.x - bullet.radius < ninja3_1.hitbox[0] + ninja3_1.hitbox[2]:
                         hitSound.play()
-                        ninja3.hit()
+                        ninja3_1.hit()
+                        bullets.pop(bullets.index(bullet))
+                    
+            if bullet.x < 800 and bullet.x > 0:
+                bullet.x += bullet.vel
+            else:
+                bullets.pop(bullets.index(bullet))
+
+        #ninja3_2
+        if ninja3_2.visible == True:
+            if man.hitbox[1] < ninja3_2.hitbox[1] + ninja3_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_2.hitbox[1]:
+                if man.hitbox[0] + man.hitbox[2] > ninja3_2.hitbox[0] and man.hitbox[0] < ninja3_2.hitbox[0] + ninja3_2.hitbox[2]:
+                    man.hit()
+                    # ninja3_2 = Monster3(600, 410, 64, 64, 700)
+                    
+        if ninja3_2.mon_health == 0 : 
+            ninja3_2.visible = False 
+
+        for bullet in bullets:
+            if ninja3_2.mon_health > 0 :
+                if bullet.y - bullet.radius < ninja3_2.hitbox[1] + ninja3_2.hitbox[3] and bullet.y + bullet.radius > ninja3_2.hitbox[1]:
+                    if bullet.x + bullet.radius > ninja3_2.hitbox[0] and bullet.x - bullet.radius < ninja3_2.hitbox[0] + ninja3_2.hitbox[2]:
+                        hitSound.play()
+                        ninja3_2.hit()
                         bullets.pop(bullets.index(bullet))
                     
             if bullet.x < 800 and bullet.x > 0:
@@ -59,10 +85,10 @@ def stage3() :
 
         """   
         for bullet in bullets:
-            if bullet.y - bullet.radius < ninja3.hitbox[1] + ninja3.hitbox[3] and bullet.y + bullet.radius > ninja3.hitbox[1]:
-                if bullet.x + bullet.radius > ninja3.hitbox[0] and bullet.x - bullet.radius < ninja3.hitbox[0] + ninja3.hitbox[2]:
+            if bullet.y - bullet.radius < ninja3_1.hitbox[1] + ninja3_1.hitbox[3] and bullet.y + bullet.radius > ninja3_1.hitbox[1]:
+                if bullet.x + bullet.radius > ninja3_1.hitbox[0] and bullet.x - bullet.radius < ninja3_1.hitbox[0] + ninja3_1.hitbox[2]:
                     hitSound.play()
-                    ninja3.hit()
+                    ninja3_1.hit()
                     score += 1
                     bullets.pop(bullets.index(bullet))
                     
@@ -81,7 +107,7 @@ def stage3() :
             else:
                 facing = 1
                 
-            if len(bullets) < 5 and ninja3.visible == True:
+            if len(bullets) < 5 and ninja3_1.visible == True:
                 bullets.append(Attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
             shootLoop = 1
@@ -124,7 +150,8 @@ def stage3() :
         text = font.render('Stage: 3/3', 1, (0,0,0))
         screen.blit(text, (620, 20))
         man.draw(screen)
-        ninja3.draw(screen)
+        ninja3_1.draw(screen)
+        ninja3_2.draw(screen)
         for bullet in bullets:
             bullet.draw(screen)
         
@@ -133,7 +160,7 @@ def stage3() :
         if man.health == 0 :
             return man.health
 
-        if ninja3.mon_health == 0 :
+        if (ninja3_1.mon_health == 0) and (ninja3_2.mon_health == 0) :
             return man.health
 
 
@@ -141,6 +168,6 @@ def stage3() :
         if man.health == 0 :
             return man.health, score
 
-        if ninja3.health == 0 :
+        if ninja3_1.health == 0 :
             return man.health, score
         """

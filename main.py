@@ -66,7 +66,8 @@ def start_menu():
 def death_screen():  
     pygame.mixer.music.load('sound/death_theme.mp3')  
     pygame.mixer.music.play(-1) 
-    pygame.mixer.music.set_volume(.2)
+    pygame.mixer.music.set_volume(.4)
+    # death_screen volume 2 -> 4
 
     death_font = pygame.font.SysFont('bahnschrift', 100)
     death_option_font = pygame.font.SysFont('bahnschrift', 40)

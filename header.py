@@ -547,7 +547,7 @@ class Monster2_4(object):
             self.visible = False
 
 
-class Monster3(object):
+class Monster3_1(object):
     walkRight = [pygame.image.load('image/nnr.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr0.png'), pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png')]
     walkLeft = [pygame.image.load('image/nnl.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl0.png'), pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png')]
 
@@ -568,6 +568,61 @@ class Monster3(object):
         self.move()
         if self.visible:
             if self.walkCount + 1 >= 27:
+                self.walkCount = 0
+
+            if self.vel > 0:
+                screen.blit(self.walkRight[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+            else:
+                screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
+                self.walkCount += 1
+
+            pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
+            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
+
+    def move(self):
+        if self.vel > 0:
+            if self.x + self.vel < self.path[1]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+        else:
+            if self.x - self.vel > self.path[0]:
+                self.x += self.vel
+            else:
+                self.vel = self.vel * -1
+                self.walkCount = 0
+
+    def hit(self):
+        if self.mon_health > 0:
+            self.mon_health -= 1
+        else:
+            self.visible = False
+
+class Monster3_2(object):
+    walkRight = [pygame.image.load('image/rgr1.png'), pygame.image.load('image/rgr2.png'), pygame.image.load('image/rgr3.png'), pygame.image.load('image/rgr4.png'), pygame.image.load('image/rgr5.png'), pygame.image.load('image/rgr1.png'), pygame.image.load('image/rgr2.png'), pygame.image.load('image/rgr3.png'), pygame.image.load('image/rgr4.png'), pygame.image.load('image/rgr5.png')]
+    walkLeft = [pygame.image.load('image/rgl1.png'), pygame.image.load('image/rgl2.png'), pygame.image.load('image/rgl3.png'), pygame.image.load('image/rgl4.png'), pygame.image.load('image/rgl5.png'), pygame.image.load('image/rgl1.png'), pygame.image.load('image/rgl2.png'), pygame.image.load('image/rgl3.png'), pygame.image.load('image/rgl4.png'), pygame.image.load('image/rgl5.png')]
+
+    def __init__(self, x, y, width, height, end):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.end = end
+        self.path = [50, self.end]
+        self.walkCount = 0
+        self.vel = 3
+        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        self.mon_health = 10
+        self.visible = True
+
+    def draw(self,screen):
+        self.move()
+        if self.visible:
+            if self.walkCount + 1 >= 30:
                 self.walkCount = 0
 
             if self.vel > 0:
