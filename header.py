@@ -560,7 +560,7 @@ class Monster3_1(object):
         self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 3
-        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        self.hitbox = (self.x + 17, self.y + 2, 100, 160)
         self.mon_health = 20
         self.visible = True
 
@@ -577,9 +577,11 @@ class Monster3_1(object):
                 screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
                 self.walkCount += 1
 
+             
+            pygame.draw.rect(screen, (255,0,0), self.hitbox, 2) #hitbox 보이게 
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
-            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+            self.hitbox = (self.x + 17, self.y + 2, 100, 160)
             #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
