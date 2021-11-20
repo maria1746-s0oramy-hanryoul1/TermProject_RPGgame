@@ -155,7 +155,8 @@ def stage3() :
             else:
                 facing = 1
                 
-            if len(bullets) < 5 and ninja3_1.visible == True:
+            if len(bullets) < 5 :
+                # 'and ninja3_1.visible == True' 삭제
                 bullets.append(Attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
             shootLoop = 1
@@ -210,7 +211,7 @@ def stage3() :
         if man.health == 0 :
             return man.health
 
-        if (ninja3_1.mon_health == 0) and (ninja3_2.mon_health == 0) :
+        if (ninja3_1.mon_health == 0) and (ninja3_2.mon_health) and (ninja3_3.mon_health == 0) and (ninja3_4.mon_health == 0) :
             return man.health
 
 
