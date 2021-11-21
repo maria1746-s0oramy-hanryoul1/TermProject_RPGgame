@@ -102,7 +102,8 @@ class Monster1_1(object):
         self.path = [50, self.end]
         # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 3
+        self.vel = 4
+        # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -158,8 +159,8 @@ class Monster1_2(object):
         self.path = [50, self.end]
         # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 4
-        # self.vel 3 -> 4
+        self.vel = 5
+        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -215,8 +216,8 @@ class Monster1_3(object):
         self.path = [50, self.end]
         # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
-        self.vel = 5
-        # self.vel 3 -> 5
+        self.vel = 4
+        # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -259,62 +260,6 @@ class Monster1_3(object):
         else:
             self.visible = False 
 
-class Monster1_4(object):
-    walkRight = [pygame.image.load('image/atR0.png'), pygame.image.load('image/atR0.png'), pygame.image.load('image/atR1.png'),pygame.image.load('image/atR2.png'), pygame.image.load('image/atR3.png'), pygame.image.load('image/atR4.png'), pygame.image.load('image/atR5.png'), pygame.image.load('image/atR6.png'), pygame.image.load('image/atR7.png'), pygame.image.load('image/atR8.png'), pygame.image.load('image/atR9.png')]
-    walkLeft = [pygame.image.load('image/atL0.png'), pygame.image.load('image/atL0.png'), pygame.image.load('image/atL1.png'), pygame.image.load('image/atL2.png'),pygame.image.load('image/atL3.png'), pygame.image.load('image/atL4.png'), pygame.image.load('image/atL5.png'), pygame.image.load('image/atL6.png'), pygame.image.load('image/atL7.png'), pygame.image.load('image/atL8.png'), pygame.image.load('image/atL9.png')]
-
-    def __init__(self, x, y, width, height, end):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.end = end
-        self.path = [50, self.end]
-        # self.end -> 50 (monmany2 참고)
-        self.walkCount = 0
-        self.vel = 5
-        # self.vel 3 -> 5
-        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10
-        self.visible = True
-
-    def draw(self,screen):
-        self.move()
-        if self.visible:
-            if self.walkCount + 1 >= 33:
-                self.walkCount = 0
-
-            if self.vel > 0:
-                screen.blit(self.walkRight[self.walkCount //3], (self.x, self.y))
-                self.walkCount += 1
-            else:
-                screen.blit(self.walkLeft[self.walkCount //3], (self.x, self.y))
-                self.walkCount += 1
-
-            pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
-            self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
-
-    def move(self):
-        if self.vel > 0:
-            if self.x + self.vel < self.path[1]:
-                self.x += self.vel
-            else:
-                self.vel = self.vel * -1
-                self.walkCount = 0
-        else:
-            if self.x - self.vel > self.path[0]:
-                self.x += self.vel
-            else:
-                self.vel = self.vel * -1
-                self.walkCount = 0
-
-    def hit(self):
-        if self.mon_health > 0:
-            self.mon_health -= 1
-        else:
-            self.visible = False 
          
 class Monster2_1(object):
     walkRight = [pygame.image.load('image/NR.png'), pygame.image.load('image/NR.png'), pygame.image.load('image/NR1.png'), pygame.image.load('image/NR2.png'), pygame.image.load('image/NR3.png'), pygame.image.load('image/NR4.png'), pygame.image.load('image/NR5.png'), pygame.image.load('image/NR6.png'), pygame.image.load('image/NR7.png'), pygame.image.load('image/NR8.png'), pygame.image.load('image/NR9.png')]
