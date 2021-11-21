@@ -313,7 +313,7 @@ class Monster2_1(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 1
+            self.mon_health -= 0.7
             
         else:
             self.visible = False
