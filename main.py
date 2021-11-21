@@ -9,19 +9,20 @@ health = 0
 # how to play
 def game_rule():
     rule_background = pygame.image.load('image/rule.JPG')
-    next_font = pygame.font.SysFont('Arial', 25)
-    next_label = next_font.render('Click to Play', True, (0, 0, 0))
+    next_font = pygame.font.SysFont('bahnschrift', 25)
+    next_label = next_font.render('Enter to Play...', True, (0, 0, 0))
     while True:
         clock.tick(27)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()              
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                main_loop()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    main_loop()
 
         screen.blit(rule_background, (0, 0))
-        screen.blit(next_label, (10, 410))
+        screen.blit(next_label, (15, 430))
         pygame.display.update()
 
 # start game 
@@ -29,34 +30,34 @@ def start_menu():
     # running = True
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 44)
-    menu_font = pygame.font.SysFont('bahnschrift', 23)  
+    menu_font = pygame.font.SysFont('bahnschrift', 28)  
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
         title_label = title_font.render('Welcome', True, (0, 0, 0))
         title2_label = title_font.render('to', True, (0, 0, 0))
         title3_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
-        start_label = menu_font.render('Click To Start', True, (0, 0, 0), text_background_color)  
-        way_label = menu_font.render('Press ENTER to see \'How to Play\'', True, (0, 0, 0), text_background_color)
-        senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
+        start_label = menu_font.render('Enter To Start', True, (0, 0, 0), text_background_color)  
+        way_label = menu_font.render('Shift to see \'How to Play\'', True, (0, 0, 0), text_background_color)
+        #senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
         screen.blit(title_label, (135, 25))
         screen.blit(title2_label, (200, 85))
         screen.blit(title3_label, (20, 140))
-        screen.blit(start_label, (10, 290))
-        screen.blit(way_label,(10,340))
-        screen.blit(senario_label,(10, 390))
+        screen.blit(start_label, (10, 330))
+        screen.blit(way_label,(10,380))
+        #screen.blit(senario_label,(10, 390))
         
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-            elif event.type == pygame.MOUSEBUTTONDOWN :
-                main_loop()
+            #elif event.type == pygame.MOUSEBUTTONDOWN :
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN: 
+                if event.key == pygame.K_RETURN:
+                    main_loop()
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     game_rule()
-            #elif event.type == pygame.KEYDOWN:
                 #if event.key == pygame.K_RETURN: 
                     # 시나리오 설명 장면 
            
@@ -70,10 +71,9 @@ def death_screen():
     # death_screen volume 2 -> 4
 
     death_font = pygame.font.SysFont('bahnschrift', 100)
-    death_option_font = pygame.font.SysFont('bahnschrift', 40)
+    death_option_font = pygame.font.SysFont('bahnschrift', 30)
     death_label = death_font.render('You Died', True, (255, 0, 0))
-    death_option = death_option_font.render('Press ENTER To Quit', True, (0, 0, 0))
-    #score_label = death_option_font.render(f'Final Score: {player.score}', True, (0, 0, 0))
+    death_option = death_option_font.render('ENTER To Quit', True, (0, 0, 0))
 
     # Death screen Loop
     #running = True
@@ -89,7 +89,7 @@ def death_screen():
 
         screen.blit(background, (0, 0))
         screen.blit(death_label, (30, 40))
-        screen.blit(death_option, (50, 165))
+        screen.blit(death_option, (130, 165))
         #screen.blit(score_label, (225, 75))
         pygame.display.update()
       
@@ -98,7 +98,7 @@ def death_screen():
 def success_screen():  
     pygame.mixer.music.load('sound/gameclear_2.wav')  
     pygame.mixer.music.play(-1) 
-    pygame.mixer.music.set_volume(.4)
+    pygame.mixer.music.set_volume(.2)
 
     success_background = pygame.image.load('image/mission_clear.png')
 
