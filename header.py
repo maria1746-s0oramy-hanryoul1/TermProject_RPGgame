@@ -90,8 +90,8 @@ class Attack(object):
 
 
 class Monster1_1(object):
-    walkRight = [pygame.image.load('image/nbr1.png'), pygame.image.load('image/nbr1.png'), pygame.image.load('image/nbr2.png'),pygame.image.load('image/nbr2.png'), pygame.image.load('image/nbr3.png'), pygame.image.load('image/nbr4.png'), pygame.image.load('image/nbr5.png'), pygame.image.load('image/nbr6.png'), pygame.image.load('image/nbr7.png'), pygame.image.load('image/nbr8.png'), pygame.image.load('image/nbr9.png')]
-    walkLeft = [pygame.image.load('image/nbl1.png'), pygame.image.load('image/nbl1.png'), pygame.image.load('image/nbl2.png'), pygame.image.load('image/nbl2.png'),pygame.image.load('image/nbl3.png'), pygame.image.load('image/nbL4.png'), pygame.image.load('image/nbl5.png'), pygame.image.load('image/nbl6.png'), pygame.image.load('image/nbl7.png'), pygame.image.load('image/nbl8.png'), pygame.image.load('image/nbl9.png')]
+    walkRight = [pygame.image.load('image/nbr1.png'), pygame.image.load('image/nbr2.png'), pygame.image.load('image/nbr3.png'), pygame.image.load('image/nbr4.png'), pygame.image.load('image/nbr5.png'), pygame.image.load('image/nbr6.png'), pygame.image.load('image/nbr7.png'), pygame.image.load('image/nbr8.png'), pygame.image.load('image/nbr9.png')]
+    walkLeft = [pygame.image.load('image/nbl1.png'), pygame.image.load('image/nbl2.png'),pygame.image.load('image/nbl3.png'), pygame.image.load('image/nbL4.png'), pygame.image.load('image/nbl5.png'), pygame.image.load('image/nbl6.png'), pygame.image.load('image/nbl7.png'), pygame.image.load('image/nbl8.png'), pygame.image.load('image/nbl9.png')]
 
     def __init__(self, x, y, width, height, end):
         self.x = x
@@ -110,7 +110,7 @@ class Monster1_1(object):
     def draw(self,screen):
         self.move()
         if self.visible:
-            if self.walkCount + 1 >= 33:
+            if self.walkCount + 1 >= 27:
                 self.walkCount = 0
 
             if self.vel > 0:

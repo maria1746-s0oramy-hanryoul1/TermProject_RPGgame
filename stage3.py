@@ -23,7 +23,7 @@ def stage3() :
     ninja3_1 = Monster3_1(400, 340, 64, 64, 700)
     ninja3_2 = Monster3_2(200, 390, 64, 64, 700)
     ninja3_3 = Monster3_2(550, 390, 64, 64, 700)
-    ninja3_4 = Monster3_2(700, 390, 64, 64, 700) 
+    ninja3_4 = Monster3_2(700, 390, 64, 64, 700)
     shootLoop = 0
     bullets = []
     run = True
