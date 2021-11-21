@@ -9,7 +9,7 @@ health = 0
 # how to play
 def game_rule():
     rule_background = pygame.image.load('image/rule.JPG')
-    next_font = pygame.font.SysFont('bahnschrift', 25)
+    next_font = pygame.font.SysFont('bahnschrift', 20)
     next_label = next_font.render('Enter to Play...', True, (0, 0, 0))
     while True:
         clock.tick(27)
