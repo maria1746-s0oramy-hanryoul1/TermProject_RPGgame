@@ -21,9 +21,9 @@ font = pygame.font.SysFont('comicsans', 30, True)
 def stage3() : 
     global man
     ninja3_1 = Monster3_1(400, 340, 64, 64, 700)
-    ninja3_2 = Monster3_2(100, 390, 64, 64, 700)
-    ninja3_3 = Monster3_2(750, 390, 64, 64, 700)
-    ninja3_4 = Monster3_2(500, 390, 64, 64, 700) 
+    ninja3_2 = Monster3_2(200, 390, 64, 64, 700)
+    ninja3_3 = Monster3_2(550, 390, 64, 64, 700)
+    ninja3_4 = Monster3_2(700, 390, 64, 64, 700) 
     shootLoop = 0
     bullets = []
     run = True
@@ -35,7 +35,6 @@ def stage3() :
             if man.hitbox[1] < ninja3_1.hitbox[1] + ninja3_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_1.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3_1.hitbox[0] and man.hitbox[0] < ninja3_1.hitbox[0] + ninja3_1.hitbox[2]:
                     man.hit()
-                    # ninja3_1 = Monster3(600, 410, 64, 64, 700)
                     
         if ninja3_1.mon_health <= 0 : 
             ninja3_1.visible = False 
@@ -58,7 +57,6 @@ def stage3() :
             if man.hitbox[1] < ninja3_2.hitbox[1] + ninja3_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_2.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3_2.hitbox[0] and man.hitbox[0] < ninja3_2.hitbox[0] + ninja3_2.hitbox[2]:
                     man.hit()
-                    # ninja3_2 = Monster3(600, 410, 64, 64, 700)
                     
         if ninja3_2.mon_health <= 0 : 
             ninja3_2.visible = False 
@@ -81,7 +79,6 @@ def stage3() :
             if man.hitbox[1] < ninja3_3.hitbox[1] + ninja3_3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_3.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3_3.hitbox[0] and man.hitbox[0] < ninja3_3.hitbox[0] + ninja3_3.hitbox[2]:
                     man.hit()
-                    # ninja3_3 = Monster3(600, 410, 64, 64, 700)
                     
         if ninja3_3.mon_health <= 0 : 
             ninja3_3.visible = False 

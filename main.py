@@ -98,7 +98,7 @@ def death_screen():
 def success_screen():  
     pygame.mixer.music.load('sound/gameclear_2.wav')  
     pygame.mixer.music.play(-1) 
-    pygame.mixer.music.set_volume(.2)
+    pygame.mixer.music.set_volume(.4)
 
     success_background = pygame.image.load('image/mission_clear.png')
 

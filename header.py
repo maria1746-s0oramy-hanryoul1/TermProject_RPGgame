@@ -483,8 +483,7 @@ class Monster2_3(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 0.7
-             #생명 감소 속도 1 -> 0.7
+            self.mon_health -= 1
             
         else:
             self.visible = False
@@ -541,7 +540,8 @@ class Monster2_4(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 1
+            self.mon_health -= 0.7
+            #생명 감소 속도 1 -> 0.7
             
         else:
             self.visible = False
@@ -561,7 +561,7 @@ class Monster3_1(object):
         self.walkCount = 0
         self.vel = 3
         self.hitbox = (self.x + 17, self.y + 15, 70, 130)
-        self.mon_health = 20
+        self.mon_health = 15
         self.visible = True
 
     def draw(self,screen):
@@ -598,7 +598,7 @@ class Monster3_1(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 0.4
+            self.mon_health -= 0.2
         else:
             self.visible = False
 

@@ -23,7 +23,7 @@ def stage2() :
     ninja2_1 = Monster2_1(100, 410, 64, 64, 700)
     ninja2_2 = Monster2_2(300, 410, 64, 64, 700)
     ninja2_3 = Monster2_3(600, 250, 64, 64, 700)
-    ninja2_4 = Monster2_4(400, 250, 64, 64, 700)
+    ninja2_4 = Monster2_4(200, 250, 64, 64, 700)
     shootLoop = 0
     bullets = []
     run = True
@@ -35,7 +35,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_1.hitbox[1] + ninja2_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_1.hitbox[1] :
                     if man.hitbox[0] + man.hitbox[2] > ninja2_1.hitbox[0] and man.hitbox[0] < ninja2_1.hitbox[0] + ninja2_1.hitbox[2]:
                         man.hit()
-                        # ninja2_1 = Monster2_1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치
                         
         if ninja2_1.mon_health <= 0 : 
             ninja2_1.visible = False
@@ -60,7 +59,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_2.hitbox[1] + ninja2_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_2.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja2_2.hitbox[0] and man.hitbox[0] < ninja2_2.hitbox[0] + ninja2_2.hitbox[2]:
                         man.hit()
-                        # ninja2_2 = Monster2_2(600, 410, 64, 64, 700)
 
         if ninja2_2.mon_health <= 0 : 
             ninja2_2.visible = False
@@ -85,7 +83,6 @@ def stage2() :
                 if man.hitbox[1] < ninja2_3.hitbox[1] + ninja2_3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja2_3.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja2_3.hitbox[0] and man.hitbox[0] < ninja2_3.hitbox[0] + ninja2_3.hitbox[2]:
                         man.hit()
-                        # ninja2_3 = Monster2_3(600, 410, 64, 64, 700)
 
         if ninja2_3.mon_health <= 0 : 
             ninja2_3.visible = False
