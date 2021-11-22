@@ -28,6 +28,9 @@ def game_rule():
 # start game 
 def start_menu():
     # running = True
+    #music = pygame.mixer.music.load('sound/backsound2.mp3')
+    #pygame.mixer.music.play(-1)
+    #pygame.mixer.music.set_volume(.2) 
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 44)
     menu_font = pygame.font.SysFont('bahnschrift', 28)  
