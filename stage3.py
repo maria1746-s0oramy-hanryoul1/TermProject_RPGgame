@@ -11,6 +11,7 @@ music = pygame.mixer.music.load('sound/backsound3.wav')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(.2) 
 
+stage3 = pygame.image.load('stage3.png')
 bg = pygame.image.load("image/back3.png")
 char = pygame.image.load('image/bl1.png')
 char_life = pygame.image.load('image/heart.png') #캐릭터 목숨 
