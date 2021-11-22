@@ -160,6 +160,7 @@ def success_screen():
         screen.blit(quit_label, (330, 460))
         pygame.display.update()
 
+# main loop
 def main_loop() :   
     global health
     level1()
