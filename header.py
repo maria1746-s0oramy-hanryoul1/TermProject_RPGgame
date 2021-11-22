@@ -60,9 +60,7 @@ class Player(object):
         self.standing = True
         self.health -= 1
         self.neg = 1 
-        #font1 = pygame.font.SysFont('comicsans', 100)
-        #text = font1.render('-5', 1, (255,0,0))
-        #screen.blit(text, (400 - (text.get_width()/2),200))
+
         broken_heart = pygame.image.load('image/broken_heart.png') #충돌 시 하트 -1 이미지
         screen.blit(broken_heart, (400 - (broken_heart.get_width()/2), 50))
         pygame.display.update()
