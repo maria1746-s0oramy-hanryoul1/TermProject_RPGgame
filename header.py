@@ -523,7 +523,7 @@ class Monster3_1(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 30, self.y + 30, 45, 100)
-            pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
+            # pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
