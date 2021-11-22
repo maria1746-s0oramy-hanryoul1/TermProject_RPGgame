@@ -63,6 +63,46 @@ def start_menu():
            
         # running = False  # After main_loop (player loses), the game quits
 
+#stage
+def level1():
+    stage1 = pygame.image.load('image/stage1.png')
+    screen.blit(stage1, (0,0))
+    pygame.display.update()
+    i = 0
+    while i < 200:
+        pygame.time.delay(10)
+        i += 1
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                i = 201
+                pygame.quit()
+
+def level2():
+    stage2 = pygame.image.load('image/stage2.png')
+    screen.blit(stage2, (0,0))
+    pygame.display.update()
+    i = 0
+    while i < 200:
+        pygame.time.delay(10)
+        i += 1
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                i = 201
+                pygame.quit()
+
+def level3():
+    stage3 = pygame.image.load('image/stage3.png')
+    screen.blit(stage3, (0,0))
+    pygame.display.update()
+    i = 0
+    while i < 200:
+        pygame.time.delay(10)
+        i += 1
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                i = 201
+                pygame.quit()
+
 # player's death
 def death_screen():  
     pygame.mixer.music.load('sound/death_theme.mp3')  
@@ -126,13 +166,15 @@ def success_screen():
 
 def main_loop() :   
     global health
+    level1()
     health = stage1()    
-    if health <= 0 : death_screen()        
+    if health <= 0 : death_screen()  
+    level2()      
     health = stage2()              
     if health <= 0 : death_screen()
+    level3()
     health = stage3()
     if health <= 0 : death_screen()
-    
     if health > 0 : success_screen()  
 
 start_menu() 
