@@ -123,7 +123,6 @@ def success_screen():
         screen.blit(clear_label, (170, 50))
         screen.blit(quit_label, (330, 460))
         pygame.display.update()
-      
 
 def main_loop() :   
     global health
