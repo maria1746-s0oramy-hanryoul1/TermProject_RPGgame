@@ -63,7 +63,7 @@ def start_menu():
            
         # running = False  # After main_loop (player loses), the game quits
 
-#stage
+#stage connect
 def level1():
     stage1 = pygame.image.load('image/stage1.png')
     screen.blit(stage1, (0,0))
