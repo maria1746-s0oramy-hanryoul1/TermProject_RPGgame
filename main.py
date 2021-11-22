@@ -104,6 +104,8 @@ def success_screen():
 
     clear_font = pygame.font.SysFont('bahnschrift', 50)
     clear_label = clear_font.render('You got Manekineko!', True, (0, 0, 0))
+    quit_font = pygame.font.SysFont('bahnschrift', 24)
+    quit_label = quit_font.render('Enter to Quit', True, (0, 0, 0))
 
     # Success screen Loop
     #running = True
@@ -119,6 +121,7 @@ def success_screen():
 
         screen.blit(success_background, (0, 0))
         screen.blit(clear_label, (170, 50))
+        screen.blit(quit_label, (330, 460))
         pygame.display.update()
       
 
