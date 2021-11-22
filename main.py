@@ -58,10 +58,6 @@ def start_menu():
                     main_loop()
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     game_rule()
-                #if event.key == pygame.K_RETURN: 
-                    # 시나리오 설명 장면 
-           
-        # running = False  # After main_loop (player loses), the game quits
 
 #stage connect
 def level1():
