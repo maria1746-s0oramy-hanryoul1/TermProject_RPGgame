@@ -37,16 +37,14 @@ def start_menu():
     while True:
         screen.blit(background, (0, 0))  
         # move Label To screen
-        title_label = title_font.render('Welcome', True, (0, 0, 0))
-        title2_label = title_font.render('to', True, (0, 0, 0))
-        title3_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
-        start_label = menu_font.render('Enter To Start', True, (0, 0, 0), text_background_color)  
-        way_label = menu_font.render('Shift to see \'How to Play\'', True, (0, 0, 0), text_background_color)
+        title_label = title_font.render('Welcome to', True, (0, 0, 0))
+        title2_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
+        start_label = menu_font.render('Enter to \'Start\'', True, (0, 0, 0), text_background_color)  
+        way_label = menu_font.render('Shift to \'How to Play\'', True, (0, 0, 0), text_background_color)
         #senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
 
-        screen.blit(title_label, (135, 25))
-        screen.blit(title2_label, (200, 85))
-        screen.blit(title3_label, (20, 140))
+        screen.blit(title_label, (110, 40))
+        screen.blit(title2_label, (20, 110))
         screen.blit(start_label, (10, 330))
         screen.blit(way_label,(10,380))
         #screen.blit(senario_label,(10, 390))
