@@ -251,7 +251,7 @@ class Monster1_3(object):
             else:
                 self.vel = self.vel * -1
                 self.walkCount = 0
-
+                              
     def hit(self):
         if self.mon_health > 0:
             self.mon_health -= 1
