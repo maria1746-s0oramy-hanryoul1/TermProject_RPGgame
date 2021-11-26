@@ -7,7 +7,7 @@ pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")
 clock = pygame.time.Clock()
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
-music = pygame.mixer.music.load('sound/backsound3.wav')
+music = pygame.mixer.music.load('sound/backsound.wav')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(.2)
 
