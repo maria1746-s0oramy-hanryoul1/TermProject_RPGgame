@@ -133,7 +133,7 @@ def death_screen():
   
 # mission clear
 def success_screen():  
-    pygame.mixer.music.load('sound/gameclear_2.wav')  
+    pygame.mixer.music.load('sound/gameclear.wav')  
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.2)
 
