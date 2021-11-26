@@ -102,7 +102,7 @@ def level3():
 
 # player's death
 def death_screen():  
-    pygame.mixer.music.load('sound/death_theme.mp3')  
+    pygame.mixer.music.load('sound/death.mp3')  
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.4)
     # death_screen volume 2 -> 4
