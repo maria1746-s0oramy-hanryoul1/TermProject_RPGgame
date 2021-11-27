@@ -1,4 +1,5 @@
 # call header & stage 1,2,3
+from pygame.constants import K_RIGHT
 from header import *
 #from scenario import *
 from stage1 import *
@@ -53,10 +54,69 @@ def start_menu():
             #elif event.type == pygame.MOUSEBUTTONDOWN :
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    main_loop()
+                    scenario1()
+                    #main_loop()
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     game_rule()
 
+#show scenario
+def scenario1():
+    scenario1 = pygame.image.load('image/scenario1.png')
+    while True:
+        pygame.display.update()
+        for event in pygame.event.get():
+            screen.blit(scenario1, (0,0))
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                scenario2()
+
+def scenario2():
+    scenario2 = pygame.image.load('image/scenario2.png')
+    while True:
+        pygame.display.update()
+        for event in pygame.event.get():
+            screen.blit(scenario2, (0,0))
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                scenairo3()
+
+def scenairo3():
+    scenario3 = pygame.image.load('image/scenario3.png')
+    while True:
+        pygame.display.update()
+        for event in pygame.event.get():
+            screen.blit(scenario3, (0,0))
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                scenario4()
+
+def scenario4():
+    scenario4 = pygame.image.load('image/scenario4.png')
+    while True:
+        pygame.display.update()
+        for event in pygame.event.get():
+            screen.blit(scenario4, (0,0))
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                scenario5()
+
+def scenario5():
+    scenario5 = pygame.image.load('image/scenario5.png')
+    while True:
+        pygame.display.update()
+        for event in pygame.event.get():
+            screen.blit(scenario5, (0,0))
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                main_loop()
+
+        
+                   
 #stage connect
 def level1():
     stage1 = pygame.image.load('image/stage1.png')
@@ -161,7 +221,7 @@ def success_screen():
 # main loop
 def main_loop() :   
     global health
-    #scenario()
+    #scenario1()
     level1()
     health = stage1()    
     if health <= 0 : death_screen()  
