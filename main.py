@@ -20,7 +20,6 @@ def game_rule():
                 sys.exit()              
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    #scenario()
                     main_loop()
 
         screen.blit(rule_background, (0, 0))
@@ -29,10 +28,6 @@ def game_rule():
 
 # start game 
 def start_menu():
-    # running = True
-    #music = pygame.mixer.music.load('sound/backsound2.mp3')
-    #pygame.mixer.music.play(-1)
-    #pygame.mixer.music.set_volume(.2) 
     text_background_color = (255, 255, 255)
     title_font = pygame.font.SysFont('bahnschrift', 44)
     menu_font = pygame.font.SysFont('bahnschrift', 28)  
@@ -166,6 +161,7 @@ def success_screen():
 # main loop
 def main_loop() :   
     global health
+    #scenario()
     level1()
     health = stage1()    
     if health <= 0 : death_screen()  
