@@ -1,5 +1,6 @@
 # call header & stage 1,2,3
 from header import *
+#from scenario import *
 from stage1 import *
 from stage2 import *
 from stage3 import *
@@ -19,6 +20,7 @@ def game_rule():
                 sys.exit()              
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
+                    #scenario()
                     main_loop()
 
         screen.blit(rule_background, (0, 0))
