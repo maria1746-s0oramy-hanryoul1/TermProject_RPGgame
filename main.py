@@ -51,6 +51,7 @@ def start_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
+            #elif event.type == pygame.MOUSEBUTTONDOWN :
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     scenario1()
@@ -232,4 +233,4 @@ def main_loop() :
     if health <= 0 : death_screen()
     if health > 0 : success_screen()  
 
-start_menu() 
+start_menu()

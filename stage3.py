@@ -211,12 +211,3 @@ def stage3() :
 
         if (ninja3_1.mon_health <= 0) and (ninja3_2.mon_health <= 0) and (ninja3_3.mon_health <= 0) and (ninja3_4.mon_health <= 0) :
             return man.health
-
-
-        """
-        if man.health == 0 :
-            return man.health, score
-
-        if ninja3_1.health == 0 :
-            return man.health, score
-        """
