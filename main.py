@@ -175,6 +175,7 @@ def death_screen():
     death_option_font = pygame.font.SysFont('bahnschrift', 30)
     death_label = death_font.render('You Died', True, (255, 0, 0))
     death_option = death_option_font.render('ENTER To Quit', True, (0, 0, 0))
+    death_option2 = death_option_font.render('Space To Retry', True, (0, 0, 0))
 
     # Death screen Loop
     #running = True
@@ -192,10 +193,11 @@ def death_screen():
                     man.x = 50
                     main_loop()
 
+
         screen.blit(background, (0, 0))
-        screen.blit(death_label, (30, 40))
-        screen.blit(death_option, (130, 165))
-        #screen.blit(score_label, (225, 75))
+        screen.blit(death_label, (30, 30))
+        screen.blit(death_option, (130, 155))
+        screen.blit(death_option2, (120, 200))
         pygame.display.update()
       
   
