@@ -186,12 +186,11 @@ def death_screen():
                 sys.exit()              
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    sys.exit()
+                   sys.exit()
 
         screen.blit(background, (0, 0))
         screen.blit(death_label, (30, 40))
         screen.blit(death_option, (130, 165))
-        #screen.blit(score_label, (225, 75))
         pygame.display.update()
       
   
