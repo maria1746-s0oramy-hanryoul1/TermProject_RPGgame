@@ -195,9 +195,9 @@ def death_screen():
 
 
         screen.blit(background, (0, 0))
-        screen.blit(death_label, (30, 30))
-        screen.blit(death_option, (130, 155))
-        screen.blit(death_option2, (120, 200))
+        screen.blit(death_label, (30, 20))
+        screen.blit(death_option, (130, 145))
+        screen.blit(death_option2, (120, 190))
         pygame.display.update()
       
   
