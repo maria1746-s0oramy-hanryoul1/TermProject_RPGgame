@@ -46,6 +46,7 @@ def start_menu():
         screen.blit(title2_label, (20, 110))
         screen.blit(start_label, (10, 330))
         screen.blit(way_label,(10,380))
+
         #screen.blit(senario_label,(10, 390))
         
         pygame.display.update()
@@ -56,7 +57,7 @@ def start_menu():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     scenario1()
-                    #main_loop()
+                    # main_loop()
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     game_rule()
 
@@ -121,7 +122,6 @@ def scenario5():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     main_loop()
-
         
                    
 #stage connect
@@ -187,6 +187,10 @@ def death_screen():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     sys.exit()
+                if event.key == pygame.K_SPACE:
+                    man.health = 3
+                    man.x = 50
+                    main_loop()
 
         screen.blit(background, (0, 0))
         screen.blit(death_label, (30, 40))

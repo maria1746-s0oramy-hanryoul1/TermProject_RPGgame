@@ -1,4 +1,5 @@
 import pygame
+import time
 import sys
 
 clock = pygame.time.Clock()
@@ -8,6 +9,7 @@ background = pygame.image.load("image/back.jpg")
 # player right & left run image upload
 walkRight = [pygame.image.load('image/br1.png'), pygame.image.load('image/br2.png'), pygame.image.load('image/br3.png'), pygame.image.load('image/br4.png'), pygame.image.load('image/br5.png'), pygame.image.load('image/br6.png'), pygame.image.load('image/br7.png'), pygame.image.load('image/br8.png'), pygame.image.load('image/br9.png')]
 walkLeft = [pygame.image.load('image/bl1.png'), pygame.image.load('image/bl2.png'), pygame.image.load('image/bl3.png'), pygame.image.load('image/bl4.png'), pygame.image.load('image/bl5.png'), pygame.image.load('image/bl6.png'), pygame.image.load('image/bl7.png'), pygame.image.load('image/bl8.png'), pygame.image.load('image/bl9.png')]
+
 
 class Player(object):
     def __init__(self,x,y,width,height):
@@ -25,6 +27,8 @@ class Player(object):
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
         self.health = 3
         self.neg = 1 # 점프할때 씀
+        self.flag = 0
+        self.hittime = 0
 
     def draw(self, screen):
         if self.walkCount + 1 >= 27:
@@ -43,11 +47,18 @@ class Player(object):
             else:
                 screen.blit(walkLeft[0], (self.x, self.y))
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
-        #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
+        
+    def hit(self) :
+        if self.flag == 0 :             # 무적 아닌 경우
+            self.flag = 1                           # 무적이라 표시
+            self.hittime = time.time()              # 현재 시간 저장
+            self.real_hit()                         # 체력 -1 1초 딜레이
+        else :                          # 무적인 경우
+            if time.time() - self.hittime > 3 :     # 3초 지났다면
+                self.flag = 0                       # 무적 아닌걸로 변경
 
-     # 몬스터 한테 맞았을 경우
-    def hit(self):     
-        self.x = 50
+    # 몬스터 한테 맞았을 경우
+    def real_hit(self):
         self.y = 410
         self.width = 64
         self.height = 64
@@ -58,21 +69,13 @@ class Player(object):
         self.walkCount = 0
         self.jumpCount = 10
         self.standing = True
-        self.health -= 1
         self.neg = 1 
+        self.health -= 1
 
         broken_heart = pygame.image.load('image/broken_heart.png') #충돌 시 하트 -1 이미지
         screen.blit(broken_heart, (400 - (broken_heart.get_width()/2), 50))
-        pygame.display.update()
-        i = 0
-        while i < 200:
-            pygame.time.delay(10)
-            i += 1
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    i = 201
-                    pygame.quit()
-
+        pygame.display.update()     #그냥 1초 딜레이 주면 되지 왜 10ms씩 200번 while도는지 모르겠음
+        pygame.time.delay(1000)
 
 class Attack(object):
     def __init__(self,x,y,radius,color,facing):

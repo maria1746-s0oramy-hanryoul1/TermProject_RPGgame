@@ -30,6 +30,7 @@ def stage1() :
     run = True
     while run:
         clock.tick(30)
+        
         if man.health == 0 :
             return man.health
 
@@ -121,7 +122,8 @@ def stage1() :
             if ninja1_4.mon_health > 0 :
                 if man.hitbox[1] < ninja1_4.hitbox[1] + ninja1_4.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_4.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja1_4.hitbox[0] and man.hitbox[0] < ninja1_4.hitbox[0] + ninja1_4.hitbox[2]:
-                        man.hit()
+                        man.hit()   
+                                                 
 
         if ninja1_4.mon_health <= 0 :
             ninja1_4.visible = False
