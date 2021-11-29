@@ -69,6 +69,7 @@ def scenario1():
             screen.blit(scenario1, (0,0))
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit() 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario2()
 
@@ -80,6 +81,7 @@ def scenario2():
             screen.blit(scenario2, (0,0))
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit() 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenairo3()
 
@@ -91,6 +93,7 @@ def scenairo3():
             screen.blit(scenario3, (0,0))
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit() 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario4()
 
@@ -102,6 +105,7 @@ def scenario4():
             screen.blit(scenario4, (0,0))
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit() 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario5()
 
@@ -113,6 +117,7 @@ def scenario5():
             screen.blit(scenario5, (0,0))
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit() 
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     main_loop()
