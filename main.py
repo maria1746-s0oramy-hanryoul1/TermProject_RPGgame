@@ -21,7 +21,8 @@ def game_rule():
                 sys.exit()              
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    main_loop()
+                    scenario1()
+                    # main_loop()
 
         screen.blit(rule_background, (0, 0))
         screen.blit(next_label, (15, 430))
@@ -67,7 +68,7 @@ def scenario1():
         for event in pygame.event.get():
             screen.blit(scenario1, (0,0))
             if event.type == pygame.QUIT:
-                return False
+                pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario2()
 
@@ -78,7 +79,7 @@ def scenario2():
         for event in pygame.event.get():
             screen.blit(scenario2, (0,0))
             if event.type == pygame.QUIT:
-                return False
+                pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenairo3()
 
@@ -89,7 +90,7 @@ def scenairo3():
         for event in pygame.event.get():
             screen.blit(scenario3, (0,0))
             if event.type == pygame.QUIT:
-                return False
+                pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario4()
 
@@ -100,7 +101,7 @@ def scenario4():
         for event in pygame.event.get():
             screen.blit(scenario4, (0,0))
             if event.type == pygame.QUIT:
-                return False
+                pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 scenario5()
 
@@ -111,9 +112,10 @@ def scenario5():
         for event in pygame.event.get():
             screen.blit(scenario5, (0,0))
             if event.type == pygame.QUIT:
-                return False
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                main_loop()
+                pygame.quit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    main_loop()
 
         
                    
