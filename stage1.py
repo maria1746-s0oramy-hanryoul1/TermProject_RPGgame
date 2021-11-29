@@ -30,12 +30,6 @@ def stage1() :
     run = True
     while run:
         clock.tick(30)
-        
-        if man.health == 0 :
-            return man.health
-
-        if (ninja1_1.mon_health == 0) and (ninja1_2.mon_health == 0) and (ninja1_3.mon_health == 0) and (ninja1_4.mon_health == 0):
-            return man.health
 
         # ninja1_1 
         if ninja1_1.visible == True:   # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5

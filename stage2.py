@@ -20,7 +20,7 @@ font = pygame.font.SysFont('comicsans', 30, True)
 
 def stage2() :
     global man
-    man = Player(50, 410, 64, 64) 
+    man.x = 50
     ninja2_1 = Monster2_1(100, 390, 64, 64, 700) #run
     ninja2_2 = Monster2_2(300, 410, 64, 64, 700) #attack
     ninja2_3 = Monster2_3(600, 250, 64, 64, 700) #glide
