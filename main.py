@@ -189,6 +189,10 @@ def death_screen():
                 if event.key == pygame.K_RETURN:
                     sys.exit()
                 if event.key == pygame.K_SPACE:
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load('sound/backsound.wav')
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(.2)
                     man.health = 3
                     man.x = 50
                     main_loop()
