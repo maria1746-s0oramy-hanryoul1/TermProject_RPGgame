@@ -387,7 +387,7 @@ class Monster2_3(object):
         self.walkCount = 0
         self.vel = 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10  # 적의 수명 
+        self.mon_health = 10  
         self.visible = True
 
     def draw(self,screen):
