@@ -34,7 +34,7 @@ def stage1() :
     while run:
         clock.tick(30)
 
-        # ninja1_1 
+        # ninja1_1 몬스터와 플레이어가 충돌할 경우
         if ninja1_1.visible == True:   
             if ninja1_1.mon_health > 0 :
                 if man.hitbox[1] < ninja1_1.hitbox[1] + ninja1_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_1.hitbox[1] :
@@ -42,11 +42,11 @@ def stage1() :
                         man.hit()
                         
                         
-
+        # 몬스터의 목숨이 0보다 작으면 화면에서 사라짐
         if ninja1_1.mon_health <= 0 : 
             ninja1_1.visible = False
         
-        
+        # 몬스터가 공격 당했을 경우
         for bullet in bullets:
             if ninja1_1.mon_health > 0 :
                 if bullet.y - bullet.radius < ninja1_1.hitbox[1] + ninja1_1.hitbox[3] and bullet.y + bullet.radius > ninja1_1.hitbox[1]:
@@ -133,7 +133,7 @@ def stage1() :
             else:
                 bullets.pop(bullets.index(bullet))
 
-
+        # 슈팅 개수 제한
         if shootLoop > 0:
             shootLoop += 1
         if shootLoop > 3:
@@ -143,6 +143,7 @@ def stage1() :
             if event.type == pygame.QUIT:
                 run = False
 
+        # 플레이어 공격 및 이동 key 설정 
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_SPACE] and shootLoop == 0:
@@ -171,11 +172,11 @@ def stage1() :
             man.standing = True
             man.walkCount = 0
             
-        if not(man.isJump): # 점프 아닐때 
+        if not(man.isJump): 
             if keys[pygame.K_UP]:
                 man.isJump = True
                 man.walkCount = 0
-        else:                   # 점프 중일 때 
+        else:                   
             if man.jumpCount >= -10:
                 man.neg = 1
                 if man.jumpCount < 0:
@@ -184,8 +185,9 @@ def stage1() :
                 man.jumpCount -= 1
             else:
                 man.isJump = False
-                man.jumpCount = 10  
-                
+                man.jumpCount = 10     
+
+        # 이미지 및 글씨 화면출력         
         screen.blit(bg, (0,0))
         screen.blit(char_life, (30, 20)) 
         life = font.render('X ' + str(man.health), 1, (0,0,0))
@@ -207,4 +209,4 @@ def stage1() :
             return man.health
 
         if (ninja1_1.mon_health <= 0) and (ninja1_2.mon_health <= 0) and (ninja1_3.mon_health <= 0) and (ninja1_4.mon_health <= 0) :
-            return man.health   
+            return man.health  
