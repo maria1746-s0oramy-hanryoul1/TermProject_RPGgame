@@ -23,13 +23,14 @@ char_life = pygame.image.load('image/heart.png')
 
 def stage1() :
     global man
-    ninja1_1 = Monster1_1(100, 385, 64, 64, 700) #run
-    ninja1_2 = Monster1_2(300, 410, 64, 64, 700) #attck
-    ninja1_3 = Monster1_2(700, 410, 64, 64, 700) #attck
-    ninja1_4 = Monster1_3(400, 380, 64, 64, 700) #jump
+    ninja1_1 = Monster1_1(100, 385, 64, 64, 700) 
+    ninja1_2 = Monster1_2(300, 410, 64, 64, 700) 
+    ninja1_3 = Monster1_2(700, 410, 64, 64, 700) 
+    ninja1_4 = Monster1_3(400, 380, 64, 64, 700) 
     shootLoop = 0
     bullets = []
     run = True
+    
     while run:
         clock.tick(30)
 
@@ -174,7 +175,7 @@ def stage1() :
             if keys[pygame.K_UP]:
                 man.isJump = True
                 man.walkCount = 0
-        else: # 점프 중일 때 
+        else:                   # 점프 중일 때 
             if man.jumpCount >= -10:
                 man.neg = 1
                 if man.jumpCount < 0:
