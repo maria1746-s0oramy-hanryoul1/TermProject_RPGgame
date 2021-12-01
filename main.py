@@ -31,7 +31,6 @@ def start_menu():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     scenario1()
-                    # main_loop()
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     game_rule()
 
