@@ -19,10 +19,10 @@ char_life = pygame.image.load('image/heart.png')
 def stage2() :
     global man
     man.x = 50
-    ninja2_1 = Monster2_1(100, 390, 64, 64, 700) #run
-    ninja2_2 = Monster2_2(300, 410, 64, 64, 700) #attack
-    ninja2_3 = Monster2_3(600, 250, 64, 64, 700) #glide
-    ninja2_4 = Monster2_4(200, 250, 64, 64, 700) #glide
+    ninja2_1 = Monster2_1(100, 390, 64, 64, 700) 
+    ninja2_2 = Monster2_2(300, 410, 64, 64, 700) 
+    ninja2_3 = Monster2_3(600, 250, 64, 64, 700) 
+    ninja2_4 = Monster2_4(200, 250, 64, 64, 700) 
     shootLoop = 0
     bullets = []
     run = True
