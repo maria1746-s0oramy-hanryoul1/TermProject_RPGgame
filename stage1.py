@@ -1,22 +1,25 @@
 # stage 1
 from header import *
 import pygame
-pygame.init()
 
-pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")
-clock = pygame.time.Clock()
+pygame.init() # pygame 모듈 초기화
+pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")  # 윈도우 타이틀 설정
+clock = pygame.time.Clock() # clock 객체 초기화 
+
+# 폰트 설정
+font = pygame.font.SysFont('comicsans', 30, True) 
+
+# 사운드 로딩
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
 music = pygame.mixer.music.load('sound/backsound.wav')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(.2)
 
+# 이미지 로딩
 bg = pygame.image.load("image/back1.png")
 char = pygame.image.load('image/br1.png')
-char_life = pygame.image.load('image/heart.png') #캐릭터 목숨 
-
-font = pygame.font.SysFont('comicsans', 30, True)
-
+char_life = pygame.image.load('image/heart.png') 
 
 def stage1() :
     global man
@@ -24,7 +27,6 @@ def stage1() :
     ninja1_2 = Monster1_2(300, 410, 64, 64, 700) #attck
     ninja1_3 = Monster1_2(700, 410, 64, 64, 700) #attck
     ninja1_4 = Monster1_3(400, 380, 64, 64, 700) #jump
-    #man = Player(50, 410, 64, 64)
     shootLoop = 0
     bullets = []
     run = True
@@ -32,13 +34,12 @@ def stage1() :
         clock.tick(30)
 
         # ninja1_1 
-        if ninja1_1.visible == True:   # 몬스터가 보이고 플레이어랑 맞았을 경우 점수 -5
+        if ninja1_1.visible == True:   
             if ninja1_1.mon_health > 0 :
                 if man.hitbox[1] < ninja1_1.hitbox[1] + ninja1_1.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_1.hitbox[1] :
                     if man.hitbox[0] + man.hitbox[2] > ninja1_1.hitbox[0] and man.hitbox[0] < ninja1_1.hitbox[0] + ninja1_1.hitbox[2]:
                         man.hit()
-                        # ninja1_1 = Monster1(600, 410, 64, 64, 700) #캐릭터와 충돌 시 돌아가는 위치 -> 닌자의 목숨이 회복됨
-                        #man = Player(50, 410, 64, 64)
+                        
                         
 
         if ninja1_1.mon_health <= 0 : 
@@ -64,8 +65,6 @@ def stage1() :
                 if man.hitbox[1] < ninja1_2.hitbox[1] + ninja1_2.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_2.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja1_2.hitbox[0] and man.hitbox[0] < ninja1_2.hitbox[0] + ninja1_2.hitbox[2]:
                         man.hit()
-                        # ninja1_2 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨
-                        #man = Player(50, 410, 64, 64)
 
         if ninja1_2.mon_health <= 0 : 
             ninja1_2.visible = False
@@ -90,9 +89,6 @@ def stage1() :
                 if man.hitbox[1] < ninja1_3.hitbox[1] + ninja1_3.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja1_3.hitbox[1]:
                     if man.hitbox[0] + man.hitbox[2] > ninja1_3.hitbox[0] and man.hitbox[0] < ninja1_3.hitbox[0] + ninja1_3.hitbox[2]:
                         man.hit()
-                        # ninja1_3 = Monster1(600, 410, 64, 64, 700) -> 닌자의 목숨이 회복됨 
-                        #man = Player(50, 410, 64, 64) 
-
 
         if ninja1_3.mon_health <= 0 : 
             ninja1_3.visible = False
@@ -146,21 +142,6 @@ def stage1() :
             if event.type == pygame.QUIT:
                 run = False
 
-        """    
-        for bullet in bullets:
-            if bullet.y - bullet.radius < ninja.hitbox[1] + ninja.hitbox[3] and bullet.y + bullet.radius >ninja.hitbox[1]:
-                if bullet.x + bullet.radius >ninja.hitbox[0] and bullet.x - bullet.radius < ninja.hitbox[0] + ninja.hitbox[2]:
-                    hitSound.play()
-                    ninja.hit()
-                    score += 1
-                    bullets.pop(bullets.index(bullet))
-                    
-            if bullet.x < 800 and bullet.x > 0:
-                bullet.x += bullet.vel
-            else:
-                bullets.pop(bullets.index(bullet))
-        """
-
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_SPACE] and shootLoop == 0:
@@ -189,13 +170,11 @@ def stage1() :
             man.standing = True
             man.walkCount = 0
             
-        if not(man.isJump):     # 점프 아닐때 (항상 이쪽이 돈다)
+        if not(man.isJump): # 점프 아닐때 
             if keys[pygame.K_UP]:
                 man.isJump = True
-                #man.right = False
-                #man.left = False
                 man.walkCount = 0
-        else:                   # 점프 중일 때 10~-10~10  
+        else: # 점프 중일 때 
             if man.jumpCount >= -10:
                 man.neg = 1
                 if man.jumpCount < 0:

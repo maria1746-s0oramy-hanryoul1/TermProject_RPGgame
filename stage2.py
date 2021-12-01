@@ -2,9 +2,10 @@
 from header import *
 import pygame
 
-
-pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")
 clock = pygame.time.Clock()
+
+font = pygame.font.SysFont('comicsans', 30, True)
+
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
 music = pygame.mixer.music.load('sound/backsound.wav')
@@ -13,10 +14,7 @@ pygame.mixer.music.set_volume(.2)
 
 bg = pygame.image.load("image/back2.png")
 char = pygame.image.load('image/br1.png')
-char_life = pygame.image.load('image/heart.png') #캐릭터 목숨 
-
-font = pygame.font.SysFont('comicsans', 30, True)
-
+char_life = pygame.image.load('image/heart.png') 
 
 def stage2() :
     global man
@@ -30,6 +28,7 @@ def stage2() :
     run = True
     while run:
         clock.tick(33)
+
         # ninja2_1 
         if ninja2_1.visible == True:
             if ninja2_1.mon_health > 0 :
@@ -137,21 +136,6 @@ def stage2() :
             if event.type == pygame.QUIT:
                 run = False
 
-        """
-        for bullet in bullets:
-            if bullet.y - bullet.radius < ninja_g.hitbox[1] + ninja_g.hitbox[3] and bullet.y + bullet.radius > ninja_g.hitbox[1]:
-                if bullet.x + bullet.radius > ninja_g.hitbox[0] and bullet.x - bullet.radius < ninja_g.hitbox[0] + ninja_g.hitbox[2]:
-                    hitSound.play()
-                    ninja_g.hit()
-                    score += 1
-                    bullets.pop(bullets.index(bullet))
-                    
-            if bullet.x < 800 and bullet.x > 0:
-                bullet.x += bullet.vel
-            else:
-                bullets.pop(bullets.index(bullet))
-        """
-
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_SPACE] and shootLoop == 0:
@@ -183,8 +167,6 @@ def stage2() :
         if not(man.isJump):
             if keys[pygame.K_UP]:
                 man.isJump = True
-                #man.right = False
-                #man.left = False
                 man.walkCount = 0
         else:
             if man.jumpCount >= -10:
@@ -218,4 +200,3 @@ def stage2() :
 
         if (ninja2_1.mon_health <= 0) and (ninja2_2.mon_health <= 0) and (ninja2_3.mon_health <= 0) and (ninja2_4.mon_health <= 0) :
             return man.health
-        

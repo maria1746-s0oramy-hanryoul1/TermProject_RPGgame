@@ -2,9 +2,10 @@
 from header import *
 import pygame
 
-
-pygame.display.set_caption("야마다상의 마네키네코 탈환 작전")
 clock = pygame.time.Clock()
+
+font = pygame.font.SysFont('comicsans', 30, True)
+
 bulletSound = pygame.mixer.Sound('sound/bullet.mp3')
 hitSound = pygame.mixer.Sound('sound/hit.mp3')
 music = pygame.mixer.music.load('sound/backsound.wav')
@@ -13,18 +14,15 @@ pygame.mixer.music.set_volume(.2)
 
 bg = pygame.image.load("image/back3.png")
 char = pygame.image.load('image/bl1.png')
-char_life = pygame.image.load('image/heart.png') #캐릭터 목숨 
-
-font = pygame.font.SysFont('comicsans', 30, True)
-
+char_life = pygame.image.load('image/heart.png')  
 
 def stage3() : 
     global man
     man.x = 50
-    ninja3_1 = Monster3_1(400, 340, 64, 64, 700)
-    ninja3_2 = Monster3_2(200, 390, 64, 64, 700)
-    ninja3_3 = Monster3_2(550, 390, 64, 64, 700)
-    ninja3_4 = Monster3_2(700, 390, 64, 64, 700)
+    ninja3_1 = Monster3_1(400, 340, 64, 64, 700) # stage 1,2처럼 뭔지 써주세용
+    ninja3_2 = Monster3_2(200, 390, 64, 64, 700) #
+    ninja3_3 = Monster3_2(550, 390, 64, 64, 700) #
+    ninja3_4 = Monster3_2(700, 390, 64, 64, 700) #
     shootLoop = 0
     bullets = []
     run = True
@@ -102,7 +100,6 @@ def stage3() :
             if man.hitbox[1] < ninja3_4.hitbox[1] + ninja3_4.hitbox[3] and man.hitbox[1] + man.hitbox[3] > ninja3_4.hitbox[1]:
                 if man.hitbox[0] + man.hitbox[2] > ninja3_4.hitbox[0] and man.hitbox[0] < ninja3_4.hitbox[0] + ninja3_4.hitbox[2]:
                     man.hit()
-                    # ninja3_4 = Monster3(600, 410, 64, 64, 700)
                     
         if ninja3_4.mon_health <= 0 : 
             ninja3_4.visible = False 
@@ -129,21 +126,6 @@ def stage3() :
             if event.type == pygame.QUIT:
                 run = False
 
-        """   
-        for bullet in bullets:
-            if bullet.y - bullet.radius < ninja3_1.hitbox[1] + ninja3_1.hitbox[3] and bullet.y + bullet.radius > ninja3_1.hitbox[1]:
-                if bullet.x + bullet.radius > ninja3_1.hitbox[0] and bullet.x - bullet.radius < ninja3_1.hitbox[0] + ninja3_1.hitbox[2]:
-                    hitSound.play()
-                    ninja3_1.hit()
-                    score += 1
-                    bullets.pop(bullets.index(bullet))
-                    
-            if bullet.x < 800 and bullet.x > 0:
-                bullet.x += bullet.vel
-            else:
-                bullets.pop(bullets.index(bullet))
-        """
-
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_SPACE] and shootLoop == 0:
@@ -154,7 +136,6 @@ def stage3() :
                 facing = 1
                 
             if len(bullets) < 5 :
-                # 'and ninja3_1.visible == True' 삭제
                 bullets.append(Attack(round(man.x + man.width //2), round(man.y + man.height//2), 6, (0,0,0), facing))
 
             shootLoop = 1
@@ -176,8 +157,6 @@ def stage3() :
         if not(man.isJump):
             if keys[pygame.K_UP]:
                 man.isJump = True
-                #man.right = False
-                #man.left = False
                 man.walkCount = 0
         else:
             if man.jumpCount >= -10:
@@ -201,6 +180,7 @@ def stage3() :
         ninja3_2.draw(screen)
         ninja3_3.draw(screen)
         ninja3_4.draw(screen)
+
         for bullet in bullets:
             bullet.draw(screen)
         

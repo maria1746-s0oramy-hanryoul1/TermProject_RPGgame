@@ -1,15 +1,15 @@
+# 모듈 임포트
 import pygame
 import time
 import sys
 
-clock = pygame.time.Clock()
-screen = pygame.display.set_mode((800, 500))
-background = pygame.image.load("image/back.jpg")
+clock = pygame.time.Clock()  # clock 객체 초기화
+screen = pygame.display.set_mode((800, 500))  # 그릴 화면(스크롤) 초기화 
 
-# player right & left run image upload
+# 배경 및 플레이어 이미지 로딩 
+background = pygame.image.load("image/back.jpg")
 walkRight = [pygame.image.load('image/br1.png'), pygame.image.load('image/br2.png'), pygame.image.load('image/br3.png'), pygame.image.load('image/br4.png'), pygame.image.load('image/br5.png'), pygame.image.load('image/br6.png'), pygame.image.load('image/br7.png'), pygame.image.load('image/br8.png'), pygame.image.load('image/br9.png')]
 walkLeft = [pygame.image.load('image/bl1.png'), pygame.image.load('image/bl2.png'), pygame.image.load('image/bl3.png'), pygame.image.load('image/bl4.png'), pygame.image.load('image/bl5.png'), pygame.image.load('image/bl6.png'), pygame.image.load('image/bl7.png'), pygame.image.load('image/bl8.png'), pygame.image.load('image/bl9.png')]
-
 
 class Player(object):
     def __init__(self,x,y,width,height):
@@ -26,11 +26,11 @@ class Player(object):
         self.standing = True
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
         self.health = 3
-        self.neg = 1 # 점프할때 씀
+        self.neg = 1 
         self.flag = 0
         self.hittime = 0
 
-    def draw(self, screen):
+    def draw(self, screen):   
         if self.walkCount + 1 >= 27:
             self.walkCount = 0
 
@@ -47,17 +47,18 @@ class Player(object):
             else:
                 screen.blit(walkLeft[0], (self.x, self.y))
         self.hitbox = (self.x + 17, self.y + 11, 29, 52)
-        
-    def hit(self) :
-        if self.flag == 0 :             # 무적 아닌 경우
-            self.flag = 1                           # 무적이라 표시
-            self.hittime = time.time()              # 현재 시간 저장
-            self.real_hit()                         # 체력 -1 1초 딜레이
-        else :                          # 무적인 경우
-            if time.time() - self.hittime > 3 :     # 3초 지났다면
-                self.flag = 0                       # 무적 아닌걸로 변경
 
-    # 몬스터 한테 맞았을 경우
+    # 몬스터 충돌 시 무적 설정   
+    def hit(self) : 
+        if self.flag == 0 :                     
+            self.flag = 1                           
+            self.hittime = time.time()              
+            self.real_hit()                         
+        else : 
+            if time.time() - self.hittime > 3 :     
+                self.flag = 0                      
+
+    # 몬스터한테 맞는 경우
     def real_hit(self):
         self.y = 410
         self.width = 64
@@ -71,10 +72,10 @@ class Player(object):
         self.standing = True
         self.neg = 1 
         self.health -= 1
-
-        broken_heart = pygame.image.load('image/broken_heart.png') #충돌 시 하트 -1 이미지
+    
+        broken_heart = pygame.image.load('image/broken_heart.png') 
         screen.blit(broken_heart, (400 - (broken_heart.get_width()/2), 50))
-        pygame.display.update()     #그냥 1초 딜레이 주면 되지 왜 10ms씩 200번 while도는지 모르겠음
+        pygame.display.update()     
         pygame.time.delay(1000)
 
 class Attack(object):
@@ -101,12 +102,10 @@ class Monster1_1(object):
         self.height = height
         self.end = end
         self.path = [50, self.end]
-        # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
         self.vel = 4
-        # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10
+        self.mon_health = 10  # 적의 수명 
         self.visible = True
 
     def draw(self,screen):
@@ -125,7 +124,6 @@ class Monster1_1(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -158,10 +156,8 @@ class Monster1_2(object):
         self.height = height
         self.end = end
         self.path = [50, self.end]
-        # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
         self.vel = 5
-        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -182,7 +178,6 @@ class Monster1_2(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -215,10 +210,8 @@ class Monster1_3(object):
         self.height = height
         self.end = end
         self.path = [50, self.end]
-        # self.end -> 50 (monmany2 참고)
         self.walkCount = 0
         self.vel = 4
-        # self.vel 3 -> 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10
         self.visible = True
@@ -239,7 +232,6 @@ class Monster1_3(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -275,9 +267,8 @@ class Monster2_1(object):
         self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 5
-        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10  # 적의 수명 
+        self.mon_health = 10  
         self.visible = True
 
     def draw(self,screen):
@@ -296,7 +287,6 @@ class Monster2_1(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10)) 
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -332,9 +322,8 @@ class Monster2_2(object):
         self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 5
-        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10  # 적의 수명 
+        self.mon_health = 10 
         self.visible = True
 
     def draw(self,screen):
@@ -353,7 +342,6 @@ class Monster2_2(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -371,9 +359,7 @@ class Monster2_2(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 0.8
-            # 생명 감소 속도 1 -> 0.8
-            
+            self.mon_health -= 0.8# 생명 감소 속도 
         else:
             self.visible = False
 
@@ -390,7 +376,6 @@ class Monster2_3(object):
         self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 5
-        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
         self.mon_health = 10  # 적의 수명 
         self.visible = True
@@ -411,7 +396,6 @@ class Monster2_3(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -447,9 +431,8 @@ class Monster2_4(object):
         self.path = [50, self.end]
         self.walkCount = 0
         self.vel = 5
-        # self.vel 3 -> 5
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10  # 적의 수명 
+        self.mon_health = 10  
         self.visible = True
 
     def draw(self,screen):
@@ -468,7 +451,6 @@ class Monster2_4(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -486,9 +468,7 @@ class Monster2_4(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 0.7
-            #생명 감소 속도 1 -> 0.7
-            
+            self.mon_health -= 0.7  
         else:
             self.visible = False
 
@@ -526,7 +506,6 @@ class Monster3_1(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 100, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 100 - (2 * (50 - self.mon_health)), 10)) 
             self.hitbox = (self.x, self.y + 30, 45, 100)
-            # pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -581,7 +560,6 @@ class Monster3_2(object):
             pygame.draw.rect(screen, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-            #pygame.draw.rect(screen, (255,0,0), self.hitbox,2)
 
     def move(self):
         if self.vel > 0:
@@ -603,4 +581,4 @@ class Monster3_2(object):
         else:
             self.visible = False
 
-man = Player(50, 410, 64, 64) # 시작 X축, y축, 가로 이동범위, 높이 이동범위
+man = Player(50, 410, 64, 64) 
