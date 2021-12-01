@@ -1,14 +1,41 @@
-# call header & stage 1,2,3
+# header & stage 1,2,3 불러오기
 from pygame.constants import K_RIGHT
 from header import *
-#from scenario import *
 from stage1 import *
 from stage2 import *
 from stage3 import *
    
 health = 0
 
-# how to play
+# 오프닝 
+def start_menu():
+    text_background_color = (255, 255, 255)
+    title_font = pygame.font.SysFont('bahnschrift', 44)
+    menu_font = pygame.font.SysFont('bahnschrift', 28)  
+    while True:
+        screen.blit(background, (0, 0))  
+        title_label = title_font.render('Welcome to', True, (0, 0, 0))
+        title2_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
+        start_label = menu_font.render('Enter to \'Start\'', True, (0, 0, 0), text_background_color)  
+        way_label = menu_font.render('Shift to \'How to Play\'', True, (0, 0, 0), text_background_color)
+        
+        screen.blit(title_label, (110, 40))
+        screen.blit(title2_label, (20, 110))
+        screen.blit(start_label, (10, 330))
+        screen.blit(way_label,(10,380))
+        
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    scenario1()
+                    # main_loop()
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
+                    game_rule()
+
+# 게임 방법
 def game_rule():
     rule_background = pygame.image.load('image/rule.JPG')
     next_font = pygame.font.SysFont('bahnschrift', 20)
@@ -22,46 +49,12 @@ def game_rule():
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     scenario1()
-                    # main_loop()
 
         screen.blit(rule_background, (0, 0))
         screen.blit(next_label, (15, 430))
         pygame.display.update()
 
-# start game 
-def start_menu():
-    text_background_color = (255, 255, 255)
-    title_font = pygame.font.SysFont('bahnschrift', 44)
-    menu_font = pygame.font.SysFont('bahnschrift', 28)  
-    while True:
-        screen.blit(background, (0, 0))  
-        # move Label To screen
-        title_label = title_font.render('Welcome to', True, (0, 0, 0))
-        title2_label = title_font.render('\'Rescue Manekineko\'', True, (0, 0, 0))
-        start_label = menu_font.render('Enter to \'Start\'', True, (0, 0, 0), text_background_color)  
-        way_label = menu_font.render('Shift to \'How to Play\'', True, (0, 0, 0), text_background_color)
-        #senario_label = menu_font.render('Watch Scenario', True, (0, 0, 0), text_background_color)
-
-        screen.blit(title_label, (110, 40))
-        screen.blit(title2_label, (20, 110))
-        screen.blit(start_label, (10, 330))
-        screen.blit(way_label,(10,380))
-
-        #screen.blit(senario_label,(10, 390))
-        
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return False
-            #elif event.type == pygame.MOUSEBUTTONDOWN :
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    scenario1()
-                    # main_loop()
-                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
-                    game_rule()
-
-#show scenario
+# 시나리오
 def scenario1():
     scenario1 = pygame.image.load('image/scenario1.png')
     while True:
@@ -124,7 +117,7 @@ def scenario5():
                     main_loop()
         
                    
-#stage connect
+# 스테이지 연결 이미지 
 def level1():
     stage1 = pygame.image.load('image/stage1.png')
     screen.blit(stage1, (0,0))
@@ -137,7 +130,6 @@ def level1():
             if event.type == pygame.QUIT:
                 i = 201
                 pygame.quit()
-
 def level2():
     stage2 = pygame.image.load('image/stage2.png')
     screen.blit(stage2, (0,0))
@@ -150,7 +142,6 @@ def level2():
             if event.type == pygame.QUIT:
                 i = 201
                 pygame.quit()
-
 def level3():
     stage3 = pygame.image.load('image/stage3.png')
     screen.blit(stage3, (0,0))
@@ -164,12 +155,11 @@ def level3():
                 i = 201
                 pygame.quit()
 
-# player's death
+# 게임 엔딩 - 실패
 def death_screen():  
     pygame.mixer.music.load('sound/death.mp3')  
     pygame.mixer.music.play(-1) 
     pygame.mixer.music.set_volume(.4)
-    # death_screen volume 2 -> 4
 
     death_font = pygame.font.SysFont('bahnschrift', 100)
     death_option_font = pygame.font.SysFont('bahnschrift', 30)
@@ -177,8 +167,7 @@ def death_screen():
     death_option = death_option_font.render('ENTER To Quit', True, (0, 0, 0))
     death_option2 = death_option_font.render('SPACE To Retry', True, (0, 0, 0))
 
-    # Death screen Loop
-    #running = True
+    # 게임 실패 스크린 loop
     while True:
         clock.tick(27)
         for event in pygame.event.get():
@@ -197,15 +186,13 @@ def death_screen():
                     man.x = 50
                     main_loop()
 
-
         screen.blit(background, (0, 0))
         screen.blit(death_label, (30, 20))
         screen.blit(death_option, (130, 145))
         screen.blit(death_option2, (120, 190))
         pygame.display.update()
       
-  
-# mission clear
+# 게임 엔딩 - 성공
 def success_screen():  
     pygame.mixer.music.load('sound/gameclear.wav')  
     pygame.mixer.music.play(-1) 
@@ -218,8 +205,7 @@ def success_screen():
     quit_font = pygame.font.SysFont('bahnschrift', 24)
     quit_label = quit_font.render('Enter to Quit', True, (0, 0, 0))
 
-    # Success screen Loop
-    #running = True
+    # 게임 성공 스크린 loop
     while True:
         clock.tick(27)
         for event in pygame.event.get():
@@ -238,7 +224,6 @@ def success_screen():
 # main loop
 def main_loop() :   
     global health
-    #scenario1()
     level1()
     health = stage1()    
     if health <= 0 : death_screen()  
