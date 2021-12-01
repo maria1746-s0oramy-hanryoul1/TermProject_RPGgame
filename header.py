@@ -11,6 +11,7 @@ background = pygame.image.load("image/back.jpg")
 walkRight = [pygame.image.load('image/br1.png'), pygame.image.load('image/br2.png'), pygame.image.load('image/br3.png'), pygame.image.load('image/br4.png'), pygame.image.load('image/br5.png'), pygame.image.load('image/br6.png'), pygame.image.load('image/br7.png'), pygame.image.load('image/br8.png'), pygame.image.load('image/br9.png')]
 walkLeft = [pygame.image.load('image/bl1.png'), pygame.image.load('image/bl2.png'), pygame.image.load('image/bl3.png'), pygame.image.load('image/bl4.png'), pygame.image.load('image/bl5.png'), pygame.image.load('image/bl6.png'), pygame.image.load('image/bl7.png'), pygame.image.load('image/bl8.png'), pygame.image.load('image/bl9.png')]
 
+# 플레이어 클래스 
 class Player(object):
     def __init__(self,x,y,width,height):
         self.x = x
@@ -30,6 +31,7 @@ class Player(object):
         self.flag = 0
         self.hittime = 0
 
+    # 플레이어 이동 함수
     def draw(self, screen):   
         if self.walkCount + 1 >= 27:
             self.walkCount = 0
@@ -78,6 +80,7 @@ class Player(object):
         pygame.display.update()     
         pygame.time.delay(1000)
 
+# 플레이어가 공격하는 클래스
 class Attack(object):
     def __init__(self,x,y,radius,color,facing):
         self.x = x
@@ -87,10 +90,11 @@ class Attack(object):
         self.facing = facing
         self.vel = 8 * self.facing
 
+    # 공격 이미지 그리기
     def draw(self,screen):
         pygame.draw.circle(screen, self.color, (self.x,self.y), self.radius)
 
-
+# 1단계 몬스터
 class Monster1_1(object):
     walkRight = [pygame.image.load('image/nbr1.png'), pygame.image.load('image/nbr2.png'), pygame.image.load('image/nbr3.png'), pygame.image.load('image/nbr4.png'), pygame.image.load('image/nbr5.png'), pygame.image.load('image/nbr6.png'), pygame.image.load('image/nbr7.png'), pygame.image.load('image/nbr8.png'), pygame.image.load('image/nbr9.png')]
     walkLeft = [pygame.image.load('image/nbl1.png'), pygame.image.load('image/nbl2.png'),pygame.image.load('image/nbl3.png'), pygame.image.load('image/nbL4.png'), pygame.image.load('image/nbl5.png'), pygame.image.load('image/nbl6.png'), pygame.image.load('image/nbl7.png'), pygame.image.load('image/nbl8.png'), pygame.image.load('image/nbl9.png')]
@@ -105,9 +109,10 @@ class Monster1_1(object):
         self.walkCount = 0
         self.vel = 4
         self.hitbox = (self.x + 17, self.y + 2, 31, 57)
-        self.mon_health = 10  # 적의 수명 
+        self.mon_health = 10   
         self.visible = True
 
+    # 몬스터 이동 
     def draw(self,screen):
         self.move()
         if self.visible:
@@ -125,6 +130,7 @@ class Monster1_1(object):
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
 
+    # 몬스터 이동 범위 설정
     def move(self):
         if self.vel > 0:
             if self.x + self.vel < self.path[1]:
@@ -139,6 +145,7 @@ class Monster1_1(object):
                 self.vel = self.vel * -1
                 self.walkCount = 0
 
+    # 몬스터 플레이어게 공격 받는 경우
     def hit(self):
         if self.mon_health > 0:
             self.mon_health -= 1
@@ -253,7 +260,7 @@ class Monster1_3(object):
         else:
             self.visible = False 
 
-         
+# 2단계 몬스터       
 class Monster2_1(object):
     walkRight = [pygame.image.load('image/NR.png'), pygame.image.load('image/NR.png'), pygame.image.load('image/NR1.png'), pygame.image.load('image/NR2.png'), pygame.image.load('image/NR3.png'), pygame.image.load('image/NR4.png'), pygame.image.load('image/NR5.png'), pygame.image.load('image/NR6.png'), pygame.image.load('image/NR7.png'), pygame.image.load('image/NR8.png'), pygame.image.load('image/NR9.png')]
     walkLeft = [pygame.image.load('image/NL.png'), pygame.image.load('image/NL.png'), pygame.image.load('image/NL1.png'), pygame.image.load('image/NL2.png'), pygame.image.load('image/NL3.png'), pygame.image.load('image/NL4.png'), pygame.image.load('image/NL5.png'), pygame.image.load('image/NL6.png'), pygame.image.load('image/NL7.png'), pygame.image.load('image/NL8.png'), pygame.image.load('image/NL9.png')]
@@ -271,6 +278,7 @@ class Monster2_1(object):
         self.mon_health = 10  
         self.visible = True
 
+    # 몬스터 이동
     def draw(self,screen):
         self.move()
         if self.visible:
@@ -288,6 +296,7 @@ class Monster2_1(object):
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.mon_health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
 
+    # 몬스터 이동 범위 설정
     def move(self):
         if self.vel > 0:
             if self.x + self.vel < self.path[1]:
@@ -302,6 +311,7 @@ class Monster2_1(object):
                 self.vel = self.vel * -1
                 self.walkCount = 0
 
+    # 몬스터 플레이어에게 공격 받는 경우
     def hit(self):
         if self.mon_health > 0:
             self.mon_health -= 0.7
@@ -359,7 +369,7 @@ class Monster2_2(object):
 
     def hit(self):
         if self.mon_health > 0:
-            self.mon_health -= 0.8# 생명 감소 속도 
+            self.mon_health -= 0.8 
         else:
             self.visible = False
 
@@ -472,7 +482,7 @@ class Monster2_4(object):
         else:
             self.visible = False
 
-
+# 3단계 몬스터
 class Monster3_1(object):
     walkRight = [pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png'), pygame.image.load('image/nnr1.png'), pygame.image.load('image/nnr2.png'), pygame.image.load('image/nnr3.png'), pygame.image.load('image/nnr4.png'), pygame.image.load('image/nnr5.png'), pygame.image.load('image/nnr6.png')]
     walkLeft = [pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png'), pygame.image.load('image/nnl1.png'), pygame.image.load('image/nnl2.png'), pygame.image.load('image/nnl3.png'), pygame.image.load('image/nnl4.png'), pygame.image.load('image/nnl5.png'), pygame.image.load('image/nnl6.png')]
@@ -490,6 +500,7 @@ class Monster3_1(object):
         self.mon_health = 50
         self.visible = True
 
+    # 몬스터 이동 
     def draw(self,screen):
         self.move()
         if self.visible:
@@ -507,6 +518,7 @@ class Monster3_1(object):
             pygame.draw.rect(screen, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 100 - (2 * (50 - self.mon_health)), 10)) 
             self.hitbox = (self.x, self.y + 30, 45, 100)
 
+    # 몬스터 이동 범위 설정
     def move(self):
         if self.vel > 0:
             if self.x + self.vel < self.path[1]:
@@ -521,6 +533,7 @@ class Monster3_1(object):
                 self.vel = self.vel * -1
                 self.walkCount = 0
 
+    # 몬스터 플레이어에게 공격 받는 경우
     def hit(self):
         if self.mon_health > 0:
             self.mon_health -= 1
